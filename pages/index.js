@@ -6,7 +6,7 @@ export default function Home() {
         <div>
             <Title title='Home'/>
             <div className="w-full h-full overflow-hidden">
-                <video className='w-full h-[100vh] scale-[1.01] ' src={videoLoop} autoPlay
+                <video className='min-w-full min-h-[100vh] scale-[1.01] ' src={videoLoop} autoPlay
                        type='video/mp4' loop
                        muted/>
             </div>
