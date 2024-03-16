@@ -1,9 +1,12 @@
+import Title from '@/components/Shared/title';
+
 const Contact = () => {
-    return (
-        <div>
-            Contact Page
-        </div>
-    );
+	return (
+		<div>
+			<Title title='Contact' />
+			Contact Page
+		</div>
+	);
 };
 
 export default Contact;
