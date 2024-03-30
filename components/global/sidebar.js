@@ -1,6 +1,4 @@
-import logo from '@/assets/logo-gif.gif';
 import {contactLinks, pages} from '@/components/global/links';
-import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {useEffect, useState} from 'react';
@@ -22,7 +20,9 @@ const Sidebar = () => {
         >
             <div className=''>
                 <Link href='/' className='flex flex-col xl:flex-row items-start gap-x-5 xl:px-7  px-3'>
-                    <Image src={logo} alt='logo' className='w-10 h-10'/>
+                    <div className='w-10 h-10'>
+                        <img src="https://i.ibb.co/brBd1wT/logo-gif.gif" alt='logo' className='h-full w-full'/>
+                    </div>
                     <div className='flex flex-col select-none'>
                         <p className='text-lg font-bold'>PixelDynamics</p>
                         <p className='text-xs translate-y-[-30%]'>.studio</p>
