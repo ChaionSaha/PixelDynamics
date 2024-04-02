@@ -1,0 +1,125 @@
+[
+  {
+    "spid": "1",
+    "name": "Basic",
+    "price": "500/MO USD",
+    "description": [
+      {
+        "id": "1",
+        "text": "Pay $500 for the first month."
+      },
+      {
+        "id": "2",
+        "text": "Regular Price $995/mo"
+      }
+    ],
+    "offers": [
+      {
+        "id": "1",
+        "text": "1 Senior Designer & 1 Junior Designer"
+      },
+      {
+        "id": "2",
+        "text": "1 Request at a time"
+      },
+      {
+        "id": "3",
+        "text": "Approx. 48 hours Delivery"
+      },
+      {
+        "id": "4",
+        "text": "Branding, UI/UX Revision, Digital marketing, and Social Media Posts are included."
+      },
+      {
+        "id": "5",
+        "text": "24/7 Support"
+      },
+      {
+        "id": "6",
+        "text": "No Hidden Charge."
+      }
+    ]
+  },
+  {
+    "spid": "2",
+    "name": "Standard",
+    "price": "1100/MO USD",
+    "description": [
+      {
+        "id": "1",
+        "text": "Pay $1100 for the first months"
+      },
+      {
+        "id": "2",
+        "text": "Regular Price $2195/mo"
+      }
+    ],
+    "offers": [
+      {
+        "id": "1",
+        "text": "A team with 1 lead designer, 2 Senior Designer & 1 Video editor."
+      },
+      {
+        "id": "2",
+        "text": "2 Request at a time"
+      },
+      {
+        "id": "3",
+        "text": "Approx. 48 hours Delivery"
+      },
+      {
+        "id": "4",
+        "text": "All from Basic + UI/UX Design, 2D Motion Graphics, Video Editing are included."
+      },
+      {
+        "id": "5",
+        "text": "24/7 Support"
+      },
+      {
+        "id": "6",
+        "text": "No Hidden Charge."
+      }
+    ]
+  },
+  {
+    "spid": "3",
+    "name": "Advanced",
+    "price": "1750/MO USD",
+    "description": [
+      {
+        "id": "1",
+        "text": "Pay $1750 for the first month"
+      },
+      {
+        "id": "2",
+        "text": "Regular Price $3455/mo"
+      }
+    ],
+    "offers": [
+      {
+        "id": "1",
+        "text": "1 lead designer, 3 senior designers, 1 Senior Video editor, 1 3D artist"
+      },
+      {
+        "id": "2",
+        "text": "Customized Request at a time"
+      },
+      {
+        "id": "3",
+        "text": "Delivery based on projects"
+      },
+      {
+        "id": "4",
+        "text": "All from Standard + 3D Animation & Motion graphics,"
+      },
+      {
+        "id": "5",
+        "text": "24/7 Support"
+      },
+      {
+        "id": "6",
+        "text": "No Hidden Charge."
+      }
+    ]
+  }
+]

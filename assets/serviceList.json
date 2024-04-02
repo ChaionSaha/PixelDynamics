@@ -1,0 +1,290 @@
+[
+  {
+    "slid": "1",
+    "title": "User Interface",
+    "list": [
+      {
+        "id": "1",
+        "text": "Mobile App UI"
+      },
+      {
+        "id": "2",
+        "text": "Website UI"
+      },
+      {
+        "id": "3",
+        "text": "Dashboard UI"
+      },
+      {
+        "id": "4",
+        "text": "AR/VR UI"
+      },
+      {
+        "id": "5",
+        "text": "Game UI"
+      },
+      {
+        "id": "6",
+        "text": "UI Animation"
+      },
+      {
+        "id": "7",
+        "text": "Interactive Prototype"
+      },
+      {
+        "id": "8",
+        "text": "Design System"
+      },
+      {
+        "id": "9",
+        "text": "Loading Page Video"
+      },
+      {
+        "id": "10",
+        "text": "Icon & Emoji Design"
+      }
+    ]
+  },
+  {
+    "slid": "2",
+    "title": "User Experience",
+    "list": [
+      {
+        "id": "1",
+        "text": "UX Strategy"
+      },
+      {
+        "id": "2",
+        "text": "Research"
+      },
+      {
+        "id": "3",
+        "text": "Information Architecture"
+      },
+      {
+        "id": "4",
+        "text": "Usability Testing"
+      },
+      {
+        "id": "5",
+        "text": "Wireframe"
+      },
+      {
+        "id": "6",
+        "text": "Performance Monitoring"
+      },
+      {
+        "id": "7",
+        "text": "User Flow"
+      }
+    ]
+  },
+  {
+    "slid": "3",
+    "title": "Branding",
+    "list": [
+      {
+        "id": "1",
+        "text": "Logo Design"
+      },
+      {
+        "id": "2",
+        "text": "Brand Strategy"
+      },
+      {
+        "id": "3",
+        "text": "Social Media Posts"
+      },
+      {
+        "id": "4",
+        "text": "Banner & Poster"
+      },
+      {
+        "id": "5",
+        "text": "Infographics"
+      },
+      {
+        "id": "6",
+        "text": "Pitch Deck"
+      },
+      {
+        "id": "7",
+        "text": "Stationaries Design"
+      },
+      {
+        "id": "8",
+        "text": "T-shirt, Jersey Design"
+      }
+    ]
+  },
+  {
+    "slid": "4",
+    "title": "Game",
+    "list": [
+      {
+        "id": "1",
+        "text": "Game UI/UX (HUD)"
+      },
+      {
+        "id": "2",
+        "text": "FUI & UI Animation"
+      },
+      {
+        "id": "3",
+        "text": "Realtime VFX"
+      },
+      {
+        "id": "4",
+        "text": "Accessibility"
+      },
+      {
+        "id": "5",
+        "text": "UI Implementation"
+      },
+      {
+        "id": "6",
+        "text": "Cutscene & Promo Video"
+      },
+      {
+        "id": "7",
+        "text": "Steam / Epic Store Page Design"
+      },
+      {
+        "id": "8",
+        "text": "E-sports Design"
+      }
+    ]
+  },
+  {
+    "slid": "5",
+    "title": "3d & Game Design",
+    "list": [
+      {
+        "id": "1",
+        "text": "3D Modeling & Rendering"
+      },
+      {
+        "id": "2",
+        "text": "Environments Design"
+      },
+      {
+        "id": "3",
+        "text": "3D Animations"
+      },
+      {
+        "id": "4",
+        "text": "Character Design & Animation"
+      },
+      {
+        "id": "5",
+        "text": "AR/VR Assets"
+      },
+      {
+        "id": "6",
+        "text": "Gaming & Interactive Content"
+      },
+      {
+        "id": "7",
+        "text": "Product Visualization"
+      }
+    ]
+  },
+  {
+    "slid": "6",
+    "title": "Video Production",
+    "list": [
+      {
+        "id": "1",
+        "text": "Video Editing & Color Grading"
+      },
+      {
+        "id": "2",
+        "text": "Short Video Editing"
+      },
+      {
+        "id": "3",
+        "text": "2D and 3D animation"
+      },
+      {
+        "id": "4",
+        "text": "Title Sequences and Intros"
+      },
+      {
+        "id": "5",
+        "text": "VFX Composting"
+      },
+      {
+        "id": "6",
+        "text": "2d & 3d Motion Graphic"
+      },
+      {
+        "id": "7",
+        "text": "Product Visualization"
+      },
+      {
+        "id": "8",
+        "text": "Rotoscoping and Tracking"
+      },
+      {
+        "id": "9",
+        "text": "Lyrical Video"
+      }
+    ]
+  },
+  {
+    "slid": "7",
+    "title": "Digital Marketing",
+    "list": [
+      {
+        "id": "1",
+        "text": "Social Media Marketing"
+      },
+      {
+        "id": "2",
+        "text": "Content Marketing"
+      },
+      {
+        "id": "3",
+        "text": "E-commerce Marketing"
+      },
+      {
+        "id": "4",
+        "text": "Social Media Poster Design"
+      },
+      {
+        "id": "5",
+        "text": "Thumbnail Design"
+      },
+      {
+        "id": "6",
+        "text": "Search Engine Optimization (SEO)"
+      }
+    ]
+  },
+  {
+    "slid": "8",
+    "title": "Web Development",
+    "list": [
+      {
+        "id": "1",
+        "text": "Website Development"
+      },
+      {
+        "id": "2",
+        "text": "Wordpress Development"
+      },
+      {
+        "id": "3",
+        "text": "E-commerce solutions"
+      },
+      {
+        "id": "4",
+        "text": "Custom web applications"
+      },
+      {
+        "id": "5",
+        "text": "Website maintenance"
+      }
+    ]
+  }
+]
