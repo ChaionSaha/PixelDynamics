@@ -8,7 +8,9 @@
 /.yarn
 *.yml
 /.idea
-
+.pnp.cjs
+.pnp.loader.mjs
+/.vs
 # testing
 /coverage
 
