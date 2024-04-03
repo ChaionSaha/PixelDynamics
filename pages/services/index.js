@@ -2,10 +2,11 @@ import Title from '@/components/Shared/title';
 import {getDatabase} from '@/db/mongoConnection';
 import Image from "next/image";
 import serviceHero from '@/assets/service-page-hero.png'
+import SharedLayout from "@/components/Shared/SharedLayout";
 
 const Services = ({services = []}) => {
     return (
-        <>
+        <SharedLayout>
             <Title title='Services'/>
             <div className="pt-7 pb-10 ps-16">
                 <p className=" text-3xl font-bold">What We Offer</p>
@@ -16,7 +17,7 @@ const Services = ({services = []}) => {
                     <Image src={serviceHero} alt="service hero"/>
                 </div>
             </div>
-        </>
+        </SharedLayout>
     );
 };
 

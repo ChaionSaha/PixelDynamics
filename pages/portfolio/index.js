@@ -1,11 +1,14 @@
 import Title from '@/components/Shared/title';
+import SharedLayout from "@/components/Shared/SharedLayout";
 
 const Portfolio = () => {
     return (
-        <div>
-            <Title title='Portfolio'/>
-            Portfolio Page
-        </div>
+        <SharedLayout>
+            <div>
+                <Title title='Portfolio'/>
+                Portfolio Page
+            </div>
+        </SharedLayout>
     );
 };
 

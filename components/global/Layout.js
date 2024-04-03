@@ -8,8 +8,8 @@ const Layout = ({children}) => {
                 <link rel="icon" type="image/x-icon"
                       href="https://i.ibb.co/4Wh3gKQ/logo.png"/>
             </Head>
-            <div className="lg:w-[16%] hidden lg:block h-full"><Sidebar/></div>
-            
+            <div className="lg:w-[16%] overflow-x-hidden hidden lg:block h-full"><Sidebar/></div>
+
             <div className="lg:w-[84%] w-full h-full">{children}</div>
         </div>
     );
