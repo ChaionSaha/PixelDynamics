@@ -24,7 +24,7 @@ const Sidebar = () => {
                         <img src="https://i.ibb.co/brBd1wT/logo-gif.gif" alt='logo' className='h-full w-full'/>
                     </div>
                     <div className='flex flex-col select-none'>
-                        <p className='text-lg font-bold'>PixelDynamics</p>
+                        <p className='text-xl font-bold'>PixelDynamics</p>
                         <p className='text-xs translate-y-[-30%]'>.studio</p>
                     </div>
                 </Link>
