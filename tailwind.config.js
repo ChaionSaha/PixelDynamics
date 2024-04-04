@@ -21,5 +21,18 @@ module.exports = {
         },
     },
     darkMode: "class",
-    plugins: [nextui()],
+    plugins: [nextui(), require("daisyui")],
+
+    daisyui: {
+        themes: [
+            {
+                mytheme: {
+                    "primary": "#000",
+                    'secondary': '#f5f5f5'
+
+                },
+            },
+
+        ],
+    },
 };

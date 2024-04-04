@@ -2,7 +2,7 @@ import {MongoClient, ServerApiVersion} from 'mongodb';
 
 let cachedClient = null;
 
-export async function connectToDatabase(uri) {
+async function connectToDatabase(uri) {
     if (cachedClient) {
         return cachedClient;
     }

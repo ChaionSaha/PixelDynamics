@@ -9,7 +9,7 @@ export default function App({Component, pageProps}) {
     const router = useRouter();
     return (
         <NextUIProvider>
-            <NextNProgress/>
+            <NextNProgress color="#666" options={{showSpinner: false}}/>
             <Layout>
                 <AnimatePresence onExitComplete={() => window.scrollTo(0, 0)} mode="wait" initial={false}>
                     <Component {...pageProps} key={router.asPath}/>
