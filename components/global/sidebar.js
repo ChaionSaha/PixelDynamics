@@ -19,7 +19,7 @@ const Sidebar = () => {
             style={{backgroundImage: `url(${sidebarBg})`}}
         >
             <div className=''>
-                <Link href='/' className='flex flex-col xl:flex-row items-start gap-x-5 xl:px-7  px-3'>
+                <Link scroll={false} href='/' className='flex flex-col xl:flex-row items-start gap-x-5 xl:px-7  px-3'>
                     <div className='w-10 h-10'>
                         <img src="https://i.ibb.co/brBd1wT/logo-gif.gif" alt='logo' className='h-full w-full'/>
                     </div>
@@ -42,6 +42,7 @@ const Sidebar = () => {
                                 className={`flex gap-x-4 w-full text-lg px-3 xl:px-10 py-2 hover:bg-base-200 hover:text-theme-black duration-150 ${
                                     p.link === router.asPath ? 'sidebar-link-active' : ''
                                 }`}
+                                scroll={false}
                             >
                                 <i className={p.icon}></i>
                                 <p>{p.name}</p>
