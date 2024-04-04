@@ -33,7 +33,7 @@ const Contact = ({calendlyLink, services = []}) => {
                                    size={'lg'}
                                    classNames={{
                                        input: "border-black text-lg",
-                                       inputWrapper: 'border-base-200 focus:border-black border',
+                                       inputWrapper: "border-base-200 focus:border-black border",
 
                                    }}
                             />
@@ -44,7 +44,7 @@ const Contact = ({calendlyLink, services = []}) => {
                                    size={'lg'}
                                    classNames={{
                                        input: "border-black text-lg",
-                                       inputWrapper: 'border-base-200 focus:border-black border',
+                                       inputWrapper: "border-base-200 focus:border-black border",
 
                                    }}
                             />
@@ -106,7 +106,6 @@ const Contact = ({calendlyLink, services = []}) => {
                     className="sticky hidden h-[100vh] justify-center top-0 right-0 bg-[#ebebeb] xl:flex items-end w-[25%]">
                     <div className="flex flex-col">
                         <div className="self-center">
-
                             <Image src={logo} alt='pixel dynamics logo'/>
                             <div className='flex flex-col mt-5 select-none'>
                                 <p className='text-3xl font-bold'>PixelDynamics</p>
