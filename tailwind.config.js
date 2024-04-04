@@ -15,7 +15,8 @@ module.exports = {
                     'base-100': '#fff',
                     'base-200': '#ccc',
                     'base-300': '#666',
-                    'theme-black': '#0D0B0D'
+                    'theme-black': '#0D0B0D',
+                    'secondary': '#f5f5f5'
                 }
         },
     },

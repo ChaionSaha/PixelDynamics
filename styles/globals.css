@@ -18,3 +18,16 @@
 /*.contactLinks:hover {*/
 /*    transform: scale(1.1);*/
 /*}*/
+
+::-webkit-scrollbar {
+
+    @apply lg:w-[7px] w-[5px];
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply lg:bg-[#0d0b0d]  bg-base-200;
+}
