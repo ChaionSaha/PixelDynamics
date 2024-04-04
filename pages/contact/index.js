@@ -5,41 +5,80 @@ import Image from "next/image";
 import logo from '@/assets/logo-big.png'
 import {contactPageExtraLinks} from "@/components/global/links";
 import {getDatabase} from "@/db/mongoConnection";
+import {Input, Select, SelectItem, Textarea} from "@nextui-org/react";
 
 
 const Contact = ({calendlyLink, services = []}) => {
     return (
         <SharedLayout>
-            <div className="relative min-h-[100vh]  flex w-full ">
+            <div className="relative min-h-[100vh] flex w-full ">
                 <div className="flex-grow">
                     <Title title='Contact'/>
                     <div>
-                        <p className="text-6xl font-bold text-center mt-20">Contact</p>
-                        <p className='text-center text-xl font-semibold mt-3 w-[40%] mx-auto'>Contact us for Inquires
+                        <p className="md:text-6xl text-4xl  font-bold text-center mt-20">Contact</p>
+                        <p className='text-center md:text-lg lg:text-xl font-semibold mt-3 px-7 md:px-0 md:w-[40%] mx-auto'>Contact
+                            us
+                            for Inquires
                             and We
                             are there for
                             any help
                             regarding design.</p>
-                        <form className='mx-auto  flex flex-col mt-20 gap-y-5 w-[60%]'>
-                            <input type="text"
-                                   className="input input-lg  input-bordered rounded-none border-base-200 focus:outline-0 duration-300 focus:border-black"
-                                   placeholder='Name'/>
-                            <input type="email"
-                                   className="input input-lg  input-bordered rounded-none border-base-200 focus:outline-0 duration-300 focus:border-black"
-                                   placeholder='Email'/>
-                            <select
-                                className="select select-lg select-bordered rounded-none border-base-200 focus:outline-0 duration-300 focus:border-black"
-                            >
-                                <option disabled>Service</option>
-                                {services.map((s, i) => (
-                                    <option key={i} value={s.title}>
-                                        {s.title}
-                                    </option>
-                                ))}
-                            </select>
 
-                            <textarea placeholder="Message"
-                                      className="h-36 textarea textarea-lg textarea-bordered rounded-none border-base-200 focus:outline-0 duration-300 focus:border-black"></textarea>
+
+                        <form className='mx-auto  flex flex-col mt-20 gap-y-5 px-7 md:px-0 md:w-[60%]'>
+                            <Input type="text"
+                                   radius={'none'}
+                                   variant={'bordered'}
+                                   label="Name"
+                                   size={'lg'}
+                                   classNames={{
+                                       input: "border-black text-lg",
+                                       inputWrapper: 'border-base-200 focus:border-black border',
+
+                                   }}
+                            />
+                            <Input type="email"
+                                   radius={'none'}
+                                   variant={'bordered'}
+                                   label="Email"
+                                   size={'lg'}
+                                   classNames={{
+                                       input: "border-black text-lg",
+                                       inputWrapper: 'border-base-200 focus:border-black border',
+
+                                   }}
+                            />
+
+                            <Select
+                                label="Select a service"
+                                variant={'bordered'}
+                                size={'lg'}
+                                radius={'none'}
+                                classNames={{
+
+                                    trigger: 'border-base-200 offset-0 border',
+
+                                }}
+                            >
+
+                                {services.map((s, i) => (
+                                    <SelectItem key={i} value={s.title}>
+                                        {s.title}
+                                    </SelectItem>
+                                ))}
+                            </Select>
+
+
+                            <Textarea
+                                label="Message"
+                                variant={'bordered'}
+                                size={'lg'}
+                                radius={'none'}
+                                minRows={5}
+                                classNames={{
+                                    inputWrapper: 'border-base-200 focus:border-black border',
+                                }}
+                            />
                             <button className="btn btn-primary btn-lg text-2xl text-white rounded-none">Send</button>
 
                         </form>
@@ -65,11 +104,14 @@ const Contact = ({calendlyLink, services = []}) => {
                 {/* Right Sidebar */}
                 <div
                     className="sticky hidden h-[100vh] justify-center top-0 right-0 bg-[#ebebeb] xl:flex items-end w-[25%]">
-                    <div className="">
-                        <Image src={logo} alt='pixel dynamics logo'/>
-                        <div className='flex flex-col mt-5 select-none'>
-                            <p className='text-3xl font-bold'>PixelDynamics</p>
-                            <p className='text-xl font-semibold translate-y-[-30%]'>.studio</p>
+                    <div className="flex flex-col">
+                        <div className="self-center">
+
+                            <Image src={logo} alt='pixel dynamics logo'/>
+                            <div className='flex flex-col mt-5 select-none'>
+                                <p className='text-3xl font-bold'>PixelDynamics</p>
+                                <p className='text-xl font-semibold translate-y-[-30%]'>.studio</p>
+                            </div>
                         </div>
                         <ul className='flex w-full gap-x-7 justify-between mt-5 mb-10 items-center'>
                             {contactPageExtraLinks.map((cl, i) => {
