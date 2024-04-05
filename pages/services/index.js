@@ -3,8 +3,9 @@ import {getDatabase} from '@/db/mongoConnection';
 import Image from "next/image";
 import serviceHero from '@/assets/service-page-hero.png'
 import SharedLayout from "@/components/Shared/SharedLayout";
-import blackBox from '@/assets/black-box.png'
 import BookACallButton from "@/components/services/BookACallButton";
+import ServiceDetails from "@/components/services/ServiceDetails";
+import PlanDetails from "@/components/services/PlanDetails";
 
 const Services = ({services = [], subscriptions = [s]}) => {
     return (
@@ -25,20 +26,8 @@ const Services = ({services = [], subscriptions = [s]}) => {
                 <div className="mt-10 grid lg:grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-7 lg:pe-10">
                     {
                         services.map((s, i) => {
-                            return <div key={i}
-                                        className="flex flex-col border border-transparent hover:border-black duration-300 p-5 xl:p-9 py-8 bg-secondary hover:bg-base-100">
-                                <p className="font-bold text-xl xl:text-2xl flex items-center gap-x-3">
-                                    {/*<i className="bi bi-square-fill text-base"></i>*/}
-                                    <Image src={blackBox} alt="black box"/>
-                                    {s.title}
-                                </p>
-                                <ul className="flex flex-col mt-3 gap-y-2">
-                                    {
-                                        s.list.map((l, i) => <li key={i}
-                                                                 className="xl:text-lg font-semibold">{l.text}</li>)
-                                    }
-                                </ul>
-                            </div>
+
+                            return <ServiceDetails {...s} key={i}/>
                         })
                     }
                 </div>
@@ -53,7 +42,6 @@ const Services = ({services = [], subscriptions = [s]}) => {
                             <p className="lg:text-xl text-base font-medium">Pay the Precise Price for Your Work</p>
                         </div>
                         <BookACallButton className="py-3"/>
-
                     </div>
                 </div>
 
@@ -67,33 +55,7 @@ const Services = ({services = [], subscriptions = [s]}) => {
                     <div className="grid md:grid-cols-2 grid-cols-1 xl:grid-cols-3 gap-10 mt-10">
                         {
                             subscriptions.map((s, i) => {
-                                return <div key={i}
-                                            className="flex p-7  lg:px-12  justify-between flex-col bg-[#ebebeb]">
-                                    <div>
-
-                                        <div
-                                            className="flex gap-x-5 items-center justify-between text-2xl xl:text-3xl font-bold">
-                                            <p>{s.name}</p>
-                                            <p className="lg:text-xl xl:text-2xl text-lg">{s.price}</p>
-                                        </div>
-                                        <ul className="mt-3">
-                                            {
-                                                s.description.map((sd, i) => <li key={i}
-                                                                                 className="text-lg xl:text-xl text-base-300">{sd.text}</li>)
-                                            }
-                                        </ul>
-
-                                        <ul className="mt-10 list-disc ps-5 flex flex-col gap-y-2">
-                                            {
-                                                s.offers.map((so, i) => <li key={i}
-                                                                            className="text-base">{so.text}</li>)
-                                            }
-                                        </ul>
-                                    </div>
-
-
-                                    <BookACallButton className="py-5 md:px-5 mt-16"/>
-                                </div>
+                                return <PlanDetails {...s} key={i}/>
                             })
                         }
                     </div>
