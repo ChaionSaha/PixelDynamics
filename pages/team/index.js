@@ -6,7 +6,8 @@ const Team = () => {
         <SharedLayout>
             <div>
                 <Title title='Team'/>
-                Team page
+                <p className="text-xl font-bold md:text-2xl pt-7 ps-16 lg:text-3xl">Meet Our Highly Talented Team
+                    Members</p>
             </div>
         </SharedLayout>
     );

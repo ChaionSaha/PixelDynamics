@@ -2,23 +2,27 @@
 
 import React, {useRef, useState} from 'react';
 import {Editor} from '@tinymce/tinymce-react';
+import copy from 'clipboard-copy';
+
 
 export default function App() {
     const editorRef = useRef(null);
-    const log = () => {
-        if (editorRef.current) {
-            console.log(editorRef.current.getContent());
-        }
-    };
-
     const [editorContent, setEditorContent] = useState("");
 
     const handleEditorChange = (content, editor) => {
-        console.log(content);
         setEditorContent(content);
     };
+
+    const handleCopyClick = async () => {
+        try {
+            await copy(editorContent);
+        } catch (error) {
+            console.error('Failed to copy text to clipboard', error);
+        }
+    };
+
     return (
-        <>
+        <div className="container mx-auto my-10">
             <Editor
                 apiKey='vbjou9orge9dwgk0zs4cawcvozpnk3u0e0vhbihiq886am63'
                 init={{
@@ -29,11 +33,16 @@ export default function App() {
                 onInit={(evt, editor) => editorRef.current = editor}
                 onEditorChange={handleEditorChange}
             />
-            <button onClick={log}>Log editor content</button>
-            <div dangerouslySetInnerHTML={{__html: editorContent}}/>
-            {
-                editorContent
-            }
-        </>
+
+            <div className="border p-3 my-5" dangerouslySetInnerHTML={{__html: editorContent}}/>
+            <div className="border p-3">
+                {
+                    editorContent
+                }
+            </div>
+            <button onClick={() => handleCopyClick()} className="btn my-3 btn-sm btn-primary text-white">Copy to
+                clipboard
+            </button>
+        </div>
     );
 }

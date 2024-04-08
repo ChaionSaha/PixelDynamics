@@ -11,6 +11,7 @@
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
     "@tinymce/tinymce-react": "^5.0.0",
+    "clipboard-copy": "^4.0.1",
     "daisyui": "^4.10.0",
     "file-loader": "^6.2.0",
     "framer-motion": "^11.0.8",
