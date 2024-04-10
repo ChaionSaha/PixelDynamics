@@ -19,6 +19,13 @@ module.exports = {
                     'secondary': '#f5f5f5'
                 }
         },
+        listStyleType: {
+            none: 'none',
+            disc: 'disc',
+            decimal: 'decimal',
+            square: 'square',
+            roman: 'upper-roman',
+        }
     },
     darkMode: "class",
     plugins: [nextui(), require("daisyui")],

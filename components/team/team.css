@@ -1,0 +1,12 @@
+.team-member {
+    .team-member-experience {
+        transform: translateY(100%);
+        transition: 500ms;
+    }
+}
+
+.team-member:hover {
+    .team-member-experience {
+        transform: translateY(0%);
+    }
+}
