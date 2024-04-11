@@ -4,7 +4,8 @@ import Image from "next/image";
 const Slide = ({name, img, title, experience, expertise, description}) => {
 
     return (
-        <div className='flex lg:flex-row flex-col gap-y-5 overflow-y-visible mt-5 lg:mt-0 px-5 lg:ps-16 lg:pe-0'>
+        <div
+            className='flex lg:flex-row pb-5  flex-col h-max gap-y-5 overflow-y-visible mt-5 lg:mt-0 px-5 lg:ps-16 lg:pe-0'>
             <div className="lg:w-[65%] w-[100%] order-last lg:order-fast">
                 <p className="lg:text-5xl text-3xl font-bold">{name}</p>
                 <p className='lg:text-3xl text-xl mt-3 lg:w-[80%] w-[100%]'>{title}</p>
