@@ -7,11 +7,12 @@ const Layout = ({children}) => {
     const [active, setActive] = useState(false);
     const router = useRouter();
     const topDivRef = useRef(null);
-    
+
     useEffect(() => {
+        setActive(false);
         const handleRouteChange = () => {
             if (topDivRef.current) {
-                topDivRef.current.scrollIntoView({behavior: 'smooth'});
+                topDivRef.current.scrollIntoView();
             }
         };
         router.events.on('routeChangeComplete', handleRouteChange);
