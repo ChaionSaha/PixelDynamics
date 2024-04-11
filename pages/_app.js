@@ -2,24 +2,14 @@ import "@/styles/globals.css";
 import {NextUIProvider} from "@nextui-org/react";
 import Layout from "@/components/global/Layout";
 import {AnimatePresence} from "framer-motion";
-import {useRouter} from "next/router";
 import NextNProgress from 'nextjs-progressbar';
-import {useEffect} from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {useRouter} from "next/router";
 
 export default function App({Component, pageProps}) {
     const router = useRouter();
 
-    useEffect(() => {
-        const handleRouteChange = () => {
-            window.scrollTo(0, 0);
-        };
-        router.events.on('routeChangeComplete', handleRouteChange);
-        return () => {
-            router.events.off('routeChangeComplete', handleRouteChange);
-        };
-    }, [router.events]);
     return (
         <NextUIProvider>
             <NextNProgress color="#666" options={{showSpinner: false}}/>
@@ -31,3 +21,4 @@ export default function App({Component, pageProps}) {
         </NextUIProvider>);
 
 }
+
