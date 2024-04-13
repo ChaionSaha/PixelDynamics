@@ -27,6 +27,7 @@ module.exports = {
             roman: 'upper-roman',
         }
     },
+    
     darkMode: "class",
     plugins: [nextui(), require("daisyui")],
 

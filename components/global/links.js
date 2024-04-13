@@ -68,3 +68,24 @@ export const contactPageExtraLinks = [
     },
 
 ];
+
+export const adminPagesLinks = [
+    {
+        name: 'Portfolio',
+        link: '/admin/portfolio',
+        icon: 'bi bi-distribute-vertical',
+        bg: '/portfolio-bg.png',
+    },
+    {
+        name: 'Services',
+        link: '/admin/services',
+        icon: 'bi bi-grid-fill',
+        bg: '/services-bg.png',
+    },
+    {
+        name: 'Team',
+        link: '/admin/team',
+        icon: 'bi bi-people-fill',
+        bg: '/team-bg.png',
+    },
+]
