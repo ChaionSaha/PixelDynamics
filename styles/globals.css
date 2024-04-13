@@ -15,6 +15,10 @@
     @apply bg-base-200 text-theme-black;
 }
 
+.admin-sidebar-link-active {
+    @apply bg-[#0077E4] text-white;
+}
+
 /*.contactLinks:hover {*/
 /*    transform: scale(1.1);*/
 /*}*/
@@ -38,4 +42,34 @@
 
 .calendly-inline-widget::-webkit-scrollbar {
     display: none !important;
+}
+
+.quill-css {
+    & > h1 {
+        @apply text-3xl;
+    }
+
+    & > h2 {
+        @apply text-2xl;
+    }
+
+    & > h3 {
+        @apply text-xl;
+    }
+
+    & > h4 {
+        @apply text-lg;
+    }
+
+    & > h5 {
+        @apply text-base;
+    }
+
+    & > h6 {
+        @apply text-sm;
+    }
+
+    & > p {
+        @apply text-base;
+    }
 }

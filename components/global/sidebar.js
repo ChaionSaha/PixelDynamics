@@ -1,4 +1,4 @@
-import {contactLinks, pages} from '@/components/global/links';
+import {adminPagesLinks, contactLinks, pages} from '@/components/global/links';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {useEffect, useState} from 'react';
@@ -17,13 +17,14 @@ const Sidebar = ({active, setActive}) => {
 
     return (
         <div
-            className='relative flex flex-col justify-between w-full h-full py-10 text-base-200 bg-theme-black'
+            className={`relative flex flex-col justify-between w-full h-full py-10 text-base-200 ${router.pathname.includes('/admin') ? 'bg-[#1D232C]' : 'bg-theme-black'} `}
             style={{backgroundImage: `url(${sidebarBg})`}}
         >
             <div className=''>
+
                 <Link
                     scroll={false}
-                    href='/'
+                    href={!router.pathname.includes('/admin') ? '/' : '/admin'}
                     className='flex flex-wrap items-start px-3 flex-row gap-x-5 xl:px-7'
                 >
                     <div className='w-10 h-10'>
@@ -35,16 +36,18 @@ const Sidebar = ({active, setActive}) => {
                     </div>
                     <div className='flex flex-col select-none'>
                         <p className='text-xl font-bold'>PixelDynamics</p>
-                        <p className='text-xs translate-y-[-30%]'>.studio</p>
+                        <p className='text-xs translate-y-[-30%]'>.studio {router.pathname.includes('/admin') &&
+                            <span>Admin</span>}</p>
                     </div>
                 </Link>
-                <p className='px-3 text-sm xl:px-7 mt-7'>
+                {!router.pathname.includes('/admin') && <p className='px-3 text-sm xl:px-7 mt-7'>
                     A studio powered by industry leading professionals.
                 </p>
+                }
             </div>
 
             <ul className='flex flex-col gap-y-2'>
-                {pages.map((p, i) => {
+                {!router.pathname.includes('/admin') && pages.map((p, i) => {
                     return (
                         <li key={i}>
                             <Link
@@ -60,9 +63,27 @@ const Sidebar = ({active, setActive}) => {
                         </li>
                     );
                 })}
+                {router.pathname.includes('/admin') && adminPagesLinks.map((p, i) => {
+                    return (
+                        <li key={i}>
+                            <Link
+                                href={p.link}
+                                className={`flex gap-x-4 w-full text-lg px-3 xl:px-10 py-2 hover:bg-base-200 hover:text-theme-black duration-150 ${
+                                    p.link === router.asPath ? 'sidebar-link-active' : ''
+                                }`}
+                                scroll={false}
+                            >
+                                <i className={p.icon}></i>
+                                <p>{p.name}</p>
+                            </Link>
+                        </li>
+                    );
+                })
+
+                }
             </ul>
 
-            <ul className='flex justify-between px-3 xl:px-10'>
+            {!router.pathname.includes('/admin') && <ul className='flex justify-between px-3 xl:px-10'>
                 {contactLinks.map((cl, i) => {
                     return (
                         <li key={i}>
@@ -77,6 +98,27 @@ const Sidebar = ({active, setActive}) => {
                     );
                 })}
             </ul>
+            }
+
+            {router.pathname.includes('/admin') &&
+                <div className='flex flex-col gap-y-3'>
+                    <Link
+                        href='/'
+                        className={`flex gap-x-4  w-full text-lg px-3 xl:px-10 py-2 hover:bg-[#0077E4] hover:text-white duration-150`}
+                        scroll={false}
+                    >
+                        <i className='bi bi-arrow-left'></i>
+                        <p>Go to Main Website</p>
+                    </Link>
+
+                    <button
+                        className='flex gap-x-4 w-full text-lg px-3 xl:px-10 py-2 hover:bg-base-200 hover:text-red-700  duration-150 '>
+                        <i className='bi bi-box-arrow-right'></i> Log Out
+                    </button>
+
+                </div>
+            }
+
             <div className='absolute right-[-5%] translate-x-[100%] top-[2%] z-[100]'>
                 <HamburgerMenu active={active} setActive={setActive}/>
             </div>
