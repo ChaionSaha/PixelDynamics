@@ -1,34 +1,32 @@
 import React from 'react';
-import Title from "@/components/Shared/title";
 import {getSession} from "next-auth/react";
 
-const AdminIndex = () => {
+const Index = () => {
     return (
         <div>
-            <Title title='Index'/>
-            This is admin homepage
         </div>
     );
 };
 
-export default AdminIndex;
+export default Index;
+
 
 export async function getServerSideProps(context) {
     const session = await getSession({req: context.req});
 
-    if (!session) {
+    if (session) {
         return {
             redirect: {
-                destination: '/admin/auth/login',
+                destination: '/admin',
                 permanent: false,
             },
-
         }
     }
 
     return {
-        props: {
-            session: session,
-        }
+        redirect: {
+            destination: '/admin/auth/login',
+            permanent: false,
+        },
     }
 }

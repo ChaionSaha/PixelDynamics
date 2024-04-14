@@ -2,6 +2,7 @@ import Sidebar from "@/components/global/sidebar";
 import Head from "next/head";
 import {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
+import {getSession} from "next-auth/react";
 
 const Layout = ({children}) => {
     const [active, setActive] = useState(false);
@@ -10,6 +11,13 @@ const Layout = ({children}) => {
 
     useEffect(() => {
         setActive(false);
+        if (router.pathname.includes('/admin') && !router.pathname.includes('/admin/auth')) {
+            getSession().then((session) => {
+                if (!session) {
+                    router.replace("/admin/auth/login");
+                }
+            })
+        }
         const handleRouteChange = () => {
             if (topDivRef.current) {
                 topDivRef.current.scrollIntoView();
@@ -19,6 +27,8 @@ const Layout = ({children}) => {
         return () => {
             router.events.off('routeChangeComplete', handleRouteChange);
         };
+
+
     }, [router]);
 
     return (
@@ -29,7 +39,7 @@ const Layout = ({children}) => {
                       href="https://i.ibb.co/4Wh3gKQ/logo.png"/>
             </Head>
             {
-                (!router.pathname.includes('/admin/signup') && !router.pathname.includes('/admin/login')) ?
+                !router.pathname.includes('/admin/auth') ?
                     <>
                         <div
                             className={`lg:w-[16%] w-[70%] md:w-[40%] lg:block h-full lg:sticky duration-500 fixed top-0 left-0 z-[100] ${active ? 'translate-x-0' : 'translate-x-[-100%] lg:translate-x-0'}  lg:translate-x-0 `}>
