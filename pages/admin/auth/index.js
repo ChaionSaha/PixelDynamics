@@ -1,17 +1,32 @@
-import React, {useEffect} from 'react';
-import {useRouter} from "next/router";
+import React from 'react';
+import {getSession} from "next-auth/react";
 
 const Index = () => {
-    const router = useRouter();
-    useEffect(() => {
-        router.push('/admin/auth/login');
-    }, [router]);
-
     return (
         <div>
-
         </div>
     );
 };
 
 export default Index;
+
+
+export async function getServerSideProps(context) {
+    const session = await getSession({req: context.req});
+
+    if (session) {
+        return {
+            redirect: {
+                destination: '/admin',
+                permanent: false,
+            },
+        }
+    }
+
+    return {
+        redirect: {
+            destination: '/admin/auth/login',
+            permanent: false,
+        },
+    }
+}

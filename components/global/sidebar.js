@@ -3,6 +3,7 @@ import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {useEffect, useState} from 'react';
 import HamburgerMenu from './HamburgerMenu';
+import {signOut} from "next-auth/react";
 
 const Sidebar = ({active, setActive}) => {
     const router = useRouter();
@@ -36,8 +37,10 @@ const Sidebar = ({active, setActive}) => {
                     </div>
                     <div className='flex flex-col select-none'>
                         <p className='text-xl font-bold'>PixelDynamics</p>
-                        <p className='text-xs translate-y-[-30%]'>.studio {router.pathname.includes('/admin') &&
-                            <span>Admin</span>}</p>
+                        {router.pathname.includes('/admin') ?
+                            <span className='text-base translate-y-[-10%]'>Admin <i
+                                className='bi bi-shield-check'></i></span> :
+                            <p className='text-xs translate-y-[-30%]'>.studio</p>}
                     </div>
                 </Link>
                 {!router.pathname.includes('/admin') && <p className='px-3 text-sm xl:px-7 mt-7'>
@@ -111,8 +114,12 @@ const Sidebar = ({active, setActive}) => {
                         <p>Go to Main Website</p>
                     </Link>
 
-                    <button
-                        className='flex gap-x-4 w-full text-lg px-3 xl:px-10 py-2 hover:bg-base-200 hover:text-red-700  duration-150 '>
+                    <button onClick={() => {
+                        signOut({
+                            redirect: false,
+                        }).then(() => router.push('/admin/auth/login'));
+                    }}
+                            className='flex gap-x-4 w-full text-lg px-3 xl:px-10 py-2 hover:bg-base-200 hover:text-red-700  duration-150 '>
                         <i className='bi bi-box-arrow-right'></i> Log Out
                     </button>
 

@@ -2,6 +2,7 @@ import Sidebar from "@/components/global/sidebar";
 import Head from "next/head";
 import {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
+import {getSession} from "next-auth/react";
 
 const Layout = ({children}) => {
     const [active, setActive] = useState(false);
@@ -10,6 +11,13 @@ const Layout = ({children}) => {
 
     useEffect(() => {
         setActive(false);
+        if (router.pathname.includes('/admin') && !router.pathname.includes('/admin/auth')) {
+            getSession().then((session) => {
+                if (!session) {
+                    router.replace("/admin/auth/login");
+                }
+            })
+        }
         const handleRouteChange = () => {
             if (topDivRef.current) {
                 topDivRef.current.scrollIntoView();
@@ -19,6 +27,8 @@ const Layout = ({children}) => {
         return () => {
             router.events.off('routeChangeComplete', handleRouteChange);
         };
+
+
     }, [router]);
 
     return (
