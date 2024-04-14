@@ -29,7 +29,7 @@ const Layout = ({children}) => {
                       href="https://i.ibb.co/4Wh3gKQ/logo.png"/>
             </Head>
             {
-                (!router.pathname.includes('/admin/signup') && !router.pathname.includes('/admin/login')) ?
+                !router.pathname.includes('/admin/auth') ?
                     <>
                         <div
                             className={`lg:w-[16%] w-[70%] md:w-[40%] lg:block h-full lg:sticky duration-500 fixed top-0 left-0 z-[100] ${active ? 'translate-x-0' : 'translate-x-[-100%] lg:translate-x-0'}  lg:translate-x-0 `}>
