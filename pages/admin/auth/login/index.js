@@ -41,7 +41,10 @@ const Index = ({session}) => {
                 error && <span className='text-error mb-3'>{error}</span>
             }
             <form className="lg:w-[30%] md:w-[70%] w-full px-5 lg:px-0 flex flex-col gap-y-5"
-                  onSubmit={handleSubmit(handleFormSubmit)}>
+                  onSubmit={(e) => {
+                      e.preventDefault();
+                      handleSubmit(handleFormSubmit)();
+                  }}>
                 <CustomInput register={register} registerField='email' type='email' label='Email'/>
                 <CustomInput register={register} registerField='password' type='password' label='Password'/>
                 <button disabled={isLoading}

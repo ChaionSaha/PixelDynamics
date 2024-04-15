@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="97f2cc6b-52e1-4633-b6fd-e41a21312b6b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pages/admin/auth/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pages/admin/auth/login/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ChaionSaha&quot;
+  }
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="demo-1" />
+                    <option name="lastUsedInstant" value="1713210239" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ChaionSaha/PixelDynamics-Client.git&quot;,
+    &quot;accountId&quot;: &quot;e706427f-8fdf-4cb8-bed0-c55716c43e7f&quot;
+  }
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2dBfZ1vUYvqNRSblNOWA7gmRl9g" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;demo-1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="C:\Users\chaio\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="396adaa3-bfdf-458a-a9c2-c9a6d820de0f" reportId="client/qodana/2024-04-02" />
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\Web development\Pixel_Dynamics\client\pages\admin\auth" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-WS-241.14494.235" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97f2cc6b-52e1-4633-b6fd-e41a21312b6b" name="Changes" comment="" />
+      <created>1709486444739</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709486444739</updated>
+      <workItem from="1709486447750" duration="1849000" />
+      <workItem from="1709584489778" duration="13000" />
+      <workItem from="1710061796851" duration="6741000" />
+      <workItem from="1710089335790" duration="7923000" />
+      <workItem from="1710105906810" duration="1751000" />
+      <workItem from="1710154098782" duration="108000" />
+      <workItem from="1710154217856" duration="874000" />
+      <workItem from="1710155118364" duration="42000" />
+      <workItem from="1710155169648" duration="31000" />
+      <workItem from="1710345958794" duration="140000" />
+      <workItem from="1710346109226" duration="2467000" />
+      <workItem from="1710599255911" duration="4898000" />
+      <workItem from="1711751547724" duration="127000" />
+      <workItem from="1711751742448" duration="13000" />
+      <workItem from="1711781457750" duration="4042000" />
+      <workItem from="1711790987531" duration="5000" />
+      <workItem from="1711875726843" duration="31000" />
+      <workItem from="1711875769921" duration="138000" />
+      <workItem from="1711899183738" duration="600000" />
+      <workItem from="1711900069731" duration="150000" />
+      <workItem from="1711911177075" duration="6686000" />
+      <workItem from="1711987479249" duration="102000" />
+      <workItem from="1712067018586" duration="6579000" />
+      <workItem from="1712097239860" duration="16000" />
+      <workItem from="1712097272143" duration="733000" />
+      <workItem from="1712142295074" duration="1563000" />
+      <workItem from="1712159849948" duration="7046000" />
+      <workItem from="1712234649561" duration="491000" />
+      <workItem from="1712238486420" duration="16080000" />
+      <workItem from="1712268966353" duration="4112000" />
+      <workItem from="1712273460563" duration="93000" />
+      <workItem from="1712309679151" duration="2331000" />
+      <workItem from="1712328347372" duration="10000" />
+      <workItem from="1712329064215" duration="67000" />
+      <workItem from="1712509985858" duration="5440000" />
+      <workItem from="1712591460638" duration="6730000" />
+      <workItem from="1712699868953" duration="114000" />
+      <workItem from="1712761476346" duration="16254000" />
+      <workItem from="1712851350583" duration="3102000" />
+      <workItem from="1712965312633" duration="1524000" />
+      <workItem from="1713014866471" duration="4391000" />
+      <workItem from="1713020990705" duration="11970000" />
+      <workItem from="1713082862646" duration="537000" />
+      <workItem from="1713083412017" duration="6332000" />
+      <workItem from="1713111293096" duration="9823000" />
+      <workItem from="1713127660722" duration="5399000" />
+      <workItem from="1713209961985" duration="281000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
