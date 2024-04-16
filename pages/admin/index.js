@@ -7,7 +7,7 @@ const AdminIndex = () => {
     return (
         <div>
             <Title title='Index'/>
-            This is admin homepage
+            <p class='p-16 text-5xl font-bold'>Welcome to the Pixel Dynamics Dashboard</p>
         </div>
     );
 };
@@ -17,7 +17,7 @@ export default AdminIndex;
 export async function getServerSideProps(context) {
     const {req, res} = context;
     const session = await getServerSession(req, res, authOptions);
-    
+
     if (!session) {
         return {
             redirect: {
