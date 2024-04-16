@@ -19,9 +19,7 @@ const Layout = ({children}) => {
 
             }).catch(({response}) => {
                 if (response.status === 403) {
-
                     router.push('/admin/auth/create-account-success');
-
                 } else if (response.status === 401) {
                     signOut();
                     router.push('/admin/auth/login');
@@ -50,7 +48,6 @@ const Layout = ({children}) => {
                       href="https://i.ibb.co/4Wh3gKQ/logo.png"/>
             </Head>
             {
-
                 !router.pathname.includes('/admin/auth') ?
                     <>
                         <div
@@ -58,7 +55,7 @@ const Layout = ({children}) => {
                             <Sidebar active={active} setActive={setActive}/>
                         </div>
                         <div
-                            className={`lg:w-[84%] w-full h-full duration-500 delay-150  ${active ? 'translate-x-[70%] md:translate-x-[40%] lg:translate-x-0' : 'translate-x-0 lg:translate-x-0'} ${router.pathname.includes('/admin') ? 'bg-[#161B21] text-base-200' : ''}`}>{children}</div>
+                            className={`lg:w-[84%] w-full h-full duration-500 delay-150 overflow-y-auto  ${active ? 'translate-x-[70%] md:translate-x-[40%] lg:translate-x-0' : 'translate-x-0 lg:translate-x-0'} ${router.pathname.includes('/admin') ? 'bg-admin-primary text-base-200' : ''}`}>{children}</div>
                     </> : <div className={` w-full h-full bg-[#161B21] text-base-200`}>{children}</div>
 
             }
