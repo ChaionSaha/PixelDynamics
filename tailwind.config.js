@@ -16,7 +16,9 @@ module.exports = {
                     'base-200': '#ccc',
                     'base-300': '#666',
                     'theme-black': '#0D0B0D',
-                    'secondary': '#f5f5f5'
+                    'secondary': '#f5f5f5',
+                    'admin-primary': '#161B21',
+                    'admin-secondary': '#1D232C',
                 }
         },
         listStyleType: {
@@ -27,7 +29,7 @@ module.exports = {
             roman: 'upper-roman',
         }
     },
-    
+
     darkMode: "class",
     plugins: [nextui(), require("daisyui")],
 

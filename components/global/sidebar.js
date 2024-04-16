@@ -18,7 +18,7 @@ const Sidebar = ({active, setActive}) => {
 
     return (
         <div
-            className={`relative flex flex-col justify-between w-full h-full py-10 text-base-200 ${router.pathname.includes('/admin') ? 'bg-[#1D232C]' : 'bg-theme-black'} `}
+            className={`relative flex flex-col justify-between w-full h-full py-10 text-base-200 ${router.pathname.includes('/admin') ? 'bg-admin-secondary' : 'bg-theme-black'} `}
             style={{backgroundImage: `url(${sidebarBg})`}}
         >
             <div className=''>
@@ -72,7 +72,7 @@ const Sidebar = ({active, setActive}) => {
                             <Link
                                 href={p.link}
                                 className={`flex gap-x-4 w-full text-lg px-3 xl:px-10 py-2 hover:bg-base-200 hover:text-theme-black duration-150 ${
-                                    p.link === router.asPath ? 'sidebar-link-active' : ''
+                                    router.asPath.includes(p.link) ? 'sidebar-link-active' : ''
                                 }`}
                                 scroll={false}
                             >

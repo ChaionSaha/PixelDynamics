@@ -15,7 +15,6 @@ export default Index;
 export async function getServerSideProps(context) {
     const {req, res} = context;
     const session = await getServerSession(req, res, authOptions);
-    console.log(session + 'from auth page')
 
     if (session) {
         return {

@@ -17,9 +17,7 @@ export default AdminIndex;
 export async function getServerSideProps(context) {
     const {req, res} = context;
     const session = await getServerSession(req, res, authOptions);
-    console.log(session + 'from Admin page')
-
-
+    
     if (!session) {
         return {
             redirect: {
