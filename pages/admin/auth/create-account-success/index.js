@@ -1,9 +1,11 @@
 import React from 'react';
 import Title from "@/components/Shared/title";
 import PixelDynamicsLogo from "@/components/Shared/PixelDynamicsLogo";
+import {useRouter} from "next/router";
 import Link from "next/link";
 
 const Index = () => {
+    const router = useRouter();
     return (
         <div className="w-full h-full flex flex-col justify-center items-center">
             <Title title='Sign Up Success'/>
@@ -16,7 +18,9 @@ const Index = () => {
                 account.</p>
 
             <p className='mt-3 text-xl'>
-                <Link href='/admin/auth/login' className='underline ms-1'>Go back to login</Link></p>
+                <Link href='/admin/auth/login' className='underline ms-1'>Go back to login
+                </Link>
+            </p>
         </div>
     );
 };

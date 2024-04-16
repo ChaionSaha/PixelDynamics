@@ -1,6 +1,7 @@
 import React from 'react';
 import Title from "@/components/Shared/title";
-import {getSession} from "next-auth/react";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/pages/api/auth/[...nextauth]";
 
 const AdminIndex = () => {
     return (
@@ -14,7 +15,10 @@ const AdminIndex = () => {
 export default AdminIndex;
 
 export async function getServerSideProps(context) {
-    const session = await getSession({req: context.req});
+    const {req, res} = context;
+    const session = await getServerSession(req, res, authOptions);
+    console.log(session + 'from Admin page')
+
 
     if (!session) {
         return {
@@ -26,9 +30,10 @@ export async function getServerSideProps(context) {
         }
     }
 
+
     return {
         props: {
-            session: session,
+            session: session.toString(),
         }
     }
 }

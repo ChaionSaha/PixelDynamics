@@ -1,7 +1,8 @@
 import {motion, MotionConfig} from 'framer-motion';
+import {useRouter} from "next/router";
 
 const HamburgerMenu = ({active, setActive}) => {
-
+    const router = useRouter();
 
     return (
         <MotionConfig transition={{duration: 0.5}}>
@@ -19,7 +20,7 @@ const HamburgerMenu = ({active, setActive}) => {
                         x: '-50%',
                         y: '-50%',
                     }}
-                    className='absolute w-7 h-1 mix-blend-multiply bg-transparent border-black border-t-2'
+                    className={`absolute w-7 h-[2px]  ${router.asPath === '/' ? 'bg-white' : 'bg-black'}`}
                     variants={{
                         open: {
                             top: ['30%', '50%', '50%'],
@@ -38,7 +39,7 @@ const HamburgerMenu = ({active, setActive}) => {
                         x: '-50%',
                         y: '-50%',
                     }}
-                    className='absolute w-7 h-1 bg-black bg-transparent border-black border-t-2'
+                    className={`absolute w-7 h-[2px] ${router.asPath === '/' ? 'bg-white' : 'bg-black'}`}
                     variants={{
                         open: {
                             rotate: ['0deg', '0deg', '45deg'],
@@ -55,7 +56,7 @@ const HamburgerMenu = ({active, setActive}) => {
                         x: '-50%',
                         y: '50%',
                     }}
-                    className='absolute w-7 h-1 bg-black bg-transparent border-black border-t-2'
+                    className={`absolute w-7 h-[2px]  ${router.asPath === '/' ? 'bg-white' : 'bg-black'}`}
                     variants={{
                         open: {
                             bottom: ['30%', '50%', '50%'],

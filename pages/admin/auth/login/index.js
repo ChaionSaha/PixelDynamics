@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Title from "@/components/Shared/title";
 import PixelDynamicsLogo from "@/components/Shared/PixelDynamicsLogo";
 import {useForm} from "react-hook-form";
 import CustomInput from "@/components/Shared/CustomInput";
 import Link from "next/link";
 import {Spinner} from "@nextui-org/react";
-import {getSession, signIn} from "next-auth/react";
+import {getSession, signIn, signOut} from "next-auth/react";
 import {useRouter} from "next/router";
 
 const Index = ({session}) => {
@@ -18,6 +18,13 @@ const Index = ({session}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const router = useRouter();
+
+    useEffect(() => {
+        getSession().then((session) => {
+            if (session)
+                signOut();
+        });
+    }, [router]);
 
     const handleFormSubmit = async ({email, password}) => {
         setIsLoading(true);
@@ -60,24 +67,21 @@ const Index = ({session}) => {
 
 export default Index;
 
-export async function getServerSideProps(context) {
-    const session = await getSession({req: context.req});
-    console.log(session);
-
-    if (session) {
-        return {
-            redirect: {
-                destination: '/admin',
-                permanent: false,
-            }
-        }
-    } else {
-        return {
-            props: {}
-        }
-    }
-
-    // return {
-    //     props: {}
-    // }
-}
+// export async function getServerSideProps(context) {
+//     const {req, res} = context;
+//     const session = await getServerSession(req, res, authOptions);
+//
+//     if (session) {
+//         return {
+//             redirect: {
+//                 destination: '/admin',
+//                 permanent: false,
+//             }
+//         }
+//     } else {
+//         return {
+//             props: {}
+//         }
+//     }
+//
+// }

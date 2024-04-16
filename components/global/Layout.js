@@ -2,22 +2,33 @@ import Sidebar from "@/components/global/sidebar";
 import Head from "next/head";
 import {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/router";
-import {getSession} from "next-auth/react";
+import axios from "axios";
+import {signOut} from "next-auth/react";
 
 const Layout = ({children}) => {
     const [active, setActive] = useState(false);
     const router = useRouter();
     const topDivRef = useRef(null);
 
+
     useEffect(() => {
         setActive(false);
+
         if (router.pathname.includes('/admin') && !router.pathname.includes('/admin/auth')) {
-            getSession().then((session) => {
-                if (!session) {
-                    router.replace("/admin/auth/login");
+            axios('/api/get-account-status').then(res => {
+
+            }).catch(({response}) => {
+                if (response.status === 403) {
+
+                    router.push('/admin/auth/create-account-success');
+
+                } else if (response.status === 401) {
+                    signOut();
+                    router.push('/admin/auth/login');
                 }
-            })
+            });
         }
+
         const handleRouteChange = () => {
             if (topDivRef.current) {
                 topDivRef.current.scrollIntoView();
@@ -39,6 +50,7 @@ const Layout = ({children}) => {
                       href="https://i.ibb.co/4Wh3gKQ/logo.png"/>
             </Head>
             {
+
                 !router.pathname.includes('/admin/auth') ?
                     <>
                         <div
@@ -48,6 +60,7 @@ const Layout = ({children}) => {
                         <div
                             className={`lg:w-[84%] w-full h-full duration-500 delay-150  ${active ? 'translate-x-[70%] md:translate-x-[40%] lg:translate-x-0' : 'translate-x-0 lg:translate-x-0'} ${router.pathname.includes('/admin') ? 'bg-[#161B21] text-base-200' : ''}`}>{children}</div>
                     </> : <div className={` w-full h-full bg-[#161B21] text-base-200`}>{children}</div>
+
             }
         </div>
     );
