@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Title from "@/components/Shared/title";
 import PixelDynamicsLogo from "@/components/Shared/PixelDynamicsLogo";
 import CustomInput from "@/components/Shared/CustomInput";
@@ -6,7 +6,8 @@ import Link from "next/link";
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {Spinner} from "@nextui-org/react";
-import {getSession} from "next-auth/react";
+import {getSession, signOut} from "next-auth/react";
+import {useRouter} from "next/router";
 
 const Index = () => {
 
@@ -22,6 +23,15 @@ const Index = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [dbError, setDbError] = useState("");
+
+    useEffect(() => {
+        getSession().then((session) => {
+            if (session) {
+                signOut();
+            }
+        })
+    }, []);
+    const router = useRouter();
 
     const handleFormSubmit = async ({name, email, password, confirmPassword}) => {
         setIsLoading(true);
@@ -49,11 +59,11 @@ const Index = () => {
             password,
             confirmPassword
         }).then(data => {
-            console.log(data);
+
             setIsLoading(false);
+            router.push("/admin/auth/create-account-success");
         })
             .catch(({response}) => {
-                console.log(response);
                 setDbError(response.data.message);
                 setIsLoading(false);
             });
@@ -90,19 +100,3 @@ const Index = () => {
 
 export default Index;
 
-export async function getServerSideProps(context) {
-    const session = await getSession({req: context.req});
-
-    if (session) {
-        return {
-            redirect: {
-                destination: '/admin',
-                permanent: false,
-            },
-        }
-    }
-
-    return {
-        props: {}
-    }
-}
