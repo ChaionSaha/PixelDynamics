@@ -6,7 +6,7 @@ import {comparePassword} from "@/db/auth";
 export const authOptions = {
     session: {
         jwt: true,
-        maxAge: 24 * 60 * 60,
+        maxAge: 6 * 60 * 60,
     },
     secret: process.env.AUTH_SECRET,
     providers: [

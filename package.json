@@ -31,6 +31,7 @@
     "react-slick": "^0.30.2",
     "sharp": "^0.33.3",
     "slick-carousel": "^1.8.1",
+    "uuid": "^9.0.1",
     "vercel": "^34.0.0"
   },
   "devDependencies": {
