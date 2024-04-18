@@ -7,6 +7,7 @@ import axios from "axios";
 import {getDatabase} from "@/db/mongoConnection";
 import CustomTable from "@/components/Shared/CustomTable";
 import DeletCategoryModal from "@/components/admin/portfolio/DeletCategoryModal";
+import SharedLayout from "@/components/Shared/SharedLayout";
 
 const columns = [
     {
@@ -100,45 +101,47 @@ const Index = ({categories = []}) => {
     }
 
     return (
-        <div>
-            <Title title='Portfolio Categories'/>
-            <AdminPageTitle title={'Portfolio Categories'}/>
-            <div className="flex md:flex-row flex-col gap-y-5 justify-between px-10 py-10">
-                <div className="lg:w-[30%] md:w-[50%] w-full">
-                    <Input
-                        type="email"
-                        placeholder="Search"
-                        startContent={
-                            <i className='bi bi-search'></i>
-                        }
-                        variant='bordered'
-                        size="lg"
-                        classNames={{
-                            inputWrapper: 'rounded-none border',
-                        }}
-                        onValueChange={setSearchInput}
+        <SharedLayout>
+            <div>
+                <Title title='Portfolio Categories'/>
+                <AdminPageTitle title={'Portfolio Categories'}/>
+                <div className="flex md:flex-row flex-col gap-y-5 justify-between px-10 py-10">
+                    <div className="lg:w-[30%] md:w-[50%] w-full">
+                        <Input
+                            type="email"
+                            placeholder="Search"
+                            startContent={
+                                <i className='bi bi-search'></i>
+                            }
+                            variant='bordered'
+                            size="lg"
+                            classNames={{
+                                inputWrapper: 'rounded-none border',
+                            }}
+                            onValueChange={setSearchInput}
+                        />
+                    </div>
+                    <Button onPress={() => {
+                        setEditState(false);
+                        setInput('');
+                        onOpen();
+                    }} size='lg' radius="none" startContent={<i className='bi bi-plus'></i>}>
+                        Add Category
+                    </Button>
+                    <CategoryModal isOpen={isOpen} onOpenChange={onOpenChange} closeModal={closeModal}
+                                   setInput={setInput} loading={loadingData} errorMessage={err}
+                                   setErrorMessage={setErr} editState={editState} value={input}
                     />
+                    <DeletCategoryModal isOpen={isDeleteOpen} onOpenChange={onDeleteOpenChange}
+                                        closeModal={closeDeleteModal} title='Delete Category' setErrorMessage={setErr}
+                                        errorMessage={err} loading={loadingData} name={targetCat.name}/>
                 </div>
-                <Button onPress={() => {
-                    setEditState(false);
-                    setInput('');
-                    onOpen();
-                }} size='lg' radius="none" startContent={<i className='bi bi-plus'></i>}>
-                    Add Category
-                </Button>
-                <CategoryModal isOpen={isOpen} onOpenChange={onOpenChange} closeModal={closeModal}
-                               title={'Add Category'} setInput={setInput} loading={loadingData} errorMessage={err}
-                               setErrorMessage={setErr} editState={editState} value={input}
-                />
-                <DeletCategoryModal isOpen={isDeleteOpen} onOpenChange={onDeleteOpenChange}
-                                    closeModal={closeDeleteModal} title='Delete Category' setErrorMessage={setErr}
-                                    errorMessage={err} loading={loadingData} catDetails={targetCat}/>
+                <div className="px-10">
+                    <CustomTable columns={columns} tableData={tableData} actionOnEdit={actionOnEdit}
+                                 actionOnDelete={actionOnDelete}/>
+                </div>
             </div>
-            <div className="px-10">
-                <CustomTable columns={columns} tableData={tableData} actionOnEdit={actionOnEdit}
-                             actionOnDelete={actionOnDelete}/>
-            </div>
-        </div>
+        </SharedLayout>
     );
 };
 

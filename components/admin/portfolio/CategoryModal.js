@@ -4,7 +4,6 @@ const CategoryModal = ({
                            isOpen,
                            onOpenChange,
                            closeModal,
-                           title,
                            setInput,
                            loading,
                            errorMessage,
@@ -17,8 +16,8 @@ const CategoryModal = ({
         <ModalContent>
             {(onClose) => (
                 <>
-
-                    <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
+                    <ModalHeader
+                        className="flex flex-col gap-1">{editState ? 'Edit Category' : "Add Category"}</ModalHeader>
                     <ModalBody>
                         <Input
                             isRequired

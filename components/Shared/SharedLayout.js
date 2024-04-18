@@ -2,10 +2,10 @@ import {motion} from "framer-motion";
 
 const SharedLayout = ({children}) => (
     <motion.div
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        exit={{opacity: 0}}
-        
+        initial={{x: 0, y: 0, opacity: 0}}
+        animate={{x: 0, y: 0, opacity: 1}}
+        exit={{x: 0, y: 0, opacity: 0}}
+
     >
         {children}
     </motion.div>
