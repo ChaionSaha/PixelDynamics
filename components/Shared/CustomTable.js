@@ -30,7 +30,7 @@ export default function CustomTable({tableData = [], columns, actionOnEdit, acti
                             </button>
                         </td>
                     </tr>) : <tr className='border-0'>
-                        <td colspan={columns.length + 2} className='text-center py-5'>No Data to Show</td>
+                        <td colSpan={columns.length + 2} className='text-center py-5'>No Data to Show</td>
                     </tr>
                 }
 

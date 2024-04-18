@@ -1,12 +1,15 @@
 import React from 'react';
 import Title from "@/components/Shared/title";
+import SharedLayout from "@/components/Shared/SharedLayout";
 
 const AdminTeam = () => {
     return (
-        <div>
-            <Title title='Team'/>
-            This is admin team page
-        </div>
+        <SharedLayout>
+            <div>
+                <Title title='Team'/>
+                This is admin team page
+            </div>
+        </SharedLayout>
     );
 };
 

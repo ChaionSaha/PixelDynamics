@@ -39,7 +39,7 @@ const HamburgerMenu = ({active, setActive}) => {
                         x: '-50%',
                         y: '-50%',
                     }}
-                    className={`absolute w-7 h-[2px] ${router.asPath === '/' || router.asPath.includes('/admin') === '/' ? 'bg-white' : 'bg-black'}`}
+                    className={`absolute w-7 h-[2px] ${router.asPath === '/' || router.asPath.includes('/admin') ? 'bg-white' : 'bg-black'}`}
                     variants={{
                         open: {
                             rotate: ['0deg', '0deg', '45deg'],
@@ -56,7 +56,7 @@ const HamburgerMenu = ({active, setActive}) => {
                         x: '-50%',
                         y: '50%',
                     }}
-                    className={`absolute w-7 h-[2px]  ${router.asPath === '/' || router.asPath.includes('/admin') === '/' ? 'bg-white' : 'bg-black'}`}
+                    className={`absolute w-7 h-[2px]  ${router.asPath === '/' || router.asPath.includes('/admin') ? 'bg-white' : 'bg-black'}`}
                     variants={{
                         open: {
                             bottom: ['30%', '50%', '50%'],

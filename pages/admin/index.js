@@ -2,13 +2,16 @@ import React from 'react';
 import Title from "@/components/Shared/title";
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/pages/api/auth/[...nextauth]";
+import SharedLayout from "@/components/Shared/SharedLayout";
 
 const AdminIndex = () => {
     return (
-        <div>
-            <Title title='Index'/>
-            <p class='p-16 text-5xl font-bold'>Welcome to the Pixel Dynamics Dashboard</p>
-        </div>
+        <SharedLayout>
+            <div>
+                <Title title='Index'/>
+                <p class='p-16 text-5xl font-bold'>Welcome to the Pixel Dynamics Dashboard</p>
+            </div>
+        </SharedLayout>
     );
 };
 

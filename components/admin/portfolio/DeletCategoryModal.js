@@ -8,7 +8,7 @@ const CategoryModal = ({
                            loading,
                            errorMessage,
                            setErrorMessage,
-                           catDetails
+                           name
                        }) => {
     return <Modal isOpen={isOpen} onOpenChange={onOpenChange} classNames={{
         base: 'bg-admin-primary text-base-200'
@@ -16,11 +16,10 @@ const CategoryModal = ({
         <ModalContent>
             {(onClose) => (
                 <>
-
                     <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
                     <ModalBody>
-                        <p>You are about to delete this category: </p>
-                        <p className='text-xl font-semibold'>{catDetails.name}</p>
+                        <p>You are about to delete this item: </p>
+                        <p className='text-xl font-semibold'>{name}</p>
                         {
                             errorMessage &&
                             <p className='text-error'>{errorMessage}</p>
