@@ -9,7 +9,7 @@ const AdminIndex = () => {
         <SharedLayout>
             <div>
                 <Title title='Index'/>
-                <p class='p-16 text-5xl font-bold'>Welcome to the Pixel Dynamics Dashboard</p>
+                <p className='p-16 lg:text-5xl text-3xl font-bold'>Welcome to the Pixel Dynamics Dashboard</p>
             </div>
         </SharedLayout>
     );
