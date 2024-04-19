@@ -2,7 +2,7 @@ import React from "react";
 
 export default function CustomTable({tableData = [], columns, actionOnEdit, actionOnDelete}) {
     return (
-        <div className="overflow-x-auto bg-admin-secondary p-5">
+        <div className="overflow-x-auto bg-admin-secondary p-5 mb-5">
             <table className="table table-zebra table-lg  rounded-none">
                 <thead className='bg-admin-primary'>
                 <tr className='border-0'>
