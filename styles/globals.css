@@ -5,6 +5,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --admin-primary-color: #161B21;
+    --admin-secondary-color: '#1D232C',
+
+}
+
 
 *, *::before, *::after {
     font-family: "Nunito Sans", sans-serif;
@@ -72,4 +78,23 @@
     & > p {
         @apply text-base;
     }
+}
+
+.ql-snow .ql-stroke {
+    fill: none;
+    stroke: #fff !important;
+}
+
+.ql-snow .ql-fill {
+    fill: #fff !important;
+    stroke: none;
+}
+
+.ql-snow .ql-picker {
+    color: #fff !important;
+}
+
+.ql-snow .ql-picker-options {
+    background: var(--admin-primary-color) !important;
+    color: #fff !important;
 }

@@ -1,7 +1,6 @@
 "use client"
 
 import "react-quill/dist/quill.snow.css";
-import {useState} from "react";
 import dynamic from "next/dynamic";
 
 const ReactQuill = dynamic(() => import('react-quill'), {ssr: false});
@@ -22,16 +21,11 @@ const modules = {
     ],
 };
 
-const QuillEditor = ({id, setValue}) => {
-    const [editor, setEditor] = useState(null);
-
-    return <div className="container mx-auto">
-        <ReactQuill modules={modules} theme="snow" placeholder="Content goes here..."
+const QuillEditor = ({id, setValue, defaultValue}) => {
+    return <div>
+        <ReactQuill className='text-white' modules={modules} theme="snow" placeholder="Content goes here..."
+                    defaultValue={defaultValue}
                     onChange={(e) => setValue(id, e)}/>
-        {/*{*/}
-        {/*    editor*/}
-        {/*}*/}
-        {/*<div dangerouslySetInnerHTML={{__html: editor}} className='border p-5 my-5'></div>*/}
     </div>
 };
 

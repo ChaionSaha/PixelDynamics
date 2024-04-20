@@ -1,28 +1,22 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useFieldArray, useForm} from "react-hook-form";
-import ControlledInput from "@/components/Shared/ControlledInput";
+import {useRouter} from "next/router";
 import axios from "axios";
+import ControlledInput from "@/components/Shared/ControlledInput";
 import ControlledSelect from "@/components/Shared/ControlledSelect";
 import ImageInput from "@/components/Shared/ImageInput";
-import PortfolioDetailsSection from "@/components/admin/portfolio/PortfolioDetailsSection";
 import {Button, Spinner} from "@nextui-org/react";
-import {useRouter} from "next/router";
+import EditPortfolioDetailsSection from "@/components/admin/portfolio/EditPortfolioDetailsSection";
 
-const AddPortfolioForm = () => {
+const EditPortfolioForm = ({portfolio}) => {
     const {
         setValue,
-        getFieldState,
         watch,
         handleSubmit,
         control,
-        formState
     } = useForm({
         defaultValues: {
-            name: "",
-            mainCat: "",
-            subCat: "",
-            profileImage: '',
-            description: []
+            ...portfolio
         }
     });
     const {fields, append, remove} = useFieldArray({
@@ -35,14 +29,15 @@ const AddPortfolioForm = () => {
     const router = useRouter();
     const [err, setErr] = useState('');
     const [portfolioNumbers, setPortfolioNumbers] = useState([]);
+    
 
     useEffect(() => {
         axios('/api/get-categories').then(data => {
             setAllCat(data.data);
         }).catch(err => console.log(err));
-
-        axios('/api/admin/get-all-portfolio-numbers').then(data => setPortfolioNumbers(data.data)).catch(err => console.log(err));
+        axios(`/api/admin/get-all-portfolio-numbers?pfid=${portfolio.pfid}`).then(data => setPortfolioNumbers(data.data)).catch(err => console.log(err));
     }, []);
+
 
     const handlePortfolioSubmit = (formData) => {
         setLoading(true);
@@ -51,7 +46,7 @@ const AddPortfolioForm = () => {
         if (portfolioNumbers.includes(formData.position))
             return;
 
-        axios.post('/api/admin/portfolio/add-edit-portfolio', {...formData, edit: false})
+        axios.post('/api/admin/portfolio/add-edit-portfolio', {...formData, edit: true})
             .then((data) => {
                 setLoading(false);
                 router.push('/admin/portfolio/portfolio-details');
@@ -75,19 +70,20 @@ const AddPortfolioForm = () => {
                 </div>
                 <ControlledSelect control={control} name={"mainCat"} label="Select Main Category"
                                   array={allCat.mainCategories}
-                                  editState={false}/>
+                                  editState={true}/>
+
                 {
                     watch('mainCat') &&
                     <ControlledSelect control={control} name={"subCat"} label="Select Sub Category"
                                       array={[...allCat.subCategories.filter(mc => mc.mainCatValue === watch('mainCat'))]}
-                                      editState={false}/>
+                                      editState={true}/>
                 }
 
 
             </div>
             <div className="md:my-10 my-5">
                 <p className='my-3'>Profile Image</p>
-                <ImageInput fieldName='profileImage' setValue={setValue}/>
+                <ImageInput fieldName='profileImage' setValue={setValue} oldImage={portfolio.profileImage}/>
             </div>
 
             <p className='mb-3'>Portfolio Description</p>
@@ -96,10 +92,9 @@ const AddPortfolioForm = () => {
                     fields.map((field, index) => {
                         return <div key={index} className='flex gap-x-3'>
                             <div className="flex-grow">
-
-                                <PortfolioDetailsSection setValue={setValue} fieldName={'description'}
-                                                         id={index}
-                                                         control={control} remove={remove}/>
+                                <EditPortfolioDetailsSection setValue={setValue} fieldName={'description'}
+                                                             id={index}
+                                                             control={control} remove={remove} fieldValue={field}/>
                             </div>
 
                         </div>
@@ -121,4 +116,4 @@ const AddPortfolioForm = () => {
     );
 };
 
-export default AddPortfolioForm;
+export default EditPortfolioForm;

@@ -91,7 +91,7 @@ const ImageInput = ({oldImage, fieldName, setValue}) => {
                     oldImg &&
                     <div className='relative'>
                         <p>Current Image</p>
-                        <div class="border border-base-300 lg:h-[25rem] h-[20rem] flex justify-center items-center">
+                        <div className="border border-base-300 lg:h-[25rem] h-[20rem] flex justify-center items-center">
                             <img src={oldImg} alt='old image'
                                  className=' h-full w-fit object-contain'/>
                         </div>
@@ -107,7 +107,7 @@ const ImageInput = ({oldImage, fieldName, setValue}) => {
                                 track: 'bg-transparent border border-primary',
                             }}/>
                         }
-                        <div class="border border-base-300 lg:h-[25rem] h-[20rem] flex justify-center items-center">
+                        <div className="border border-base-300 lg:h-[25rem] h-[20rem] flex justify-center items-center">
 
                             <img src={newImg} alt='new image'
                                  className='h-full w-fit object-contain'/>
