@@ -32,9 +32,6 @@ const Index = ({portfolio}) => {
                         {
                             pd.key === 'url' &&
                             <>
-                                {
-                                    console.log(pd.url.toString().split('=')[1])
-                                }
                                 <YouTube videoId={pd.url.toString().split('=')[1]}
                                          className='aspect-video youtube-video w-full h-full object-cover lg:px-20 lg:py-20 mb-5 lg:mb-0'/>
                             </>

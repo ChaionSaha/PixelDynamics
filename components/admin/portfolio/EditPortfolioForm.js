@@ -29,7 +29,7 @@ const EditPortfolioForm = ({portfolio}) => {
     const router = useRouter();
     const [err, setErr] = useState('');
     const [portfolioNumbers, setPortfolioNumbers] = useState([]);
-    
+
 
     useEffect(() => {
         axios('/api/get-categories').then(data => {
@@ -90,13 +90,19 @@ const EditPortfolioForm = ({portfolio}) => {
             <div className="flex flex-col gap-y-5">
                 {
                     fields.map((field, index) => {
-                        return <div key={index} className='flex gap-x-3'>
-                            <div className="flex-grow">
-                                <EditPortfolioDetailsSection setValue={setValue} fieldName={'description'}
-                                                             id={index}
-                                                             control={control} remove={remove} fieldValue={field}/>
+                        return <div key={field.id} className='gap-x-3 flex border border-base-300 flex-col p-3 gap-y-3'>
+                            <div className="flex items-center justify-between">
+                                <p>Section {index + 1}</p>
+                                <button onClick={async (e) => {
+                                    remove(index);
+                                }} className='btn btn-sm rounded-none btn-outline btn-error'>
+                                    {/*<i className='bi bi-trash'></i>*/}
+                                    Delete Section
+                                </button>
                             </div>
-
+                            <EditPortfolioDetailsSection setValue={setValue} fieldName={'description'}
+                                                         id={index}
+                                                         control={control} remove={remove} fieldValue={field}/>
                         </div>
                     })
                 }
