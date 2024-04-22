@@ -21,12 +21,12 @@ const EditPortfolioDetailsSection = ({setValue, fieldName, id, control, remove, 
         <>
             {
                 isNew &&
-                <Dropdown backdrop="opaque" className='bg-admin-secondary'>
+                <Dropdown backdrop="opaque" className='bg-admin-secondary w-fit'>
                     <DropdownTrigger>
                         <Button
                             variant="bordered"
                             radius="none"
-                            className='text-white border'
+                            className='text-white border w-fit'
                         >
                             Select Section Item
                         </Button>
@@ -49,17 +49,7 @@ const EditPortfolioDetailsSection = ({setValue, fieldName, id, control, remove, 
             {
                 section !== '' &&
 
-                <div className='flex border border-base-300 flex-col p-3 gap-y-3'>
-                    <div className="flex items-center justify-between">
-                        <p>Section {id + 1}</p>
-                        <button onClick={(e) => {
-                            e.preventDefault();
-                            remove(id);
-                        }} className='btn btn-sm rounded-none btn-outline btn-error'>
-                            {/*<i className='bi bi-trash'></i>*/}
-                            Delete Section
-                        </button>
-                    </div>
+                <>
                     {
                         section === 'img' &&
                         <ImageInput setValue={setValue}
@@ -76,7 +66,8 @@ const EditPortfolioDetailsSection = ({setValue, fieldName, id, control, remove, 
                         section === 'url' &&
                         <UrlLink control={control} name={`${fieldName}.${id}.url`}/>
                     }
-                </div>
+                </>
+
             }
 
 
