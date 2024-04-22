@@ -98,3 +98,8 @@
     background: var(--admin-primary-color) !important;
     color: #fff !important;
 }
+
+.youtube-video > iframe {
+    height: 100%;
+    width: 100%;
+}
