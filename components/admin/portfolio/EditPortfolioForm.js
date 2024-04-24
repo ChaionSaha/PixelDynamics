@@ -1,12 +1,12 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {useFieldArray, useForm} from "react-hook-form";
-import {useRouter} from "next/router";
-import axios from "axios";
+import EditPortfolioDetailsSection from "@/components/admin/portfolio/EditPortfolioDetailsSection";
 import ControlledInput from "@/components/Shared/ControlledInput";
 import ControlledSelect from "@/components/Shared/ControlledSelect";
 import ImageInput from "@/components/Shared/ImageInput";
-import {Button, Spinner} from "@nextui-org/react";
-import EditPortfolioDetailsSection from "@/components/admin/portfolio/EditPortfolioDetailsSection";
+import { Button, Spinner } from "@nextui-org/react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from 'react';
+import { useFieldArray, useForm } from "react-hook-form";
 
 const EditPortfolioForm = ({portfolio}) => {
     const {
@@ -51,9 +51,9 @@ const EditPortfolioForm = ({portfolio}) => {
                 setLoading(false);
                 router.push('/admin/portfolio/portfolio-details');
             }).catch(({response}) => {
-            setLoading(false);
-            setErr(response?.data?.message);
-        });
+                setLoading(false);
+                setErr(response?.data?.message);
+            });
     }
 
 
@@ -69,14 +69,14 @@ const EditPortfolioForm = ({portfolio}) => {
                     }
                 </div>
                 <ControlledSelect control={control} name={"mainCat"} label="Select Main Category"
-                                  array={allCat.mainCategories}
-                                  editState={true}/>
+                    array={allCat.mainCategories}
+                    editState={true}/>
 
                 {
                     watch('mainCat') &&
                     <ControlledSelect control={control} name={"subCat"} label="Select Sub Category"
-                                      array={[...allCat.subCategories.filter(mc => mc.mainCatValue === watch('mainCat'))]}
-                                      editState={true}/>
+                        array={[...allCat.subCategories.filter(mc => mc.mainCatValue === watch('mainCat'))]}
+                        editState={true}/>
                 }
 
 
@@ -101,13 +101,13 @@ const EditPortfolioForm = ({portfolio}) => {
                                 </button>
                             </div>
                             <EditPortfolioDetailsSection setValue={setValue} fieldName={'description'}
-                                                         id={index}
-                                                         control={control} remove={remove} fieldValue={field}/>
+                                id={index}
+                                control={control} remove={remove} fieldValue={field}/>
                         </div>
                     })
                 }
                 <Button color="primary" radius={'none'} className='w-fit '
-                        onClick={() => append(1)}>
+                    onClick={() => append(1)}>
                     Add Section
                 </Button>
             </div>
@@ -115,7 +115,7 @@ const EditPortfolioForm = ({portfolio}) => {
                 err !== '' && <p className='text-error my-5'>{err}</p>
             }
             <Button disabled={loading} radius={'none'} variant='bordered' className='w-fit border text-white my-5'
-                    type='submit'>
+                type='submit'>
                 {loading ? <Spinner color='white'/> : 'Submit'}
             </Button>
         </form>

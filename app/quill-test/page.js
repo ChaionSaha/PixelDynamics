@@ -1,7 +1,7 @@
 "use client"
 
-import {useFieldArray, useForm} from "react-hook-form";
 import QuillEditor from "@/components/quill-test/QuillEditor";
+import { useFieldArray, useForm } from "react-hook-form";
 
 const App = () => {
 

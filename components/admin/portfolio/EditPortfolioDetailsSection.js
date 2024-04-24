@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Input} from "@nextui-org/react";
 import ImageInput from "@/components/Shared/ImageInput";
 import QuillEditor from "@/components/quill-test/QuillEditor";
-import {Controller} from "react-hook-form";
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Input } from "@nextui-org/react";
+import { useEffect, useState } from 'react';
+import { Controller } from "react-hook-form";
 
 const EditPortfolioDetailsSection = ({setValue, fieldName, id, control, remove, fieldValue}) => {
     const [section, setSection] = useState('');
@@ -53,13 +53,13 @@ const EditPortfolioDetailsSection = ({setValue, fieldName, id, control, remove, 
                     {
                         section === 'img' &&
                         <ImageInput setValue={setValue}
-                                    fieldName={`${fieldName}.${id}.img`} oldImage={fieldValue && fieldValue[section]}/>
+                            fieldName={`${fieldName}.${id}.img`} oldImage={fieldValue && fieldValue[section]}/>
 
                     }
                     {
                         section === 'text' &&
                         <QuillEditor setValue={setValue} id={`${fieldName}.${id}.text`}
-                                     defaultValue={fieldValue && fieldValue[section]}/>
+                            defaultValue={fieldValue && fieldValue[section]}/>
 
                     }
                     {
@@ -80,21 +80,21 @@ export default EditPortfolioDetailsSection;
 const UrlLink = ({name, control, defaultValue}) => {
 
     return <Controller control={control} name={name}
-                       render={({field: {onChange, value}}) =>
-                           <Input
-                               isRequired
-                               type='url'
-                               name={name}
-                               label='Youtube URL'
-                               variant='bordered'
-                               size="lg"
-                               defaultValue={defaultValue}
-                               classNames={{
-                                   base: 'text-white',
-                                   inputWrapper: 'rounded-none border',
-                                   label: 'text-white'
-                               }}
-                               onChange={onChange}
-                               value={value}
-                           />}/>
+        render={({field: {onChange, value}}) =>
+            <Input
+                isRequired
+                type='url'
+                name={name}
+                label='Youtube URL'
+                variant='bordered'
+                size="lg"
+                defaultValue={defaultValue}
+                classNames={{
+                    base: 'text-white',
+                    inputWrapper: 'rounded-none border',
+                    label: 'text-white'
+                }}
+                onChange={onChange}
+                value={value}
+            />}/>
 }
