@@ -1,8 +1,8 @@
 import Sidebar from "@/components/global/sidebar";
-import Head from "next/head";
-import {useEffect, useRef, useState} from "react";
-import {useRouter} from "next/router";
 import axios from "axios";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
 
 const Layout = ({children}) => {
     const [active, setActive] = useState(false);
@@ -43,7 +43,7 @@ const Layout = ({children}) => {
         <div className='flex h-[100vh]  relative overflow-x-hidden overflow-y-auto lg:overflow-x-auto'>
             <Head>
                 <link rel="icon" type="image/x-icon"
-                      href="https://i.ibb.co/4Wh3gKQ/logo.png"/>
+                    href="https://i.ibb.co/4Wh3gKQ/logo.png"/>
             </Head>
             {
                 !router.pathname.includes('/admin/auth') ?

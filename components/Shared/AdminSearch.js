@@ -1,5 +1,4 @@
-import React from 'react';
-import {Button, Input} from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 
 const AdminSearch = ({setSearchInput, addBtnName, addBtnFnc}) => {
     return (
@@ -20,7 +19,7 @@ const AdminSearch = ({setSearchInput, addBtnName, addBtnFnc}) => {
                 />
             </div>
             <Button onClick={addBtnFnc} size='lg'
-                    radius="none" startContent={<i className='bi bi-plus'></i>}>
+                radius="none" startContent={<i className='bi bi-plus'></i>}>
                 {addBtnName}
             </Button>
         </div>

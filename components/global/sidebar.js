@@ -1,9 +1,9 @@
-import {adminPagesLinks, contactLinks, pages} from '@/components/global/links';
+import { adminPagesLinks, contactLinks, pages } from '@/components/global/links';
+import { signOut } from "next-auth/react";
 import Link from 'next/link';
-import {useRouter} from 'next/router';
-import {useEffect, useState} from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import HamburgerMenu from './HamburgerMenu';
-import {signOut} from "next-auth/react";
 
 const Sidebar = ({active, setActive}) => {
     const router = useRouter();
@@ -119,7 +119,7 @@ const Sidebar = ({active, setActive}) => {
                             redirect: false,
                         }).then(() => router.push('/admin/auth/login'));
                     }}
-                            className='flex gap-x-4 w-full text-lg px-3 xl:px-10 py-2 hover:bg-base-200 hover:text-red-700  duration-150 '>
+                    className='flex gap-x-4 w-full text-lg px-3 xl:px-10 py-2 hover:bg-base-200 hover:text-red-700  duration-150 '>
                         <i className='bi bi-box-arrow-right'></i> Log Out
                     </button>
 

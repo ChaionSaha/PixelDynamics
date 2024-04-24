@@ -1,4 +1,3 @@
-import React from 'react';
 import BookACallButton from "@/components/services/BookACallButton";
 
 const PlanDetails = ({name, description, offers, price}) => {
@@ -15,14 +14,14 @@ const PlanDetails = ({name, description, offers, price}) => {
                 <ul className="mt-3">
                     {
                         description.map((sd, i) => <li key={i}
-                                                       className="text-lg xl:text-xl text-base-300">{sd.text}</li>)
+                            className="text-lg xl:text-xl text-base-300">{sd.text}</li>)
                     }
                 </ul>
 
                 <ul className="mt-10 list-disc ps-5 flex flex-col gap-y-2">
                     {
                         offers.map((so, i) => <li key={i}
-                                                  className="text-base">{so.text}</li>)
+                            className="text-base">{so.text}</li>)
                     }
                 </ul>
             </div>

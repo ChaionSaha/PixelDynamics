@@ -1,7 +1,7 @@
-import React, {useRef} from 'react';
-import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/24/outline";
-import Slider from "react-slick";
 import Slide from "@/components/team/Slide";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { useRef } from 'react';
+import Slider from "react-slick";
 
 const TeamCarousel = ({team}) => {
     const sliderRef = useRef(null);

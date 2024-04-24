@@ -1,4 +1,3 @@
-import React from "react";
 
 export const EyeFilledIcon = (props) => (
     <svg

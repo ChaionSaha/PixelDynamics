@@ -1,7 +1,6 @@
-import React from 'react';
 import Title from "@/components/Shared/title";
-import {Input, Select, SelectItem, Textarea} from "@nextui-org/react";
-import {InlineWidget} from "react-calendly";
+import { Input, Select, SelectItem, Textarea } from "@nextui-org/react";
+import { InlineWidget } from "react-calendly";
 
 const ContactForm = ({services, calendlyLink}) => {
     return (
@@ -20,26 +19,26 @@ const ContactForm = ({services, calendlyLink}) => {
 
                 <form className='mx-auto  flex flex-col mt-20 gap-y-5 px-7 md:px-0 md:w-[60%]'>
                     <Input type="text"
-                           radius={'none'}
-                           variant={'bordered'}
-                           label="Name"
-                           size={'lg'}
-                           classNames={{
-                               input: "border-black text-lg",
-                               inputWrapper: "border-base-200 focus:border-black border",
+                        radius={'none'}
+                        variant={'bordered'}
+                        label="Name"
+                        size={'lg'}
+                        classNames={{
+                            input: "border-black text-lg",
+                            inputWrapper: "border-base-200 focus:border-black border",
 
-                           }}
+                        }}
                     />
                     <Input type="email"
-                           radius={'none'}
-                           variant={'bordered'}
-                           label="Email"
-                           size={'lg'}
-                           classNames={{
-                               input: "border-black text-lg",
-                               inputWrapper: "border-base-200 focus:border-black border",
+                        radius={'none'}
+                        variant={'bordered'}
+                        label="Email"
+                        size={'lg'}
+                        classNames={{
+                            input: "border-black text-lg",
+                            inputWrapper: "border-base-200 focus:border-black border",
 
-                           }}
+                        }}
                     />
 
                     <Select

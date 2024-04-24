@@ -1,6 +1,5 @@
-import React from 'react';
-import Image from "next/image";
 import blackBox from "@/assets/black-box.png";
+import Image from "next/image";
 
 const ServiceDetails = ({title, list}) => {
     return (
@@ -14,7 +13,7 @@ const ServiceDetails = ({title, list}) => {
             <ul className="flex flex-col mt-3 gap-y-2">
                 {
                     list.map((l, i) => <li key={i}
-                                           className="xl:text-lg font-semibold">{l.text}</li>)
+                        className="xl:text-lg font-semibold">{l.text}</li>)
                 }
             </ul>
         </div>
