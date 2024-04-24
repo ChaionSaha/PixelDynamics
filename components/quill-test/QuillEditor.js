@@ -1,7 +1,7 @@
 "use client"
 
-import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
 
 const ReactQuill = dynamic(() => import('react-quill'), {ssr: false});
 
@@ -24,8 +24,8 @@ const modules = {
 const QuillEditor = ({id, setValue, defaultValue}) => {
     return <div>
         <ReactQuill className='text-white' modules={modules} theme="snow" placeholder="Content goes here..."
-                    defaultValue={defaultValue}
-                    onChange={(e) => setValue(id, e)}/>
+            defaultValue={defaultValue}
+            onChange={(e) => setValue(id, e)}/>
     </div>
 };
 

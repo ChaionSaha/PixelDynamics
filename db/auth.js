@@ -1,7 +1,7 @@
-import {compare, hash} from 'bcryptjs';
-import {getServerSession} from "next-auth";
-import {authOptions} from "@/pages/api/auth/[...nextauth]";
-import {getDatabase} from "@/db/mongoConnection";
+import { getDatabase } from "@/db/mongoConnection";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { compare, hash } from 'bcryptjs';
+import { getServerSession } from "next-auth";
 
 export async function hashPassword(input) {
     const hashedPassword = await hash(input, 12);

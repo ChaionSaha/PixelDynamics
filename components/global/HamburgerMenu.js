@@ -1,5 +1,5 @@
-import {motion, MotionConfig} from 'framer-motion';
-import {useRouter} from "next/router";
+import { motion, MotionConfig } from 'framer-motion';
+import { useRouter } from "next/router";
 
 const HamburgerMenu = ({active, setActive}) => {
     const router = useRouter();

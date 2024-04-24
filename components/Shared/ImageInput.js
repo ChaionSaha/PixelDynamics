@@ -1,9 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Progress, Spinner} from "@nextui-org/react";
+import { Progress, Spinner } from "@nextui-org/react";
 import axios from "axios";
+import { useRef, useState } from 'react';
 
 const ImageInput = ({oldImage, fieldName, setValue}) => {
-    const [oldImg, setOldImg] = useState('');
+    const [oldImg, setOldImg] = useState(oldImage);
     const [newImg, setNewImg] = useState();
     const [newImgData, setNewImgData] = useState();
     const [isUploaded, setIsUploaded] = useState(false);
@@ -13,9 +13,9 @@ const ImageInput = ({oldImage, fieldName, setValue}) => {
     const fileInputRef = useRef(null);
 
 
-    useEffect(() => {
-        setOldImg(oldImage);
-    }, []);
+    // useEffect(() => {
+    //     setOldImg(oldImage);
+    // }, []);
 
     const showChangedImg = (e) => {
         const reader = new FileReader();
@@ -62,13 +62,13 @@ const ImageInput = ({oldImage, fieldName, setValue}) => {
             <div className="flex md:flex-row flex-col md:w-[50%] w-full gap-5 ">
 
                 <input onChange={showChangedImg} type="file" accept="image/*" ref={fileInputRef}
-                       className="file-input flex-grow focus:outline-0 file-input-bordered  rounded-none bg-transparent"/>
+                    className="file-input flex-grow focus:outline-0 file-input-bordered  rounded-none bg-transparent"/>
 
                 {
                     isUploaded &&
                     <div className='flex gap-x-5'>
                         <button onClick={handleUploadImage} disabled={loading}
-                                className='btn text-white btn-success btn-outline rounded-none font-normal'>
+                            className='btn text-white btn-success btn-outline rounded-none font-normal'>
                             {loading ? <Spinner color='white'/> : "Upload Image"}
                         </button>
 
@@ -93,7 +93,7 @@ const ImageInput = ({oldImage, fieldName, setValue}) => {
                         <p>Current Image</p>
                         <div className="border border-base-300 lg:h-[25rem] h-[20rem] flex justify-center items-center">
                             <img src={oldImg} alt='old image'
-                                 className=' h-full w-fit object-contain'/>
+                                className=' h-full w-fit object-contain'/>
                         </div>
                     </div>
                 }
@@ -110,7 +110,7 @@ const ImageInput = ({oldImage, fieldName, setValue}) => {
                         <div className="border border-base-300 lg:h-[25rem] h-[20rem] flex justify-center items-center">
 
                             <img src={newImg} alt='new image'
-                                 className='h-full w-fit object-contain'/>
+                                className='h-full w-fit object-contain'/>
                         </div>
 
                     </div>

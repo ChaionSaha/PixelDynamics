@@ -1,4 +1,3 @@
-import React from 'react';
 import TeamMember from "@/components/team/TeamMember";
 
 const AllTeamMember = ({team}) => {

@@ -36,7 +36,7 @@ const EditPortfolioForm = ({portfolio}) => {
             setAllCat(data.data);
         }).catch(err => console.log(err));
         axios(`/api/admin/get-all-portfolio-numbers?pfid=${portfolio.pfid}`).then(data => setPortfolioNumbers(data.data)).catch(err => console.log(err));
-    }, []);
+    }, [portfolio]);
 
 
     const handlePortfolioSubmit = (formData) => {

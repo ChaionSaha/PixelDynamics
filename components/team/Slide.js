@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from "next/image";
 
 const Slide = ({name, img, title, experience, expertise, description}) => {
@@ -20,12 +19,12 @@ const Slide = ({name, img, title, experience, expertise, description}) => {
                     </div>
                 </div>
                 <div className='lg:text-xl text-base lg:w-[80%] w-[100%]'
-                     dangerouslySetInnerHTML={{__html: description}}></div>
+                    dangerouslySetInnerHTML={{__html: description}}></div>
             </div>
             <div
                 className="lg:w-[35%] w-[100%] md:w-[50%] lg:h-[60vh] h-[40vh] flex mx-auto justify-end relative order-fast lg:order-last">
                 <Image src={img} className='object-cover ' alt={name} fill
-                       loading={'eager'} quality={100}/>
+                    loading={'eager'} quality={100}/>
             </div>
         </div>
     );
