@@ -1,6 +1,6 @@
-import {getDatabase} from "@/db/mongoConnection";
-import {getServerSession} from "next-auth";
-import {authOptions} from "@/pages/api/auth/[...nextauth]";
+import { getDatabase } from "@/db/mongoConnection";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
 
 export default async function handler(req, res) {
     if (req.method !== 'GET')

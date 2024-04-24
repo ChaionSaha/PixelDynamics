@@ -1,7 +1,7 @@
-import NextAuth from "next-auth"
+import { comparePassword } from "@/db/auth";
+import { getDatabase } from "@/db/mongoConnection";
+import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import {getDatabase} from "@/db/mongoConnection";
-import {comparePassword} from "@/db/auth";
 
 export const authOptions = {
     session: {

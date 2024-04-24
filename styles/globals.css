@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 @tailwind base;
@@ -6,23 +6,23 @@
 @tailwind utilities;
 
 :root {
-    --admin-primary-color: #161B21;
-    --admin-secondary-color: '#1D232C',
-
+  --admin-primary-color: #161b21;
+  --admin-secondary-color: "#1D232C";
 }
 
-
-*, *::before, *::after {
-    font-family: "Nunito Sans", sans-serif;
-    font-optical-sizing: auto;
+*,
+*::before,
+*::after {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
 }
 
 .sidebar-link-active {
-    @apply bg-base-200 text-theme-black;
+  @apply bg-base-200 text-theme-black;
 }
 
 .admin-sidebar-link-active {
-    @apply bg-[#0077E4] text-white;
+  @apply bg-[#0077E4] text-white;
 }
 
 /*.contactLinks:hover {*/
@@ -30,76 +30,75 @@
 /*}*/
 
 ::-webkit-scrollbar {
-    @apply lg:w-[7px] w-[5px];
+  @apply lg:w-[7px] w-[5px];
 }
 
 ::-webkit-scrollbar-track {
-    background: #fff;
+  background: #fff;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply lg:bg-[#0d0b0d]  bg-base-200;
+  @apply lg:bg-[#0d0b0d]  bg-base-200;
 }
 
-
 .calendly > *::-webkit-scrollbar {
-    display: none !important;
+  display: none !important;
 }
 
 .calendly-inline-widget::-webkit-scrollbar {
-    display: none !important;
+  display: none !important;
 }
 
 .quill-css {
-    & > h1 {
-        @apply text-3xl;
-    }
+  & > h1 {
+    @apply text-3xl;
+  }
 
-    & > h2 {
-        @apply text-2xl;
-    }
+  & > h2 {
+    @apply text-2xl;
+  }
 
-    & > h3 {
-        @apply text-xl;
-    }
+  & > h3 {
+    @apply text-xl;
+  }
 
-    & > h4 {
-        @apply text-lg;
-    }
+  & > h4 {
+    @apply text-lg;
+  }
 
-    & > h5 {
-        @apply text-base;
-    }
+  & > h5 {
+    @apply text-base;
+  }
 
-    & > h6 {
-        @apply text-sm;
-    }
+  & > h6 {
+    @apply text-sm;
+  }
 
-    & > p {
-        @apply text-base;
-    }
+  & > p {
+    @apply text-base;
+  }
 }
 
 .ql-snow .ql-stroke {
-    fill: none;
-    stroke: #fff !important;
+  fill: none;
+  stroke: #fff !important;
 }
 
 .ql-snow .ql-fill {
-    fill: #fff !important;
-    stroke: none;
+  fill: #fff !important;
+  stroke: none;
 }
 
 .ql-snow .ql-picker {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .ql-snow .ql-picker-options {
-    background: var(--admin-primary-color) !important;
-    color: #fff !important;
+  background: var(--admin-primary-color) !important;
+  color: #fff !important;
 }
 
 .youtube-video > iframe {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }

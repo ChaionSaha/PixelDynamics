@@ -1,5 +1,5 @@
-import {getDatabase} from "@/db/mongoConnection";
-import {hashPassword} from "@/db/auth";
+import { hashPassword } from "@/db/auth";
+import { getDatabase } from "@/db/mongoConnection";
 
 async function handler(req, res) {
     if (req.method !== 'POST') {

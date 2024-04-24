@@ -24,7 +24,6 @@ const Portfolio = ({ portfolios = [], categories = [], subCategories = [] }) => 
     }, [selectedMainCat, portfolios, selectedSubCat])
 
 
-
     return (
         <SharedLayout>
             <div className="relative">

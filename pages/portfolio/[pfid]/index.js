@@ -1,8 +1,7 @@
-import React from 'react';
-import {getDatabase} from "@/db/mongoConnection";
 import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
-import {useRouter} from "next/router";
+import { getDatabase } from "@/db/mongoConnection";
+import { useRouter } from "next/router";
 import YouTube from "react-youtube";
 
 const Index = ({portfolio}) => {
@@ -26,14 +25,14 @@ const Index = ({portfolio}) => {
                         {
                             pd.key === 'img' &&
                             <img src={pd.img}
-                                 alt={`${portfolio.name}-${i}`} className='w-full h-fit'/>
+                                alt={`${portfolio.name}-${i}`} className='w-full h-fit'/>
 
                         }
                         {
                             pd.key === 'url' &&
                             <>
                                 <YouTube videoId={pd.url.toString().split('=')[1]}
-                                         className='aspect-video youtube-video w-full h-full object-cover lg:px-20 lg:py-20 mb-5 lg:mb-0'/>
+                                    className='aspect-video youtube-video w-full h-full object-cover lg:px-20 lg:py-20 mb-5 lg:mb-0'/>
                             </>
                         }
                     </div>)
