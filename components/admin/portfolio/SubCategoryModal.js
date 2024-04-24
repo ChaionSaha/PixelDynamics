@@ -1,4 +1,3 @@
-import React, {useEffect, useState} from 'react';
 import {
     Button,
     Input,
@@ -11,18 +10,19 @@ import {
     SelectItem,
     Spinner
 } from "@nextui-org/react";
-import {Controller, useForm} from "react-hook-form";
 import axios from "axios";
+import { useEffect, useState } from 'react';
+import { Controller, useForm } from "react-hook-form";
 
 const SubCategoryModal = ({
-                              isOpen,
-                              onOpenChange,
-                              editState = false,
-                              setEditState,
-                              value = {},
-                              mainCat = [],
-                              setAllData
-                          }) => {
+    isOpen,
+    onOpenChange,
+    editState = false,
+    setEditState,
+    value = {},
+    mainCat = [],
+    setAllData
+}) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -81,43 +81,43 @@ const SubCategoryModal = ({
                         <form className='flex flex-col gap-y-5' onSubmit={handleSubmit(handleSubcatSubmit)}>
                             <ModalBody>
                                 <Controller control={control} name='subCatName'
-                                            render={({field: {onChange, value}}) => <Input
-                                                isRequired
-                                                type="text"
-                                                label="Category Name"
-                                                variant='bordered'
-                                                size="lg"
-                                                classNames={{
-                                                    base: 'text-white',
-                                                    inputWrapper: 'rounded-none border',
-                                                    label: 'text-white'
-                                                }}
-                                                onChange={onChange}
-                                                value={value}
-                                            />}/>
+                                    render={({field: {onChange, value}}) => <Input
+                                        isRequired
+                                        type="text"
+                                        label="Category Name"
+                                        variant='bordered'
+                                        size="lg"
+                                        classNames={{
+                                            base: 'text-white',
+                                            inputWrapper: 'rounded-none border',
+                                            label: 'text-white'
+                                        }}
+                                        onChange={onChange}
+                                        value={value}
+                                    />}/>
 
                                 <Controller name='mainCatValue' control={control}
-                                            render={({field: {onChange, value}}) => <Select
-                                                isRequired
-                                                label="Select Main Category"
-                                                variant='bordered'
-                                                radius={'none'}
-                                                size="lg"
-                                                selectedKeys={editState && [value]}
-                                                classNames={{
-                                                    base: 'text-white',
-                                                    trigger: 'border',
-                                                    label: 'text-white',
-                                                    value: 'text-white'
-                                                }}
-                                                onChange={onChange}
-                                            >
-                                                {mainCat.map((mc, i) => (
-                                                    <SelectItem key={mc.value} value={mc.value}>
-                                                        {mc.name}
-                                                    </SelectItem>
-                                                ))}
-                                            </Select>}/>
+                                    render={({field: {onChange, value}}) => <Select
+                                        isRequired
+                                        label="Select Main Category"
+                                        variant='bordered'
+                                        radius={'none'}
+                                        size="lg"
+                                        selectedKeys={editState && [value]}
+                                        classNames={{
+                                            base: 'text-white',
+                                            trigger: 'border',
+                                            label: 'text-white',
+                                            value: 'text-white'
+                                        }}
+                                        onChange={onChange}
+                                    >
+                                        {mainCat.map((mc, i) => (
+                                            <SelectItem key={mc.value} value={mc.value}>
+                                                {mc.name}
+                                            </SelectItem>
+                                        ))}
+                                    </Select>}/>
 
 
                                 {
@@ -136,7 +136,7 @@ const SubCategoryModal = ({
                                     </Button>
                                 }
                                 <Button disabled={loading} color="primary" radius={'none'}
-                                        onClick={() => handleSubmit(handleSubcatSubmit)(onClose)}>
+                                    onClick={() => handleSubmit(handleSubcatSubmit)(onClose)}>
                                     {loading ? <Spinner color='white'/> : editState ? 'Update' : 'Save'}
                                 </Button>
                             </ModalFooter>
