@@ -1,7 +1,7 @@
-import SharedLayout from "@/components/Shared/SharedLayout";
-import {getDatabase} from "@/db/mongoConnection";
-import RightSidebar from "@/components/contact/RightSidebar";
 import ContactForm from "@/components/contact/ContactForm";
+import RightSidebar from "@/components/contact/RightSidebar";
+import SharedLayout from "@/components/Shared/SharedLayout";
+import { getDatabase } from "@/db/mongoConnection";
 
 
 const Contact = ({calendlyLink, services = []}) => {

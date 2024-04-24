@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import Title from "@/components/Shared/title";
-import PixelDynamicsLogo from "@/components/Shared/PixelDynamicsLogo";
-import {useForm} from "react-hook-form";
 import CustomInput from "@/components/Shared/CustomInput";
+import PixelDynamicsLogo from "@/components/Shared/PixelDynamicsLogo";
+import Title from "@/components/Shared/title";
+import { Spinner } from "@nextui-org/react";
+import { getSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
-import {Spinner} from "@nextui-org/react";
-import {getSession, signIn, signOut} from "next-auth/react";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
+import { useEffect, useState } from 'react';
+import { useForm } from "react-hook-form";
 
 const Index = ({session}) => {
     const {register, handleSubmit} = useForm({
@@ -48,15 +48,15 @@ const Index = ({session}) => {
                 error && <span className='text-error mb-3'>{error}</span>
             }
             <form className="lg:w-[30%] md:w-[70%] w-full px-5 lg:px-0 flex flex-col gap-y-5"
-                  onSubmit={(e) => {
-                      e.preventDefault();
-                      handleSubmit(handleFormSubmit)();
-                  }}>
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSubmit(handleFormSubmit)();
+                }}>
                 <CustomInput register={register} registerField='email' type='email' label='Email'/>
                 <CustomInput register={register} registerField='password' type='password' label='Password'/>
                 <button disabled={isLoading}
-                        className='btn rounded-none hover:bg-base-200 hover:text-black'>{isLoading ?
-                    <Spinner/> : "Login"}
+                    className='btn rounded-none hover:bg-base-200 hover:text-black'>{isLoading ?
+                        <Spinner/> : "Login"}
                 </button>
             </form>
             <p className='mt-5'>Don't have any account?

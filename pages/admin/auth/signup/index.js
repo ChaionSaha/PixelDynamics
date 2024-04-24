@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import Title from "@/components/Shared/title";
-import PixelDynamicsLogo from "@/components/Shared/PixelDynamicsLogo";
 import CustomInput from "@/components/Shared/CustomInput";
-import Link from "next/link";
-import {useForm} from "react-hook-form";
+import PixelDynamicsLogo from "@/components/Shared/PixelDynamicsLogo";
+import Title from "@/components/Shared/title";
+import { Spinner } from "@nextui-org/react";
 import axios from "axios";
-import {Spinner} from "@nextui-org/react";
-import {getSession, signOut} from "next-auth/react";
-import {useRouter} from "next/router";
+import { getSession, signOut } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from 'react';
+import { useForm } from "react-hook-form";
 
 const Index = () => {
 
@@ -80,16 +80,16 @@ const Index = () => {
                 dbError && <span className='text-error mb-3'>{dbError}</span>
             }
             <form className="lg:w-[30%] md:w-[70%] w-full px-5 lg:px-0 flex flex-col gap-y-5"
-                  onSubmit={handleSubmit(handleFormSubmit)}>
+                onSubmit={handleSubmit(handleFormSubmit)}>
                 <CustomInput register={register} registerField='name' type='text' label='Name'/>
                 <CustomInput register={register} registerField='email' type='email' label='Email'/>
                 <CustomInput register={register} registerField='password' type='password' label='Password'
-                             isInvalid={!passMatch}/>
+                    isInvalid={!passMatch}/>
                 <CustomInput register={register} registerField='confirmPassword' type='password'
-                             label='Confirm Password' isInvalid={!passMatch} errorMessage={errorMessage}/>
+                    label='Confirm Password' isInvalid={!passMatch} errorMessage={errorMessage}/>
                 <button disabled={isLoading}
-                        className='btn rounded-none hover:bg-base-200 hover:text-black '>{isLoading ?
-                    <Spinner/> : "Sign Up"}</button>
+                    className='btn rounded-none hover:bg-base-200 hover:text-black '>{isLoading ?
+                        <Spinner/> : "Sign Up"}</button>
             </form>
             <p className='mt-5'>Already have an account?
                 <Link href='/admin/auth/login' className='underline ms-1'>Login</Link></p>

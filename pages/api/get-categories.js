@@ -1,4 +1,4 @@
-import {getDatabase} from "@/db/mongoConnection";
+import { getDatabase } from "@/db/mongoConnection";
 
 export default async function handler(req, res) {
     if (req.method !== 'GET')

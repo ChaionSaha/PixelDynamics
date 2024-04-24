@@ -1,12 +1,12 @@
-import "@/styles/globals.css";
-import {NextUIProvider} from "@nextui-org/react";
 import Layout from "@/components/global/Layout";
-import {AnimatePresence} from "framer-motion";
+import "@/styles/globals.css";
+import { NextUIProvider } from "@nextui-org/react";
+import { AnimatePresence } from "framer-motion";
+import { SessionProvider } from "next-auth/react";
+import { useRouter } from "next/router";
 import NextNProgress from 'nextjs-progressbar';
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {useRouter} from "next/router";
-import {SessionProvider} from "next-auth/react";
+import "slick-carousel/slick/slick.css";
 
 export default function App({Component, pageProps}) {
     const router = useRouter();
