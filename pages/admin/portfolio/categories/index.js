@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import Title from "@/components/Shared/title";
-import AdminPageTitle from "@/components/Shared/AdminPageTitle";
-import {Button, Input, useDisclosure} from "@nextui-org/react";
 import CategoryModal from "@/components/admin/portfolio/CategoryModal";
-import axios from "axios";
-import {getDatabase} from "@/db/mongoConnection";
+import DeleteCategoryModal from "@/components/admin/portfolio/DeleteCategoryModal";
+import AdminPageTitle from "@/components/Shared/AdminPageTitle";
 import CustomTable from "@/components/Shared/CustomTable";
-import DeletCategoryModal from "@/components/admin/portfolio/DeletCategoryModal";
 import SharedLayout from "@/components/Shared/SharedLayout";
+import Title from "@/components/Shared/title";
+import { getDatabase } from "@/db/mongoConnection";
+import { Button, Input, useDisclosure } from "@nextui-org/react";
+import axios from "axios";
+import { useEffect, useState } from 'react';
 
 const columns = [
     {
@@ -129,16 +129,16 @@ const Index = ({categories = []}) => {
                         Add Category
                     </Button>
                     <CategoryModal isOpen={isOpen} onOpenChange={onOpenChange} closeModal={closeModal}
-                                   setInput={setInput} loading={loadingData} errorMessage={err}
-                                   setErrorMessage={setErr} editState={editState} value={input}
+                        setInput={setInput} loading={loadingData} errorMessage={err}
+                        setErrorMessage={setErr} editState={editState} value={input}
                     />
-                    <DeletCategoryModal isOpen={isDeleteOpen} onOpenChange={onDeleteOpenChange}
-                                        closeModal={closeDeleteModal} title='Delete Category' setErrorMessage={setErr}
-                                        errorMessage={err} loading={loadingData} name={targetCat.name}/>
+                    <DeleteCategoryModal isOpen={isDeleteOpen} onOpenChange={onDeleteOpenChange}
+                        closeModal={closeDeleteModal} title='Delete Category' setErrorMessage={setErr}
+                        errorMessage={err} loading={loadingData} name={targetCat.name}/>
                 </div>
                 <div className="px-10">
                     <CustomTable columns={columns} tableData={tableData} actionOnEdit={actionOnEdit}
-                                 actionOnDelete={actionOnDelete}/>
+                        actionOnDelete={actionOnDelete}/>
                 </div>
             </div>
         </SharedLayout>

@@ -1,12 +1,12 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {useFieldArray, useForm} from "react-hook-form";
 import ControlledInput from "@/components/Shared/ControlledInput";
-import axios from "axios";
 import ControlledSelect from "@/components/Shared/ControlledSelect";
 import ImageInput from "@/components/Shared/ImageInput";
 import PortfolioDetailsSection from "@/components/admin/portfolio/PortfolioDetailsSection";
-import {Button, Spinner} from "@nextui-org/react";
-import {useRouter} from "next/router";
+import { Button, Spinner } from "@nextui-org/react";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from 'react';
+import { useFieldArray, useForm } from "react-hook-form";
 
 const AddPortfolioForm = () => {
     const {
@@ -56,9 +56,9 @@ const AddPortfolioForm = () => {
                 setLoading(false);
                 router.push('/admin/portfolio/portfolio-details');
             }).catch(({response}) => {
-            setLoading(false);
-            setErr(response?.data?.message);
-        });
+                setLoading(false);
+                setErr(response?.data?.message);
+            });
     }
 
 
@@ -74,13 +74,13 @@ const AddPortfolioForm = () => {
                     }
                 </div>
                 <ControlledSelect control={control} name={"mainCat"} label="Select Main Category"
-                                  array={allCat.mainCategories}
-                                  editState={false}/>
+                    array={allCat.mainCategories}
+                    editState={false}/>
                 {
                     watch('mainCat') &&
                     <ControlledSelect control={control} name={"subCat"} label="Select Sub Category"
-                                      array={[...allCat.subCategories.filter(mc => mc.mainCatValue === watch('mainCat'))]}
-                                      editState={false}/>
+                        array={[...allCat.subCategories.filter(mc => mc.mainCatValue === watch('mainCat'))]}
+                        editState={false}/>
                 }
 
 
@@ -94,19 +94,19 @@ const AddPortfolioForm = () => {
             <div className="flex flex-col gap-y-5">
                 {
                     fields.map((field, index) => {
-                        return <div key={index} className='flex gap-x-3'>
+                        return <div key={field.id} className='flex gap-x-3'>
                             <div className="flex-grow">
 
                                 <PortfolioDetailsSection setValue={setValue} fieldName={'description'}
-                                                         id={index}
-                                                         control={control} remove={remove}/>
+                                    id={index}
+                                    control={control} remove={remove}/>
                             </div>
 
                         </div>
                     })
                 }
                 <Button color="primary" radius={'none'} className='w-fit '
-                        onClick={() => append(1)}>
+                    onClick={() => append(1)}>
                     Add Section
                 </Button>
             </div>
@@ -114,7 +114,7 @@ const AddPortfolioForm = () => {
                 err !== '' && <p className='text-error my-5'>{err}</p>
             }
             <Button disabled={loading} radius={'none'} variant='bordered' className='w-fit border text-white my-5'
-                    type='submit'>
+                type='submit'>
                 {loading ? <Spinner color='white'/> : 'Submit'}
             </Button>
         </form>

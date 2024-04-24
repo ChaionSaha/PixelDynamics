@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Input} from "@nextui-org/react";
 import ImageInput from "@/components/Shared/ImageInput";
 import QuillEditor from "@/components/quill-test/QuillEditor";
-import {Controller} from "react-hook-form";
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Input } from "@nextui-org/react";
+import { useState } from 'react';
+import { Controller } from "react-hook-form";
 
 const PortfolioDetailsSection = ({setValue, fieldName, id, control, remove}) => {
     const [section, setSection] = useState('');
@@ -50,7 +50,7 @@ const PortfolioDetailsSection = ({setValue, fieldName, id, control, remove}) => 
                     {
                         section === 'img' &&
                         <ImageInput setValue={setValue}
-                                    fieldName={`${fieldName}.${id}.img`}/>
+                            fieldName={`${fieldName}.${id}.img`}/>
 
                     }
                     {
@@ -73,20 +73,20 @@ export default PortfolioDetailsSection;
 const UrlLink = ({name, control}) => {
 
     return <Controller control={control} name={name}
-                       render={({field: {onChange, value}}) =>
-                           <Input
-                               isRequired
-                               type='url'
-                               name={name}
-                               label='Youtube URL'
-                               variant='bordered'
-                               size="lg"
-                               classNames={{
-                                   base: 'text-white',
-                                   inputWrapper: 'rounded-none border',
-                                   label: 'text-white'
-                               }}
-                               onChange={onChange}
-                               value={value}
-                           />}/>
+        render={({field: {onChange, value}}) =>
+            <Input
+                isRequired
+                type='url'
+                name={name}
+                label='Youtube URL'
+                variant='bordered'
+                size="lg"
+                classNames={{
+                    base: 'text-white',
+                    inputWrapper: 'rounded-none border',
+                    label: 'text-white'
+                }}
+                onChange={onChange}
+                value={value}
+            />}/>
 }

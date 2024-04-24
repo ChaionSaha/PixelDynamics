@@ -1,15 +1,15 @@
-import {Button, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Spinner} from "@nextui-org/react";
+import { Button, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Spinner } from "@nextui-org/react";
 
 const CategoryModal = ({
-                           isOpen,
-                           onOpenChange,
-                           closeModal,
-                           setInput,
-                           loading,
-                           errorMessage,
-                           setErrorMessage,
-                           value, editState
-                       }) => {
+    isOpen,
+    onOpenChange,
+    closeModal,
+    setInput,
+    loading,
+    errorMessage,
+    setErrorMessage,
+    value, editState
+}) => {
     return <Modal isOpen={isOpen} onOpenChange={onOpenChange} classNames={{
         base: 'bg-admin-primary text-base-200'
     }} hideCloseButton={true}>
