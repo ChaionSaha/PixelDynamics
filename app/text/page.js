@@ -1,8 +1,7 @@
 "use client"
 
-import React, {useRef, useState} from 'react';
-import {Editor} from '@tinymce/tinymce-react';
-import copy from 'clipboard-copy';
+import { Editor } from '@tinymce/tinymce-react';
+import { useRef, useState } from 'react';
 
 
 export default function App() {
@@ -14,11 +13,7 @@ export default function App() {
     };
 
     const handleCopyClick = async () => {
-        try {
-            await copy(editorContent);
-        } catch (error) {
-            console.error('Failed to copy text to clipboard', error);
-        }
+        
     };
 
     return (
