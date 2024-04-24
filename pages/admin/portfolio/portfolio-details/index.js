@@ -1,13 +1,15 @@
-import React, {useEffect, useState} from 'react';
+
+import DeleteCategoryModal from "@/components/admin/portfolio/DeleteCategoryModal";
+import AdminPageTitle from "@/components/Shared/AdminPageTitle";
+import AdminSearch from "@/components/Shared/AdminSearch";
+import CustomTable from "@/components/Shared/CustomTable";
 import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
-import AdminPageTitle from "@/components/Shared/AdminPageTitle";
-import {Button, Input, useDisclosure} from "@nextui-org/react";
-import {useRouter} from "next/router";
-import CustomTable from "@/components/Shared/CustomTable";
-import {getDatabase} from "@/db/mongoConnection";
-import DeletCategoryModal from "@/components/admin/portfolio/DeletCategoryModal";
+import { getDatabase } from "@/db/mongoConnection";
+import { useDisclosure } from "@nextui-org/react";
 import axios from "axios";
+import { useRouter } from "next/router";
+import { useEffect, useState } from 'react';
 
 const columns = [
     {
@@ -73,34 +75,15 @@ const Index = ({portfolios}) => {
         <SharedLayout>
             <Title title='Portfolio Details'/>
             <AdminPageTitle title={'Portfolio Details'}/>
-            <div className="flex md:flex-row flex-col gap-y-5 justify-between px-10 py-10">
-                <div className="lg:w-[30%] md:w-[50%] w-full">
-                    <Input
-                        type="email"
-                        placeholder="Search"
-                        startContent={
-                            <i className='bi bi-search'></i>
-                        }
-                        variant='bordered'
-                        size="lg"
-                        classNames={{
-                            inputWrapper: 'rounded-none border',
-                        }}
-                        onValueChange={setSearchInput}
-                    />
-                </div>
-                <Button onClick={() => router.push('/admin/portfolio/portfolio-details/add-portfolio')} size='lg'
-                        radius="none" startContent={<i className='bi bi-plus'></i>}>
-                    Add Portfolio
-                </Button>
-            </div>
+            <AdminSearch setSearchInput={setSearchInput} addBtnName='Add Portfolio'
+                addBtnFnc={() => router.push('/admin/portfolio/portfolio-details/add-portfolio')}/>
             <div className="px-10">
                 <CustomTable tableData={tableData} columns={columns} actionOnEdit={handleEditPortfolio}
-                             actionOnDelete={handleDeletePortfolio}/>
+                    actionOnDelete={handleDeletePortfolio}/>
             </div>
-            <DeletCategoryModal name={targetPf.name} title={'Delete Portfolio'}
-                                loading={loading} setErrorMessage={setErr} isOpen={isOpen} onOpenChange={onOpenChange}
-                                closeModal={handleCloseModal} errorMessage={err}/>
+            <DeleteCategoryModal name={targetPf.name} title={'Delete Portfolio'}
+                loading={loading} setErrorMessage={setErr} isOpen={isOpen} onOpenChange={onOpenChange}
+                closeModal={handleCloseModal} errorMessage={err}/>
         </SharedLayout>
     );
 };

@@ -56,7 +56,7 @@ const Sidebar = ({active, setActive}) => {
                             <Link
                                 href={p.link}
                                 className={`flex gap-x-4 w-full text-lg px-3 xl:px-10 py-2 hover:bg-base-200 hover:text-theme-black duration-150 ${
-                                    p.link === router.asPath ? 'sidebar-link-active' : ''
+                                    router.asPath.includes(p.link) ? 'sidebar-link-active' : ''
                                 }`}
                                 scroll={false}
                             >

@@ -1,12 +1,12 @@
-import React, {useEffect, useMemo, useState} from 'react';
-import Title from "@/components/Shared/title";
 import AdminPageTitle from "@/components/Shared/AdminPageTitle";
-import {Button, Input, useDisclosure} from "@nextui-org/react";
 import CustomTable from "@/components/Shared/CustomTable";
+import Title from "@/components/Shared/title";
+import DeleteCategoryModal from "@/components/admin/portfolio/DeleteCategoryModal";
 import SubCategoryModal from "@/components/admin/portfolio/SubCategoryModal";
-import {getDatabase} from "@/db/mongoConnection";
-import DeletCategoryModal from "@/components/admin/portfolio/DeletCategoryModal";
+import { getDatabase } from "@/db/mongoConnection";
+import { Button, Input, useDisclosure } from "@nextui-org/react";
 import axios from "axios";
+import { useEffect, useMemo, useState } from 'react';
 
 
 const Index = ({mainCategories, subCategories}) => {
@@ -75,7 +75,7 @@ const Index = ({mainCategories, subCategories}) => {
             <div className="flex md:flex-row flex-col gap-y-5 justify-between px-10 py-10">
                 <div className="lg:w-[30%] md:w-[50%] w-full">
                     <Input
-                        type="email"
+                        type="text"
                         placeholder="Search"
                         startContent={
                             <i className='bi bi-search'></i>
@@ -96,14 +96,14 @@ const Index = ({mainCategories, subCategories}) => {
                     Add Category
                 </Button>
                 <SubCategoryModal isOpen={isOpen} onOpenChange={onOpenChange} value={targetSubCat} editState={editState}
-                                  setEditState={setEditState} mainCat={mainCategories} setAllData={setAllData}/>
-                <DeletCategoryModal onOpenChange={onDeleteOpenChange} isOpen={isDeleteOpen} name={targetSubCat.name}
-                                    errorMessage={err} setErrorMessage={setErr} title={"Delete Sub Category"}
-                                    loading={loading} closeModal={closeDeleteModal}/>
+                    setEditState={setEditState} mainCat={mainCategories} setAllData={setAllData}/>
+                <DeleteCategoryModal onOpenChange={onDeleteOpenChange} isOpen={isDeleteOpen} name={targetSubCat.name}
+                    errorMessage={err} setErrorMessage={setErr} title={"Delete Sub Category"}
+                    loading={loading} closeModal={closeDeleteModal}/>
             </div>
             <div className="px-10">
                 <CustomTable columns={columns} tableData={tableData} actionOnEdit={actionOnEdit}
-                             actionOnDelete={actionOnDelete}/>
+                    actionOnDelete={actionOnDelete}/>
             </div>
         </div>
     );

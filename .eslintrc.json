@@ -1,6 +1,9 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next/core-web-vitals", "prettier"],
   "rules": {
-    "react/no-unescaped-entities": 0
+    "react/no-unescaped-entities": 0,
+    "indent": "error",
+    "no-multiple-empty-lines": "error",
+    "space-unary-ops": "error"
   }
 }

@@ -1,12 +1,13 @@
-import React from 'react';
-import Image from 'next/image'
+import Image from 'next/image';
 import './team.css';
 
-const TeamMember = ({img, experienceDetails, name, expertise}) => {
+
+const TeamMember = ({ img, experienceDetails, name, expertise }) => {
     return (
         <div
             className="relative border h-[50vh] w-[80%] mx-auto md:w-full team-member overflow-y-hidden">
-            <Image src={img} alt={name} fill className="object-cover object-center"/>
+            <Image src={img} alt={name} fill className={`object-cover object-center`}
+            />
             <div className="absolute mix-blend-screen font-bold px-5 pb-5 text-white bottom-0 left-0">
                 <p className='text-2xl lg:text-xl  2xl:text-2xl'>{name}</p>
                 <p className='text-lg lg:text-base 2xl:text-lg'>{expertise}</p>
