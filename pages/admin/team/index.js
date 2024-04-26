@@ -1,9 +1,12 @@
+import DeleteCategoryModal from "@/components/admin/portfolio/DeleteCategoryModal";
 import AdminPageTitle from "@/components/Shared/AdminPageTitle";
 import AdminSearch from "@/components/Shared/AdminSearch";
 import CustomTable from "@/components/Shared/CustomTable";
 import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
 import { getDatabase } from "@/db/mongoConnection";
+import { useDisclosure } from "@nextui-org/react";
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -11,10 +14,6 @@ const columns = [
     {
         name: "Name",
         value:"name"
-    },
-    {
-        name: "Experience",
-        value:"experience"
     },
     {
         name: "Expertise",
@@ -31,6 +30,9 @@ const AdminTeam = ({teamMembers=[]}) => {
     const [tableData, setTableData] = useState(teamMembers);
     const [targetMember, setTargetMember] = useState({});
     const router = useRouter();
+    const { isOpen, onOpenChange, onOpen } = useDisclosure();
+    const [err, setErr] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleEditTeamMember = (teamMember) => {
         router.push(`/admin/team/edit/${teamMember.tid}`);
@@ -38,6 +40,19 @@ const AdminTeam = ({teamMembers=[]}) => {
 
     const handleDelete = (teamMember) => {
         setTargetMember(teamMember);
+        onOpen();
+    }
+
+    const handleCloseModal = async (onClose) => {
+        setLoading(true);
+        setErr('');
+
+        axios.delete(`/api/admin/team/member-add-edit?tid=${targetMember.tid}`)
+            .then(res => { setTableData(res.data); onClose();})
+            .catch(({ response }) => setErr(response?.data?.message))
+            .finally(() => setLoading(false));
+
+        
     }
 
     return (
@@ -46,8 +61,23 @@ const AdminTeam = ({teamMembers=[]}) => {
             <AdminPageTitle title="Team Members" />
             <AdminSearch setSearchInput={setSearchInput} addBtnName={'Add Team Member'} addBtnFnc={()=>router.push('/admin/team/add')}/>
             <div className="px-10">
-                <CustomTable tableData={tableData} columns={columns} actionOnEdit={handleEditTeamMember}/>
+                <CustomTable
+                    tableData={tableData}
+                    columns={columns}
+                    actionOnEdit={handleEditTeamMember}
+                    actionOnDelete={handleDelete}
+                />
             </div>
+            <DeleteCategoryModal
+                onOpenChange={onOpenChange}
+                isOpen={isOpen}
+                closeModal={handleCloseModal}
+                title={'Delete Team Member'}
+                name={targetMember?.name}
+                errorMessage={err}
+                setErrorMessage={setErr}
+                loading={loading}
+            />
         </SharedLayout>
     );
 };
