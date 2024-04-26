@@ -8,7 +8,7 @@ import { getDatabase } from "@/db/mongoConnection";
 import { useDisclosure } from "@nextui-org/react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const columns = [
     {
@@ -34,6 +34,16 @@ const AdminTeam = ({teamMembers=[]}) => {
     const [err, setErr] = useState('');
     const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        if (searchInput.trim() === '') {
+            setTableData(teamMembers);
+        }
+        else {
+            const temp = teamMembers.filter(teamMember => teamMember.name.toLowerCase().includes(searchInput.toLowerCase()));
+            setTableData(temp);
+        }
+    },[searchInput, teamMembers])
+
     const handleEditTeamMember = (teamMember) => {
         router.push(`/admin/team/edit/${teamMember.tid}`);
     }
@@ -50,9 +60,7 @@ const AdminTeam = ({teamMembers=[]}) => {
         axios.delete(`/api/admin/team/member-add-edit?tid=${targetMember.tid}`)
             .then(res => { setTableData(res.data); onClose();})
             .catch(({ response }) => setErr(response?.data?.message))
-            .finally(() => setLoading(false));
-
-        
+            .finally(() => setLoading(false));   
     }
 
     return (
