@@ -19,7 +19,7 @@ const Sidebar = ({active, setActive}) => {
     return (
         <div
             className={`relative flex flex-col justify-between w-full h-full py-10 text-base-200 ${router.pathname.includes('/admin') ? 'bg-admin-secondary' : 'bg-theme-black'} `}
-            style={{backgroundImage: `url(${sidebarBg})`}}
+            style={{backgroundImage: `url(${sidebarBg})`, backgroundSize:'cover'}}
         >
             <div className=''>
 

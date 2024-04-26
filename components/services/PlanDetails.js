@@ -9,7 +9,7 @@ const PlanDetails = ({name, description, offers, price}) => {
                 <div
                     className="flex gap-x-5 items-center justify-between text-2xl xl:text-3xl font-bold">
                     <p>{name}</p>
-                    <p className="lg:text-xl xl:text-2xl text-lg">{price}</p>
+                    <p className="lg:text-xl xl:text-2xl text-lg">{price}/MO USD</p>
                 </div>
                 <ul className="mt-3">
                     {

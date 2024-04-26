@@ -17,7 +17,7 @@ export default function CustomTable({tableData = [], columns, actionOnEdit, acti
                         tableData.map((td, i) => <tr className='border-0' key={i}>
                             <td>{i + 1}</td>
                             {
-                                columns.map((c, i) => <td key={i}>{td[c.value]}</td>)
+                                columns.map((c, i) => <td key={i}>{typeof td[c.value] !== 'boolean' ? td[c.value] : td[c.value] ? 'Yes' : 'No'}</td>)
                             }
                             <td>
                                 <button className='btn btn-sm text-lg text-warning btn-ghost'

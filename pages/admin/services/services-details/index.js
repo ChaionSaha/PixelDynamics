@@ -60,8 +60,8 @@ export default function Index({services=[]}) {
 
     return (
         <SharedLayout>
-            <Title title='Services'/>
-            <AdminPageTitle title={'Services'}/>
+            <Title title='Services Details'/>
+            <AdminPageTitle title={'Services Details'}/>
             <AdminSearch setSearchInput={setSearchInput} addBtnName={'Add Service'} addBtnFnc={()=>router.push('/admin/services/services-details/add')}/>
             <div className="px-10">
                 <CustomTable tableData={tableData} columns={columns} actionOnEdit={handleEditService}
