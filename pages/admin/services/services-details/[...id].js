@@ -21,7 +21,16 @@ export default function Index({ isEdit = false, service = {} }) {
 
 export async function getServerSideProps(context) {
     const { id } = context.query;
-    let isEdit=false, service={};
+    let isEdit = false, service = {};
+    
+    if (id[0] !== 'add' && id[0] !== 'edit')
+        return {
+            redirect: {
+                destination: '/admin/services/services-details',
+                permanent:false
+            }
+        }
+
     if (id[0] === 'edit')
     {
         isEdit = true;
