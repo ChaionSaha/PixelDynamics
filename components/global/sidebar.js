@@ -1,8 +1,10 @@
+import { ContactIcon, TermsIcon } from '@/assets/CustomIcons/CustomIcon';
 import { adminPagesLinks, contactLinks, pages } from '@/components/global/links';
 import { signOut } from "next-auth/react";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import ClientSidebarLinks from './ClientSidebarLinks';
 import HamburgerMenu from './HamburgerMenu';
 
 const Sidebar = ({active, setActive}) => {
@@ -50,22 +52,8 @@ const Sidebar = ({active, setActive}) => {
             </div>
 
             <ul className='flex flex-col gap-y-2'>
-                {!router.pathname.includes('/admin') && pages.map((p, i) => {
-                    return (
-                        <li key={i}>
-                            <Link
-                                href={p.link}
-                                className={`flex gap-x-4 w-full text-lg px-3 xl:px-10 py-2 hover:bg-base-200 hover:text-theme-black duration-150 ${
-                                    router.asPath.includes(p.link) ? 'sidebar-link-active' : ''
-                                }`}
-                                scroll={false}
-                            >
-                                <i className={p.icon}></i>
-                                <p>{p.name}</p>
-                            </Link>
-                        </li>
-                    );
-                })}
+                
+                {!router.pathname.includes('/admin') && <ClientSidebarLinks/>}
                 {router.pathname.includes('/admin') && adminPagesLinks.map((p, i) => {
                     return (
                         <li key={i}>
@@ -86,21 +74,44 @@ const Sidebar = ({active, setActive}) => {
                 }
             </ul>
 
-            {!router.pathname.includes('/admin') && <ul className='flex justify-between px-3 xl:px-10'>
-                {contactLinks.map((cl, i) => {
-                    return (
-                        <li key={i}>
-                            <a
-                                href={cl.link}
-                                target='_blank'
-                                className='p-1 px-2 text-lg contactLinks '
-                            >
-                                <i className={cl.icon}></i>
-                            </a>
-                        </li>
-                    );
-                })}
-            </ul>
+            {!router.pathname.includes('/admin') &&
+                <div className="flex flex-col">
+                    <Link
+                        href={'/terms'}
+                        className={`flex items-center gap-x-4 w-full text-lg px-3 xl:px-10 py-2 mb-2 hover:bg-base-200 hover:text-theme-black duration-150 group ${
+                            router.asPath.includes('/terms') ? 'sidebar-link-active' : ''
+                        }`}
+                        scroll={false}
+                    >
+                        <TermsIcon className={`w-5 h-5 group-hover:fill-black ${router.asPath.includes('/terms') ? 'fill-black' : 'fill-white'}`} />
+                        <p>Terms & Policy</p>
+                    </Link>
+                    <Link
+                        href={'/contact'}
+                        className={`flex items-center gap-x-4 w-full text-lg px-3 xl:px-10 py-2 mb-10 hover:bg-base-200 hover:text-theme-black duration-150 group ${
+                            router.asPath.includes('/contact') ? 'sidebar-link-active' : ''
+                        }`}
+                        scroll={false}
+                    >
+                        <ContactIcon className={`w-5 h-5 group-hover:fill-black ${router.asPath.includes('/contact') ? 'fill-black' : 'fill-white'}`} />
+                        <p>Contact</p>
+                    </Link>
+            
+                    <ul className='flex justify-between px-3 xl:px-10'>
+                        {contactLinks.map((cl, i) => {
+                            return (
+                                <li key={i}>
+                                    <a
+                                        href={cl.link}
+                                        target='_blank'
+                                    >
+                                        {cl.icon}
+                                    </a>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
             }
 
             {router.pathname.includes('/admin') &&

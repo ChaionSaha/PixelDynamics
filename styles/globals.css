@@ -25,10 +25,6 @@
   @apply bg-[#0077E4] text-white;
 }
 
-/*.contactLinks:hover {*/
-/*    transform: scale(1.1);*/
-/*}*/
-
 ::-webkit-scrollbar {
   @apply lg:w-[7px] w-[5px];
 }

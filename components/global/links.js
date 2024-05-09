@@ -1,3 +1,5 @@
+import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from "@/assets/CustomIcons/CustomIcon";
+
 export const pages = [
     {
         name: 'Portfolio',
@@ -28,19 +30,19 @@ export const pages = [
 export const contactLinks = [
     {
         link: 'https://www.linkedin.com/company/pixel-dynamics-studio/about/',
-        icon: 'bi bi-linkedin',
+        icon: <LinkedinIcon className='w-5 h-5'/>,
     },
     {
         link: 'https://www.facebook.com/profile.php?id=61550213669968',
-        icon: 'bi bi-facebook',
+        icon: <FacebookIcon className='w-5 h-5'/>,
     },
     {
         link: 'https://www.instagram.com/pixeldynamics.studio/',
-        icon: 'bi bi-instagram',
+        icon: <InstagramIcon className='w-5 h-5'/>,
     },
     {
         link: 'https://twitter.com/Pixel_Dynamics',
-        icon: 'bi bi-twitter-x',
+        icon: <TwitterIcon className='w-5 h-5'/>,
     },
 ];
 
@@ -89,9 +91,14 @@ export const adminPagesLinks = [
 
     },
     {
+        name: 'Blog',
+        link: '/admin/blog',
+        icon: 'bi bi-file-text-fill',
+
+    },
+    {
         name: 'Accounts',
         link: '/admin/accounts',
         icon: 'bi bi-person-gear',
-
     },
 ]
