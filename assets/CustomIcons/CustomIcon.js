@@ -54,7 +54,7 @@ export function TeamIcon({ color, darkColor, className }) {
 export function TermsIcon({ color, darkColor, className }) {
     return (
         <svg className={className} viewBox="0 0 18 18"  xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_1673_84)">
+            <g clipPath="url(#clip0_1673_84)">
                 <path d="M0 0V18H18V0H0ZM10.08 14.4H7.92V6.5916H10.08V14.4ZM10.08 5.472H7.92V3.6H10.08V5.472Z" fill={darkColor} />
             </g>
             <defs>
