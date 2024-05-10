@@ -102,6 +102,7 @@ const ContactForm = ({ services, calendlyLink }) => {
                                 classNames={{
 
                                     trigger: 'border-base-200 offset-0 border',
+                                    value: 'text-black'
 
                                 }}
                             >

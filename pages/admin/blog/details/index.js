@@ -11,11 +11,7 @@ import { useEffect, useState } from "react";
 const columns = [
     {
         name: "Title",
-        value: "title"
-    },
-    {
-        name: "Author",
-        value: "author.name"
+        value: "name"
     },
     {
         name: "Category",
@@ -39,7 +35,7 @@ function Index({blogs}) {
     }
     
     const actionOnEdit = (targetCat) => {
-        
+        router.push(`/admin/blog/details/edit/${targetCat.bgid}`);
     }
     const actionOnDelete = (targetCat) => {
         setTargetCat(targetCat);

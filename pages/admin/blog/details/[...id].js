@@ -4,13 +4,13 @@ import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
 import { getDatabase } from "@/db/mongoConnection";
 
-const Index = ({blog, editState}) => {
+const Index = ({blog, editState, blogCategories, authors}) => {
     return (
         <SharedLayout>
             <Title title={editState ? 'Edit Blog' : 'Add Blog'} />
             <AdminPageTitle title={editState ? 'Edit Blog' : 'Add Blog'} />
             <div className="md:px-10 px-5 py-10">
-                <BlogDetailsForm blog={blog} editState={editState}/>
+                <BlogDetailsForm blog={blog} editState={editState} blogCategories={blogCategories} authors={authors}/>
             </div>
         </SharedLayout>
     );
@@ -29,11 +29,13 @@ export const getServerSideProps = async (ctx) => {
             }
         }
     
+    const db = await getDatabase();
     let blog = {};
+    let blogCategories = await db.collection('blogCategories').find().project({ _id: 0 }).toArray();
+    let authors=await db.collection('teamMembers').find().project({ _id: 0, name: 1, expertise: 1, img: 1, tid: 1}).toArray();
     if (id[0] === 'edit') {
-        const bcid = id[1];
-        const db = await getDatabase();
-        blog = await db.collection('blogs').findOne({ bcid });
+        const bgid = id[1];
+        blog = await db.collection('blogs').findOne({ bgid }, { projection: { _id: 0 } });
         if (!blog)
             return {
                 redirect: {
@@ -46,7 +48,7 @@ export const getServerSideProps = async (ctx) => {
 
     return {
         props:{
-            blog, editState: id[0] === 'edit'
+            blog, editState: id[0] === 'edit', blogCategories, authors
         }
     }
 }
