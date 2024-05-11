@@ -81,20 +81,25 @@ export const adminPagesLinks = [
     {
         name: 'Services',
         link: '/admin/services',
-        icon: 'bi bi-grid-fill',
+        icon: 'bi bi-grid',
 
     },
     {
         name: 'Team',
         link: '/admin/team',
-        icon: 'bi bi-people-fill',
+        icon: 'bi bi-people',
 
     },
     {
         name: 'Blog',
         link: '/admin/blog',
-        icon: 'bi bi-file-text-fill',
+        icon: 'bi bi-file-text',
 
+    },
+    {
+        name: 'Terms & Policy',
+        link: '/admin/terms',
+        icon: 'bi bi-info-circle',
     },
     {
         name: 'Accounts',
