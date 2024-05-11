@@ -11,8 +11,8 @@ export default async function handler(req, res) {
 
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
-        port: 465,
-        secure: true, // Use `true` for port 465, `false` for all other ports
+        port: 587,
+        secure: false, // Use `true` for port 465, `false` for all other ports
         auth: {
             user: process.env.MAIL_ADDRESS,
             pass: process.env.GOOGLE_SMTP_PASS,
@@ -44,6 +44,6 @@ export default async function handler(req, res) {
             </div>`
     })
         .then(() => res.status(200).send({ message: 'Email Sent!' }))
-        .catch((err) => res.status(400).send({ message: 'Email Sent!' }));
+        .catch((err) => res.status(400).send(err));
     
 }
