@@ -10,17 +10,17 @@ const Index = ({portfolio}) => {
         <SharedLayout>
             <Title title={portfolio.name}/>
             <div>
-                <div class="flex lg:text-3xl text-2xl items-start gap-x-5 lg:ps-10 ps-16 lg:px-10 px-2 py-7 font-bold">
+                <div className="flex lg:text-3xl text-2xl items-start gap-x-5 lg:ps-10 ps-16 lg:px-10 px-2 py-7 font-bold">
                     <button onClick={() => {
                         router.push('/portfolio');
-                    }}><i class='bi bi-chevron-left text-2xl'></i></button>
+                    }}><i className='bi bi-chevron-left text-2xl'></i></button>
                     <p>{portfolio.name}</p>
                 </div>
                 {
                     portfolio.description.map((pd, i) => <div key={i}>
                         {
                             pd.key === 'text' &&
-                            <div dangerouslySetInnerHTML={{__html: pd.text}} class='quill-css px-10 py-10'></div>
+                            <div dangerouslySetInnerHTML={{__html: pd.text}} className='quill-css px-10 py-10'></div>
                         }
                         {
                             pd.key === 'img' &&

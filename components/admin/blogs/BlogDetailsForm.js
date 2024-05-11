@@ -111,7 +111,7 @@ function BlogDetailsForm({ blog, editState, blogCategories, authors }) {
                 <p>Blog Image</p>
                 <ImageInput oldImage={blog.img} setValue={setValue} fieldName={'img'}/>
             </div>
-            <div className="flex flex-col lg:w-[50%] gap-y-5 mt-5 md:mt-10">
+            <div className="flex flex-col gap-y-5 mt-5 md:mt-10">
                 <p className="mt-5">Blog Details</p>
                 <div className="flex flex-col gap-y-5">
                     {
