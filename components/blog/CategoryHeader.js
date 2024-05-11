@@ -1,31 +1,41 @@
 import { Input, Radio, RadioGroup } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 
-const CategoryHeader = ({ categories }) => {
+const CategoryHeader = ({ categories, blogs, setBlogs }) => {
     const [searchInput, setSearchInput] = useState('');
     const [selected, setSelected] = useState('all');
 
     useEffect(() => {
-        console.log(selected)
-    },[selected])
+        if (selected === 'all')
+            setBlogs(blogs);
+        else
+            setBlogs(blogs.filter(b => b.category === selected));
+    }, [selected, blogs, setBlogs]);
+
+    useEffect(() => {
+        if(searchInput === '')
+            setBlogs(blogs);
+        else
+            setBlogs(blogs.filter(b => b.name.toLowerCase().includes(searchInput.toLowerCase())));
+    },[searchInput, blogs, setBlogs]);
 
     return (
-        <div className="bg-[#ebebeb] flex">
-            <div className="px-10 flex gap-x-5 text-xl p-4 flex-grow">
+        <div className="bg-[#ebebeb] flex flex-col lg:flex-row">
+            <div className="lg:px-10 flex flex-col md:flex-row gap-x-5 text-xl p-4 lg:w-[70%]">
                 <p>Category:</p>
                 <RadioGroup
                     value={selected}
                     onValueChange={setSelected}
-                    className="flex"
+                    className="flex flex-wrap"
                     orientation="horizontal"
                     size="lg"
                 >
-                    <Radio value={"all"} className="text-xl font-bold px-4" classNames={{
+                    <Radio value={"all"} className="text-xl font-bold lg:px-4" classNames={{
                         wrapper:'hidden'
                     }}>All</Radio>
                     {
                         categories.map((c, i) => 
-                            <Radio value={c.value} key={i} className="text-xl font-bold px-4" classNames={{
+                            <Radio value={c.value} key={i} className="text-xl font-bold lg:px-4" classNames={{
                                 wrapper:'hidden'
                             }}>{c.name }</Radio>
                         )
@@ -33,7 +43,7 @@ const CategoryHeader = ({ categories }) => {
                 </RadioGroup>
                 
             </div>
-            <div className="w-[30%] bg-black flex">
+            <div className="lg:w-[30%] w-full bg-black flex">
                 <Input
                     type="text"
                     placeholder="Search"
