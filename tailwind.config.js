@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import {nextui} from "@nextui-org/react";
+import { nextui } from "@nextui-org/react";
 
 module.exports = {
     content: [
@@ -39,7 +39,6 @@ module.exports = {
                 mytheme: {
                     "primary": "#000",
                     'secondary': '#f5f5f5'
-
                 },
             },
 

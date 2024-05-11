@@ -12,11 +12,6 @@ const ImageInput = ({oldImage, fieldName, setValue}) => {
     const [err, setErr] = useState('');
     const fileInputRef = useRef(null);
 
-
-    // useEffect(() => {
-    //     setOldImg(oldImage);
-    // }, []);
-
     const showChangedImg = (e) => {
         const reader = new FileReader();
         setIsUploaded(true);
@@ -71,8 +66,8 @@ const ImageInput = ({oldImage, fieldName, setValue}) => {
                             className='btn text-white btn-success btn-outline rounded-none font-normal'>
                             {loading ? <Spinner color='white'/> : "Upload Image"}
                         </button>
-
-
+                        {
+                            !loading &&
                         <button onClick={(e) => {
                             e.preventDefault();
                             fileInputRef.current.value = '';
@@ -80,6 +75,7 @@ const ImageInput = ({oldImage, fieldName, setValue}) => {
                             setNewImg(undefined);
                             setNewImgData(undefined);
                         }} className='btn rounded-none btn-outline btn-error'><i className='bi bi-trash'></i></button>
+                        }
                     </div>
                 }
             </div>

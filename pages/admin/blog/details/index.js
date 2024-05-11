@@ -5,17 +5,14 @@ import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
 import { getDatabase } from "@/db/mongoConnection";
 import { Button, Input, useDisclosure } from "@nextui-org/react";
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const columns = [
     {
         name: "Title",
-        value: "title"
-    },
-    {
-        name: "Author",
-        value: "author.name"
+        value: "name"
     },
     {
         name: "Category",
@@ -35,12 +32,22 @@ function Index({blogs}) {
     
     const closeDeleteModal = async (onClose) => {
         setLoadingData(true);
-        
+        setErr('');
+        axios.delete(`/api/admin/blog/add-edit-blog?bgid=${targetCat.bgid}`)
+            .then((data) => {
+                setTableData(data.data);
+                onClose();
+            })
+            .catch(({response}) => {
+                setErr(response?.data?.message);
+            })
+            .finally(() => setLoadingData(false));
     }
     
     const actionOnEdit = (targetCat) => {
-        
+        router.push(`/admin/blog/details/edit/${targetCat.bgid}`);
     }
+
     const actionOnDelete = (targetCat) => {
         setTargetCat(targetCat);
         onDeleteOpen();
