@@ -25,7 +25,10 @@ const ContactForm = ({ services, calendlyLink }) => {
         setLoading(true);
         axios.post('/api/send-contact-message', formData)
             .then(() => { setSucess(true); })
-            .catch(err => setErr(err?.response?.data?.message))
+            .catch(err => {
+                setErr('Something wrong happend!');
+                console.log(err);
+            })
             .finally(() => setLoading(false));
     }
 
