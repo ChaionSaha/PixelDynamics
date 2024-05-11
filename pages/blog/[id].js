@@ -49,7 +49,7 @@ const Index = ({ blog }) => {
                         </div>
                     </div>
                     <div className="xl:w-[20%] lg:w-[30%] md:w-[50%] mx-auto">
-                        <div className="bg-[#e5e5e5] flex flex-col p-5 "> {/*lg:sticky lg:top-[5%] lg:right-0*/}
+                        <div className="bg-[#e5e5e5] flex flex-col p-5 lg:sticky lg:top-[5%] lg:right-0">
                             <div className="relative w-[65%] h-[20vh] self-center">
                                 <Image src={blog.author.img} alt={blog.author.name} fill className="object-cover"/>
                             </div>
