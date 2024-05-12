@@ -1,3 +1,4 @@
+import TermsDetailsForm from "@/components/admin/terms/TermsDetailsForm";
 import AdminPageTitle from "@/components/Shared/AdminPageTitle";
 import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
@@ -7,7 +8,10 @@ const Index = ({isEdit, termsPage}) => {
     return (
         <SharedLayout>
             <Title title={isEdit ? 'Edit Page' : 'Add page'}/>
-            <AdminPageTitle title={isEdit ? 'Edit Page' : 'Add page'}/>
+            <AdminPageTitle title={isEdit ? 'Edit Page' : 'Add page'} />
+            <div className="md:px-10 px-5 py-10">
+                <TermsDetailsForm page={termsPage} editState={isEdit}/>
+            </div>
         </SharedLayout>
     );
 }
