@@ -14,7 +14,7 @@ const TermsNavbar = ({children}) => {
 
     return (
         <div className="px-10 pb-10 lg:ps-16 pt-7">
-            <ul className="bg-[#e5e5e5] p-5 flex gap-x-10">
+            <ul className="bg-[#e5e5e5] p-5 flex flex-wrap gap-x-10 gap-y-5">
                 {
                     termsPages.map((p, i) =>
                         <li key={i}
