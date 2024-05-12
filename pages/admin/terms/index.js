@@ -4,36 +4,53 @@ import AdminSearch from "@/components/Shared/AdminSearch";
 import CustomTable from "@/components/Shared/CustomTable";
 import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
+import { getDatabase } from "@/db/mongoConnection";
 import { useDisclosure } from "@nextui-org/react";
+import axios from "axios";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const columns = [
     {
         name: "Page Name",
-        value: "name"
-    },
-    {
-        name: "Page Title",
-        value: "title"
+        value: "pageName"
     }
 ]
 
-const Index = () => {
+const Index = ({terms}) => {
     const [searchInput, setSearchInput] = useState('');
     const router = useRouter();
-    const [tableData, setTableData] = useState([]);
+    const [tableData, setTableData] = useState(terms);
     const { isOpen, onOpenChange, onOpen } = useDisclosure();
     const [targetPage, setTargetPage] = useState({});
     const [err, setErr] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const handleEditPage = () => { }
-    const handleDeletePage = () => { }
+    const handleEditPage = (targetPage) => {
+        router.push(`/admin/terms/edit/${targetPage.tpid}`);
+    }
+    const handleDeletePage = (targetPage) => {
+        setTargetPage(targetPage);
+        onOpen();
+    }
     
     const handleCloseModal = (onClose) => {
-        onClose();
+        axios.delete(`/api/admin/terms/add-edit-terms-page?tpid=${targetPage.tpid}`)
+            .then((data) => {
+                setTableData(data.data);
+                onClose();
+            })
+            .catch(err => setErr(err?.response?.data?.message))
+            .finally(()=>setLoading(false))
     }
+
+    useEffect(() => {
+        if (searchInput.trim() === '')
+            setTableData(terms);
+
+        else 
+            setTableData(terms.filter(term => term.pageName.toLowerCase().includes(searchInput.toLowerCase())))
+    },[searchInput, terms])
 
     return (
         <SharedLayout>
@@ -52,8 +69,8 @@ const Index = () => {
                 onOpenChange={onOpenChange}
                 isOpen={isOpen}
                 closeModal={handleCloseModal}
-                title={'Delete Team Member'}
-                name={targetPage?.name}
+                title={'Delete Page'}
+                name={targetPage?.pageName}
                 errorMessage={err}
                 setErrorMessage={setErr}
                 loading={loading}
@@ -63,3 +80,13 @@ const Index = () => {
 }
 
 export default Index;
+
+export const getServerSideProps = async (ctx) => {
+    const db = await getDatabase();
+    const terms = await db.collection('terms').find().project({ _id: 0 }).toArray();
+    return {
+        props:{
+            terms
+        }
+    }
+}

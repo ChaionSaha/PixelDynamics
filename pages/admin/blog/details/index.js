@@ -91,7 +91,7 @@ function Index({blogs}) {
                         Add Blog
                 </Button>
                 <DeleteCategoryModal isOpen={isDeleteOpen} onOpenChange={onDeleteOpenChange}
-                    closeModal={closeDeleteModal} title='Delete Category' setErrorMessage={setErr}
+                    closeModal={closeDeleteModal} title='Delete Blog' setErrorMessage={setErr}
                     errorMessage={err} loading={loadingData} name={targetCat.name}/>
             </div>
             <div className="px-10">

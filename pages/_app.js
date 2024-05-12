@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick.css";
 
 export default function App({Component, pageProps}) {
     const router = useRouter();
+    const getLayout = Component.getLayout ?? ((page) => page);
 
     return (
         <SessionProvider session={pageProps.session}>
@@ -17,7 +18,9 @@ export default function App({Component, pageProps}) {
                 <NextNProgress color="#666" options={{showSpinner: false}}/>
                 <Layout>
                     <AnimatePresence mode="wait" initial={false}>
-                        <Component {...pageProps} key={router.asPath}/>
+                        {
+                            getLayout(<Component {...pageProps} key={router.asPath}/>)
+                        }
                     </AnimatePresence>
                 </Layout>
             </NextUIProvider>
