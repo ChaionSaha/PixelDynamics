@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     if (req.method === 'POST')
     {
         const { isEdit, ...plan } = req.body;
-        if (plan.name.trim() === '' || plan.price.trim()==='' || plan.description.length === 0 || plan.offers.length===0)
+        if (plan.name.trim() === '' || plan.price.trim()==='' || plan.description.length === 0 || plan.offers.length===0 || (plan.discount && plan.discountAmount.trim() === ''))
             return res.status(400).send({ message: 'Invalid Input!' });
         const { spid } = plan;
     
