@@ -1,7 +1,19 @@
 import { PriceTagIcon } from "@/assets/CustomIcons/CustomIcon";
 import BookACallButton from "@/components/services/BookACallButton";
+import { setPlan } from "@/db/store";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import BuyNowButton from "./BuyNowButton";
 
-const PlanDetails = ({name, description, offers, price, discount, discountAmount}) => {
+const PlanDetails = ({ name, description, offers, price, discount, discountAmount, stripeApiId, packages, spid }) => {
+    const dispatch = useDispatch();
+    const router = useRouter();
+
+    const handleBuyNowButtonClick = () => {
+        dispatch(setPlan({ name, price, discount, discountAmount, stripeApiId, packages, spid }));
+        router.push('/payment');
+    }
+
     return (
         <div
             className="flex p-7 lg:px-12  justify-between flex-col bg-[#ebebeb] relative">
@@ -34,7 +46,10 @@ const PlanDetails = ({name, description, offers, price, discount, discountAmount
             </div>
 
 
-            <BookACallButton className="py-5 md:px-5 mt-16"/>
+            <div className="flex flex-col mt-16 gap-y-5">
+                <BuyNowButton className="py-3 md:px-5 " handleClick={handleBuyNowButtonClick} />
+                <BookACallButton className="py-3 md:px-5"/>
+            </div>
         </div>
     );
 };

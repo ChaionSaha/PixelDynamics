@@ -1,4 +1,4 @@
-import { AddressElement, CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
@@ -6,36 +6,33 @@ const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
 
-    const { handleSubmit } = useForm();
+    const { handleSubmit, register } = useForm();
     const handleFormSubmit = async(e) => {
-        const cardElement = elements?.getElement("card");
+        console.log(elements);
         try {
-            if (!stripe || !cardElement) return null;
+            // if (!stripe || !cardElement) return null;
 
             const { data } = await axios.post('/api/create-payment-intent', {
                 amount: 89
             })
             const clientSecret = data;
 
-            const result=await stripe?.confirmCardPayment(clientSecret, {
-                payment_method: {
-                    card: cardElement,
+            const result = await stripe.confirmPayment({
+                elements,
+                confirmParams: {
+                    return_url: 'http://localhost:3000/',
                 },
             })
-            console.log(result.paymentIntent);
+            console.log(result);
         } catch (error) {
             console.log(error);
         }
     }
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <div className="w-[50%] p-5">
-                <CardNumberElement className="p-3 border" />
-                <CardCvcElement className="p-3 border" />
-                <CardExpiryElement className="p-3 border" />
-                <AddressElement options={{
-                    mode:"shipping"
-                }}/>
+            {/* <input className="input input-bordered" type="text" placeholder="Name" {...register("name", {required: true})} />
+            <input className="input input-bordered" type="email" placeholder="email" {...register("email", {required: true})} /> */}
+            <div className="w-[40%] p-5">
                 {/* <CardElement className="p-3 border" options={{
                     style: {
                         base: {
@@ -43,6 +40,11 @@ const PaymentForm = () => {
                         }
                     }
                 }} /> */}
+                <PaymentElement className="flex flex-col py-10" options={{
+                    
+                }}>
+                </PaymentElement>
+                
             </div>
             <button type="submit" disabled={!stripe || !elements} className="btn ms-5">Submit</button>
         </form>
