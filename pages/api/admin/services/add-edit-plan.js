@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     
     if (req.method === 'POST')
     {
-        const { isEdit, ...plan } = req.body;
+        let { isEdit, ...plan } = req.body;
         if (plan.name.trim() === '' || plan.price.trim()==='' || plan.description.length === 0 || plan.offers.length===0 || (plan.discount && plan.discountAmount.trim() === ''))
             return res.status(400).send({ message: 'Invalid Input!' });
         const { spid } = plan;
@@ -28,6 +28,35 @@ export default async function handler(req, res) {
             existingService = await planCollection.findOne({ spid });
             if (!existingService)
                 return  res.status(400).send({ message: 'Data not found!' });
+        }
+
+        if (!plan.discount)
+            plan = { ...plan, discountAmount: 0 };
+        
+        let temp = [];
+        if (plan.packages && plan.packages.length !== 0)
+        {
+            
+            temp = plan.packages.map(p => {
+                let packageCost = 0;
+                if(plan.discount)
+                {
+                    if(p.discounted)
+                        packageCost = Math.ceil(((+plan.price - +plan.discountAmount) - ((+plan.price - +plan.discountAmount) * +p.offer / 100)) * +p.monthCount);
+                    else
+                        packageCost = Math.ceil((+plan.price - +plan.discountAmount) * +p.monthCount);
+                }
+                else {
+                    if(p.discounted)
+                        packageCost = Math.ceil((+plan.price - (+plan.price * +p.offer / 100)) * +p.monthCount);
+                    else
+                        packageCost = Math.ceil(+plan.price * +p.monthCount);
+                }
+
+                return { ...p, cost: packageCost };
+            })
+
+            plan.packages = [...temp];
         }
     
         if (isEdit)

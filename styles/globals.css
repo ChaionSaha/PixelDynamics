@@ -98,3 +98,8 @@
   height: 100%;
   width: 100%;
 }
+
+.react-tel-input .form-control:focus {
+  border: 1px solid black !important;
+  box-shadow: none !important;
+}
