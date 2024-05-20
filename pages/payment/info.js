@@ -30,7 +30,7 @@ const Index = () => {
     });
 
     useEffect(() => {
-        if (client)
+        if (client.selectedPlan)
             reset({...client});
         else
             reset({
@@ -40,7 +40,6 @@ const Index = () => {
 
     const handleInfoSubmit = (formData) => { 
         setErr("");
-        console.log(formData);
 
         if(!formData.selectedPlan) {
             setErr("Please select a subscription plan");

@@ -3,30 +3,49 @@ import usePlan from "@/components/hooks/usePlan";
 import ControlledClientInput from "@/components/Shared/ControlledClientInput";
 import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
-import { Button } from "@nextui-org/react";
+import { Button, Spinner } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+
+const stripe = require('stripe')(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const Index = () => {
     const plan = usePlan();
     const client = useClientDetails();
     const [err, setErr] = useState("");
+    const [loading, setLoading] = useState(false);
     const [selectedPack, setSelectedPack] = useState({});
     const { control, handleSubmit } = useForm();
+    
 
     useEffect(() => {
-        const pack = plan.packages.find(pack => pack.apiId === client.selectedPlan);
-        setSelectedPack(pack);
+        if (plan && plan.packages)
+        {    
+            const pack = plan.packages.find(pack => pack.apiId === client.selectedPlan);
+            setSelectedPack(pack);
+        }
     },[plan, client])
 
-    const handleInfoSubmit = (formData) => {
-        console.log(formData);
+    const handleInfoSubmit = async (formData) => {
+        setLoading(true);
+        setErr("");
+        stripe.tokens.create({
+            card: {
+                number: formData.cardNumber,
+                exp_month: formData.expMonth,
+                exp_year: formData.expYear,
+                cvc: formData.cvc
+            }
+        }).then((data) => console.log(data))
+            .catch((err) => setErr(err?.message))
+            .finally(() => setLoading(false));
+
+        // console.log(token)
     }
     
     return (
         <SharedLayout>
-            <Title title='Personal Information' />
-            
+            <Title title='Card Information' />
             <div className="md:pt-10 pt-5 lg:px-16 md:px-10 px-5">
                 <p className="text-4xl font-bold">Let's Make Payment</p>
                 <p className="text-base-300 text-2xl w-[50%] mt-3">
@@ -50,7 +69,12 @@ const Index = () => {
                             {
                                 err && <p className="text-error">{err}</p>
                             }
-                            <Button type="submit" radius="none" className="w-full  bg-black text-white">Pay</Button>
+                            <Button disabled={loading} type="submit" radius="none" className="w-full  bg-black text-white">
+                                {
+                                    loading ? <Spinner color='white'/>: "Pay"
+                                }
+                                
+                            </Button>
                         </div>
                     </div>
 

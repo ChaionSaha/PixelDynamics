@@ -7,7 +7,7 @@ const useClientDetails = () => {
     const router = useRouter();
 
     useEffect(() => {
-        if (!client?.selectedPlan) router.push('/payment/info');
+        if (!client?.selectedPlan) router.push('/services');
     },[client, router])
     
     return client;
