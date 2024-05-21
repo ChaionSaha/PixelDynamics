@@ -63,6 +63,7 @@ const Index = ({plans}) => {
             .finally(() => { setLoading(false) });
     }
 
+
     return (
         <SharedLayout>
             <Title title={'Subscriptions Plans'} />
