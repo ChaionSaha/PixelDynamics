@@ -4,6 +4,7 @@ import ControlledClientInput from "@/components/Shared/ControlledClientInput";
 import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
 import { Button, Spinner } from "@nextui-org/react";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -36,11 +37,25 @@ const Index = () => {
                 exp_year: formData.expYear,
                 cvc: formData.cvc
             }
-        }).then((data) => console.log(data))
-            .catch((err) => setErr(err?.message))
-            .finally(() => setLoading(false));
+        }).then(async(data) => {
+            const response = await axios.post('/api/subscribe', {
+                token: data.id,
+                email: client.email, // Assuming you collect email as well
+                planId: client.selectedPlan,
+                name: formData.cardHolderName,
+                plan, client
+            });
+            console.log(response)
 
-        // console.log(token)
+            if (response.status===200) {
+                // Handle successful subscription
+                console.log('Subscription successful:', response.data);
+            } else {
+                setErr(response.error);
+            }
+        })
+            .catch(({response}) => setErr(response?.data?.message))
+            .finally(() => setLoading(false));
     }
     
     return (
