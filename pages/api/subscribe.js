@@ -29,7 +29,6 @@ export default async function handler(req, res) {
             customer: subscription.customer
         });
 
-        console.log(clientSubscriptionDetaiils)
         await clientsCollection.insertOne({
             plan,
             client: {

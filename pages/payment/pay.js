@@ -25,7 +25,6 @@ const Index = () => {
     useEffect(() => {
         if (plan && plan.packages) {
             const pack = plan.packages.find(pack => pack.apiId === client.selectedPlan);
-            console.log(pack);
             setSelectedPack(pack);
         }
         else
@@ -50,11 +49,9 @@ const Index = () => {
                 name: formData.cardHolderName,
                 plan, client
             });
-            console.log(response)
 
             if (response.status===200) {
                 // Handle successful subscription
-                console.log('Subscription successful:', response.data);
                 dispatch(removeClient());
                 dispatch(removePlan());
             } else {
