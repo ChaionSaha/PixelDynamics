@@ -3,10 +3,12 @@ import usePlan from "@/components/hooks/usePlan";
 import ControlledClientInput from "@/components/Shared/ControlledClientInput";
 import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
+import { removeClient, removePlan } from "@/db/store";
 import { Button, Spinner } from "@nextui-org/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 const stripe = require('stripe')(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
@@ -17,14 +19,17 @@ const Index = () => {
     const [loading, setLoading] = useState(false);
     const [selectedPack, setSelectedPack] = useState({});
     const { control, handleSubmit } = useForm();
+    const dispatch = useDispatch();
     
 
     useEffect(() => {
-        if (plan && plan.packages)
-        {    
+        if (plan && plan.packages) {
             const pack = plan.packages.find(pack => pack.apiId === client.selectedPlan);
+            console.log(pack);
             setSelectedPack(pack);
         }
+        else
+            setSelectedPack(undefined);
     },[plan, client])
 
     const handleInfoSubmit = async (formData) => {
@@ -50,6 +55,8 @@ const Index = () => {
             if (response.status===200) {
                 // Handle successful subscription
                 console.log('Subscription successful:', response.data);
+                dispatch(removeClient());
+                dispatch(removePlan());
             } else {
                 setErr(response.error);
             }

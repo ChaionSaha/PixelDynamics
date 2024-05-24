@@ -28,6 +28,7 @@ export default async function handler(req, res) {
         const clientSubscriptionDetaiils = await stripe.subscriptions.list({
             customer: subscription.customer
         });
+
         console.log(clientSubscriptionDetaiils)
         await clientsCollection.insertOne({
             plan,
