@@ -20,10 +20,6 @@ const Index = ({ subscriptions, customerDetails, products }) => {
             setSelectedPlan(temp)
     }, [customerDetails]);
 
-    useEffect(() => {
-        console.log("Products", products );
-        console.log("Subscriptions", subscriptions );
-    }, [products, subscriptions]);
 
     return (
         <SharedLayout>
@@ -171,6 +167,5 @@ const upperCase = (str) => {
 const timeDuration = (periodEnd) => {
     let start = new Date();
     let end = new Date(periodEnd * 1000);
-    console.log(start, end)
     return (end - start) / (1000 * 60 * 60 * 24);
 }
