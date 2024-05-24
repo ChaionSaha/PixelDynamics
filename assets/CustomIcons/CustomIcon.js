@@ -171,7 +171,7 @@ export function PriceTagIcon({ className }) {
 
 export function CheckedIcon({ className }) {
     return (<svg className={className} viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="0.75" y="0.75" width="20.5" height="20.5" fill="white" stroke="black" stroke-width="1.5"/>
+        <rect x="0.75" y="0.75" width="20.5" height="20.5" fill="white" stroke="black" strokeWidth="1.5"/>
         <g clipPath="url(#clip0_1749_272)">
             <path d="M15.875 6.68968C15.5703 6.74124 15.7391 6.58421 12.3992 9.91937L9.3125 13.0037L7.89922 11.5951C6.59141 10.2897 6.47656 10.1819 6.34063 10.1233C5.91172 9.93577 5.40781 10.0834 5.15234 10.4701C5.04453 10.6295 5 10.7866 5 10.9998C5 11.2061 5.04453 11.3631 5.14062 11.5131C5.17813 11.5717 6.00781 12.4201 6.98516 13.3951C8.92578 15.3334 8.83906 15.2584 9.17188 15.31C9.36875 15.3428 9.55156 15.3123 9.75547 15.2186C9.90078 15.1506 10.1047 14.9514 13.3719 11.6842C16.6977 8.35843 16.8359 8.21546 16.9109 8.05843C16.9836 7.90374 16.9883 7.88031 16.9883 7.63656C16.9883 7.39749 16.9836 7.36702 16.9156 7.2264C16.7305 6.83499 16.3086 6.61702 15.875 6.68968Z" fill="black"/>
         </g>
@@ -187,7 +187,7 @@ export function CheckedIcon({ className }) {
 export function UnCheckedIcon({ className }) {
     return (
         <svg className={className} viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0.75" y="0.75" width="20.5" height="20.5" fill="#EBEBEB" stroke="#7C7C7C" stroke-width="1.5"/>
+            <rect x="0.75" y="0.75" width="20.5" height="20.5" fill="#EBEBEB" stroke="#7C7C7C" strokeWidth="1.5"/>
         </svg>
 
     )
