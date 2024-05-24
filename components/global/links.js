@@ -102,7 +102,12 @@ export const adminPagesLinks = [
         icon: 'bi bi-info-circle',
     },
     {
-        name: 'Accounts',
+        name: 'Clients',
+        link: '/admin/clients',
+        icon: 'bi bi-people',
+    },
+    {
+        name: 'Admin Accounts',
         link: '/admin/accounts',
         icon: 'bi bi-person-gear',
     },
