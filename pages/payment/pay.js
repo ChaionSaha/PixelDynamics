@@ -1,16 +1,20 @@
+import { CheckedCircleIcon } from "@/assets/CustomIcons/CustomIcon";
 import useClientDetails from "@/components/hooks/useClientDetails";
 import usePlan from "@/components/hooks/usePlan";
 import ControlledClientInput from "@/components/Shared/ControlledClientInput";
 import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
-import { removeClient, removePlan } from "@/db/store";
-import { Button, Spinner } from "@nextui-org/react";
+import { removeClient, removePlan, setPaidFalse, setPaidTrue } from "@/db/store";
+import { Button, Modal, ModalBody, ModalContent, Spinner, useDisclosure } from "@nextui-org/react";
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { useTimer } from "react-timer-hook";
 
 const stripe = require('stripe')(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+
 
 const Index = () => {
     const plan = usePlan();
@@ -20,17 +24,32 @@ const Index = () => {
     const [selectedPack, setSelectedPack] = useState({});
     const { control, handleSubmit } = useForm();
     const dispatch = useDispatch();
-    
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const router = useRouter();
+    const time = new Date();
+    time.setSeconds(time.getSeconds() + 3);
+
+    const {
+        seconds,
+        start
+    } = useTimer({
+        expiryTimestamp: time, onExpire: () => {
+            onClose();
+            router.push('/');
+        } , autoStart: false });
 
     useEffect(() => {
         if (plan && plan.packages) {
             const pack = plan.packages.find(pack => pack.apiId === client.selectedPlan);
-            console.log(pack);
             setSelectedPack(pack);
-        }
-        else
+        } else {
             setSelectedPack(undefined);
-    },[plan, client])
+        }
+    }, [plan, client]);
+
+    useEffect(() => {
+        dispatch(setPaidFalse());
+    },[])
 
     const handleInfoSubmit = async (formData) => {
         setLoading(true);
@@ -42,7 +61,7 @@ const Index = () => {
                 exp_year: formData.expYear,
                 cvc: formData.cvc
             }
-        }).then(async(data) => {
+        }).then(async (data) => {
             const response = await axios.post('/api/subscribe', {
                 token: data.id,
                 email: client.email, // Assuming you collect email as well
@@ -50,21 +69,22 @@ const Index = () => {
                 name: formData.cardHolderName,
                 plan, client
             });
-            console.log(response)
 
-            if (response.status===200) {
+            if (response.status === 200) {
                 // Handle successful subscription
-                console.log('Subscription successful:', response.data);
                 dispatch(removeClient());
                 dispatch(removePlan());
+                dispatch(setPaidTrue());
+                onOpen();
+                start();
             } else {
                 setErr(response.error);
             }
         })
-            .catch(({response}) => setErr(response?.data?.message))
+            .catch((err) => setErr(err?.message))
             .finally(() => setLoading(false));
     }
-    
+
     return (
         <SharedLayout>
             <Title title='Card Information' />
@@ -77,15 +97,15 @@ const Index = () => {
                 <form className="grid grid-cols-2 mt-20 gap-x-40" onSubmit={handleSubmit(handleInfoSubmit)}>
                     <div className="flex flex-col gap-5 gap-y-7 ">
                         <div>
-                            <ControlledClientInput control={control} name={"cardHolderName"} label={"Cardholder's Name"} labelPlacement={"outside"}/>
+                            <ControlledClientInput control={control} name={"cardHolderName"} label={"Cardholder's Name"} labelPlacement={"outside"} />
                         </div>
                         <div>
-                            <ControlledClientInput control={control} name={"cardNumber"} label={"Card Number"} labelPlacement={"outside"}/>
+                            <ControlledClientInput control={control} name={"cardNumber"} label={"Card Number"} labelPlacement={"outside"} />
                         </div>
                         <div className="grid grid-cols-3 gap-7">
-                            <ControlledClientInput control={control} name={"expMonth"} label={"Expiry Month"} labelPlacement={"outside"}/>
-                            <ControlledClientInput control={control} name={"expYear"} label={"Expiry Year"} labelPlacement={"outside"}/>
-                            <ControlledClientInput control={control} name={"cvc"} label={"CVC"} labelPlacement={"outside"}/>
+                            <ControlledClientInput control={control} name={"expMonth"} label={"Expiry Month"} labelPlacement={"outside"} />
+                            <ControlledClientInput control={control} name={"expYear"} label={"Expiry Year"} labelPlacement={"outside"} />
+                            <ControlledClientInput control={control} name={"cvc"} label={"CVC"} labelPlacement={"outside"} />
                         </div>
                         <div className="flex flex-col mt-14 text-lg gap-y-1">
                             {
@@ -93,16 +113,15 @@ const Index = () => {
                             }
                             <Button disabled={loading} type="submit" radius="none" className="w-full  bg-black text-white">
                                 {
-                                    loading ? <Spinner color='white'/>: "Pay"
+                                    loading ? <Spinner color='white' /> : "Pay"
                                 }
-                                
                             </Button>
                         </div>
                     </div>
 
                     <div className="flex flex-col bg-[#ebebeb] h-fit p-10 py-16 w-[70%]">
                         <p>You're Paying</p>
-                        <p className="text-5xl font-bold">${selectedPack ? selectedPack.cost : plan.discount ? +plan.price - +plan.discountAmount : +plan.price }</p>
+                        <p className="text-5xl font-bold">${selectedPack ? selectedPack.cost : plan.discount ? +plan.price - +plan.discountAmount : +plan.price}</p>
 
                         <div className="mt-16 flex flex-col gap-y-3 text-xl">
                             <div className="flex w-full">
@@ -120,7 +139,7 @@ const Index = () => {
                                         <p>{selectedPack.name} Subscription</p>
                                     </div>
                                     <div className="w-[20%] font-bold flex justify-end">
-                                        <p>${plan.discount ? (+plan.price - +plan.discountAmount)*selectedPack.monthCount : +plan.price*selectedPack.monthCount}</p>
+                                        <p>${plan.discount ? (+plan.price - +plan.discountAmount) * selectedPack.monthCount : +plan.price * selectedPack.monthCount}</p>
                                     </div>
                                 </div>
                             }
@@ -132,7 +151,7 @@ const Index = () => {
                                     </div>
                                     <div className="w-[20%] font-bold flex justify-end">
                                         <p>
-                                                ${plan.discount ?
+                                            ${plan.discount ?
                                                 ((+plan.price - +plan.discountAmount) * +selectedPack.offer / 100) * selectedPack.monthCount
                                                 :
                                                 (+plan.price * +selectedPack.offer / 100) * selectedPack.monthCount
@@ -149,7 +168,7 @@ const Index = () => {
                                     </div>
                                     <div className="w-[20%] font-bold flex justify-end">
                                         <p>
-                                            ${selectedPack ? selectedPack.cost : plan.discount ? +plan.price - +plan.discountAmount : +plan.price }
+                                            ${selectedPack ? selectedPack.cost : plan.discount ? +plan.price - +plan.discountAmount : +plan.price}
                                         </p>
                                     </div>
                                 </div>
@@ -157,9 +176,38 @@ const Index = () => {
                         </div>
                     </div>
                 </form>
+                <SuccessModal isOpen={isOpen} onClose={onClose} seconds={seconds} />
             </div>
         </SharedLayout>
     );
 }
 
 export default Index;
+
+
+const SuccessModal = ({ isOpen, onClose, seconds }) => {
+
+
+    return (
+        <Modal
+            size={"lg"}
+            isOpen={isOpen}
+            onClose={onClose}
+            isDismissable={false}
+            isKeyboardDismissDisabled={true}
+            hideCloseButton={true}
+        >
+            <ModalContent className="rounded-none">
+                {(onClose) => (
+                    <>
+                        <ModalBody className="p-20 flex flex-col items-center text-center">
+                            <CheckedCircleIcon className="h-24 w-24" />
+                            <p className="text-2xl font-bold mt-5">Congratulations!</p>
+                            <p className="text-4xl font-bold">Payment Successful</p>
+                            <p className="mt-10 text-xl">Redirecting to Homepage in <span className="font-bold">{seconds} sec</span></p>
+                        </ModalBody>
+                    </>
+                )}
+            </ModalContent>
+        </Modal>)
+}

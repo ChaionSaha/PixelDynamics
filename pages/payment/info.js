@@ -1,3 +1,4 @@
+import { CheckedIcon, UnCheckedIcon } from "@/assets/CustomIcons/CustomIcon";
 import usePlan from "@/components/hooks/usePlan";
 import ControlledClientInput from "@/components/Shared/ControlledClientInput";
 import ControlledPhoneInput from "@/components/Shared/ControlledPhoneInput";
@@ -101,7 +102,11 @@ const Index = () => {
                                 
                             >
                                 <CustomRadio value={plan.stripeApiId}>
-                                    <div className="flex justify-between">
+                                    <div className="flex items-center gap-x-5">
+                                        {
+                                            value === plan.stripeApiId ? <CheckedIcon className='w-5 h-5'/> : <UnCheckedIcon className='w-5 h-5'/>
+                                        }
+                                        
                                         <div className="flex flex-col">
                                             <p className="text-xl font-bold">Monthly</p>
                                             <p className="text-base-300">${plan.discount ? +plan.price - plan.discountAmount : +plan.price} / per month</p>
@@ -112,11 +117,16 @@ const Index = () => {
                                     plan.packages &&  plan.packages.map((p, i) => (
                                         <CustomRadio key={p.apiId} value={p.apiId}>
                                             <div className="flex justify-between">
-                                                <div className="flex flex-col">
-                                                    <p className="text-xl font-bold">{p.name}</p>
-                                                    <p className="text-base-300">$
-                                                        {p.cost} / per {p.monthCount} months
-                                                    </p>
+                                                <div className="flex items-center gap-x-5">
+                                                    {
+                                                        value === p.apiId ? <CheckedIcon className='w-5 h-5'/> : <UnCheckedIcon className='w-5 h-5'/>
+                                                    }
+                                                    <div className="flex flex-col">
+                                                        <p className="text-xl font-bold">{p.name}</p>
+                                                        <p className="text-base-300">$
+                                                            {p.cost} / per {p.monthCount} months
+                                                        </p>
+                                                    </div>
                                                 </div>
                                                 <div className="self-center font-bold">
                                                     {
@@ -157,7 +167,7 @@ export const CustomRadio = (props) => {
                 ),
                 labelWrapper: "flex-grow",
                 control: "bg-black group-data-[selected=true]:border-black",
-                wrapper: "group-data-[selected=true]:border-black"
+                wrapper: "group-data-[selected=true]:border-black hidden"
             }}
         >
             {children}

@@ -27,7 +27,6 @@ const ContactForm = ({ services, calendlyLink }) => {
             .then(() => { setSucess(true); })
             .catch(err => {
                 setErr('Something wrong happend!');
-                console.log(err);
             })
             .finally(() => setLoading(false));
     }
