@@ -4,7 +4,8 @@ import ControlledClientInput from "@/components/Shared/ControlledClientInput";
 import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
 import { removeClient, removePlan } from "@/db/store";
-import { Button, Spinner } from "@nextui-org/react";
+import { CheckCircleIcon } from "@heroicons/react/24/outline";
+import { Button, Modal, ModalBody, ModalContent, Spinner, useDisclosure } from "@nextui-org/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -20,6 +21,7 @@ const Index = () => {
     const [selectedPack, setSelectedPack] = useState({});
     const { control, handleSubmit } = useForm();
     const dispatch = useDispatch();
+    const { isOpen, onOpen, onClose } = useDisclosure();
     
 
     useEffect(() => {
@@ -154,9 +156,33 @@ const Index = () => {
                         </div>
                     </div>
                 </form>
+                <SuccessModal isOpen={isOpen} onClose={onClose} />
+                <button className="btn" onClick={()=>onOpen()}>Open Modal</button>
             </div>
         </SharedLayout>
     );
 }
 
 export default Index;
+
+const SuccessModal = ({isOpen, onClose}) => {
+    return (
+        <Modal 
+            size={"lg"} 
+            isOpen={isOpen} 
+            onClose={onClose} 
+            isDismissable={false}
+            isKeyboardDismissDisabled={true}
+            hideCloseButton={true}
+        >
+            <ModalContent className="rounded-none">
+                {(onClose) => (
+                    <>
+                        <ModalBody className="p-20 flex flex-col items-center">
+                            <CheckCircleIcon className="h-36 w-36"/>
+                        </ModalBody>
+                    </>
+                )}
+            </ModalContent>
+        </Modal>)
+}

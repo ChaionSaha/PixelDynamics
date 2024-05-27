@@ -3597,6 +3597,7 @@ __metadata:
     react-quill: "npm:^2.0.0"
     react-redux: "npm:^9.1.2"
     react-slick: "npm:^0.30.2"
+    react-timer-hook: "npm:^3.0.7"
     react-youtube: "npm:^10.1.0"
     sharp: "npm:^0.33.3"
     slick-carousel: "npm:^1.8.1"
@@ -6834,6 +6835,15 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
   checksum: 10c0/33d38a6d96cf584842695b50c341980944ece23a42155bf0bd1958f02396adb185c7720b88678dc677817fe111783059c0ebcdf7761644006892583b10e258ee
+  languageName: node
+  linkType: hard
+
+"react-timer-hook@npm:^3.0.7":
+  version: 3.0.7
+  resolution: "react-timer-hook@npm:3.0.7"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 10c0/76a6419e8471be18023b907cb65c894566501305002186e9fa5ec42614ef21f0310f8ea0bed88b61efb75fc9bdc0430dcb92dc8f9a0a3c3a1956b6c27f6c8e2d
   languageName: node
   linkType: hard
 
