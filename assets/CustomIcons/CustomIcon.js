@@ -193,7 +193,7 @@ export function UnCheckedIcon({ className }) {
     )
 }
 
-export function CheckedCircle({ className }) {
+export function CheckedCircleIcon({ className }) {
     return (
         <svg className={className} viewBox="0 0 115 115" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="57.5" cy="57.5" r="57.5" fill="#171717"/>

@@ -5,10 +5,12 @@ import { useSelector } from "react-redux";
 const useClientDetails = () => {
     const client = useSelector(state => state.client);
     const router = useRouter();
+    const isPaid = useSelector(state => state.isPaid);
+    
 
     useEffect(() => {
-        if (!client?.selectedPlan) router.push('/services');
-    },[client, router])
+        if (!client?.selectedPlan && !isPaid) router.push('/services');
+    },[client, router, isPaid])
     
     return client;
 }

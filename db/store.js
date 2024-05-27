@@ -2,7 +2,8 @@ const { createSlice, configureStore } = require("@reduxjs/toolkit")
 
 const initialState = {
     plan: {},
-    client:{},
+    client: {},
+    isPaid: false
 }
 
 const paymentSlice = createSlice({
@@ -20,6 +21,12 @@ const paymentSlice = createSlice({
         },
         removeClient: (state) => {
             state.client = {};
+        },
+        setPaidTrue: (state) => {
+            state.isPaid = true;
+        },
+        setPaidFalse: (state) => {
+            state.isPaid = false;
         }
     }
 })
@@ -29,4 +36,4 @@ const store = configureStore({
 })
 
 export default store;
-export const { setPlan, setClient, removePlan, removeClient } = paymentSlice.actions;
+export const { setPlan, setClient, removePlan, removeClient, setPaidFalse, setPaidTrue } = paymentSlice.actions;

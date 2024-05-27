@@ -8,6 +8,7 @@ import { getDatabase } from '@/db/mongoConnection';
 import Image from 'next/image';
 
 const Services = ({ services = [], subscriptions = [] }) => {
+
     return (
         <SharedLayout>
             <Title title='Services' />
