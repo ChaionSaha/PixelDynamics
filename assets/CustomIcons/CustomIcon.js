@@ -201,3 +201,11 @@ export function CheckedCircleIcon({ className }) {
         </svg>
     )
 }
+
+export function ChevronDownIcon({ className }) {
+    return (
+        <svg className={className} viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.5 1L5 5L9.5 1" stroke="#CCCCCC"/>
+        </svg>
+    )
+}
