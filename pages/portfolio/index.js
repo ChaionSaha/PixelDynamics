@@ -35,9 +35,9 @@ const Portfolio = ({ portfolios = [], categories = [], subCategories = [] }) => 
                             setSubCats(subCategories.filter((sc) => sc.mainCatValue === e.target.value));
                         }}
                         value={selectedMainCat}
-                        className="select select-sm  w-[50%] focus:outline-0 rounded-none bg-[#858991] border-[#858991] focus:border-[#858991] text-white"
+                        className="select select-sm w-[50%] focus:outline-0 rounded-none bg-[#858991] border-[#858991] focus:border-[#858991] text-white"
                     >
-                        <option className="rounded-none" value="" >
+                        <option className="rounded-none bg-white" value="" >
                             All
                         </option>
                         {categories.map((c, i) => (
@@ -46,6 +46,7 @@ const Portfolio = ({ portfolios = [], categories = [], subCategories = [] }) => 
                             </option>
                         ))}
                     </select>
+
                     {selectedMainCat !== "" && (
                         <select
                             onChange={(e) => setSelectedSubCat(e.target.value)}

@@ -35,7 +35,7 @@ const Services = ({ services = [], subscriptions = [] }) => {
 					Let's Talk Numbers
                 </p>
                 <div className='lg:pe-10 mt-7'>
-                    <div className='flex flex-col justify-between px-10 border-2 border-black  lg:px-14 py-7 md:flex-row gap-y-10'>
+                    <div className='flex flex-col justify-between px-8 py-6 border-2 border-black  md:flex-row gap-y-10'>
                         <div className='flex flex-col '>
                             <p className='text-2xl font-bold lg:text-3xl'>Pay by Project</p>
                             <p className='text-base font-medium lg:text-xl'>
@@ -64,7 +64,7 @@ const Services = ({ services = [], subscriptions = [] }) => {
 
                 {/* Doesnot match Section */}
                 <div className='mt-20 lg:pe-10'>
-                    <div className='  px-10 lg:px-14 py-7 bg-[#ebebeb] flex md:flex-row flex-col gap-y-10 justify-between '>
+                    <div className='ps-8 pe-16 py-6 bg-[#ebebeb] flex md:flex-row flex-col gap-y-10 justify-between '>
                         <div className='flex flex-col '>
                             <p className='text-base font-medium lg:text-xl'>
 								Doesn't Match with your demand?

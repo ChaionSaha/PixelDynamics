@@ -1,3 +1,4 @@
+import { SearchIcon } from "@/assets/CustomIcons/CustomIcon";
 import { Input, Radio, RadioGroup } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 
@@ -21,7 +22,7 @@ const CategoryHeader = ({ categories, blogs, setBlogs }) => {
 
     return (
         <div className="bg-[#ebebeb] flex flex-col lg:flex-row">
-            <div className="lg:px-10 flex flex-col md:flex-row gap-x-5 text-xl p-4 lg:w-[70%]">
+            <div className="lg:px-10 flex flex-col md:flex-row gap-x-3 text-xl p-4 lg:w-[80%]">
                 <p>Category:</p>
                 <RadioGroup
                     value={selected}
@@ -43,18 +44,19 @@ const CategoryHeader = ({ categories, blogs, setBlogs }) => {
                 </RadioGroup>
                 
             </div>
-            <div className="lg:w-[30%] w-full bg-black flex">
+            <div className="lg:w-[20%] w-full bg-black flex">
                 <Input
                     type="text"
                     placeholder="Search"
                     startContent={
-                        <i className='bi bi-search'></i>
+                        <SearchIcon className='w-5 h-5'/>
                     }
                     variant='bordered'
                     size="lg"
-                    className="text-white self-center"
+                    className="text-white self-center "
                     classNames={{
                         inputWrapper: 'rounded-none border-0',
+                        base: 'text-white'
                     }}
                     onValueChange={setSearchInput}
                 />

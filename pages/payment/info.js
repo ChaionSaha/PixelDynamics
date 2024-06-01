@@ -61,14 +61,14 @@ const Index = () => {
             <Title title='Personal Information' />
             
             <div className="md:pt-10 pt-5 lg:px-16 md:px-10 px-5">
-                <p className="text-4xl font-bold">Information</p>
-                <p className="text-base-300 text-2xl w-[50%] mt-3">
-                To start your subscription, input your personal information & select your subscription type to make payment.
+                <p className="lg:text-4xl text-2xl font-bold px-12 lg:px-0">Information</p>
+                <p className="text-base-300 lg:text-2xl text-lg lg:w-[50%] mt-3">
+                    To start your subscription, input your personal information & select your subscription type to make payment.
                 </p>
 
-                <form className="grid grid-cols-2 mt-20 gap-x-40" onSubmit={handleSubmit(handleInfoSubmit)}>
+                <form className="grid lg:grid-cols-2 lg:mt-20 mt-5 gap-x-40 gap-y-10" onSubmit={handleSubmit(handleInfoSubmit)}>
                     <div className="flex flex-col gap-5 gap-y-7 mt-10">
-                        <div className="grid grid-cols-2 gap-5">
+                        <div className="grid lg:grid-cols-2 gap-5">
                             <ControlledClientInput control={control} name={"firstName"} label={"First Name"} labelPlacement={"outside"}/>
                             <ControlledClientInput control={control} name={"lastName"} label={"Last Name"} labelPlacement={"outside"}/>
                         </div>
@@ -81,11 +81,11 @@ const Index = () => {
                         <div className="col-span-2">
                             <ControlledPhoneInput control={control} name={"whatsAppNumber"} label={"WhatApp Number"} rightSideLabel={"Optional"}/>
                         </div>
-                        <div className="flex flex-col mt-14 text-lg gap-y-1">
+                        <div className="hidden lg:flex flex-col mt-14 text-lg gap-y-1">
                             {
                                 err && <p className="text-error">{err}</p>
                             }
-                            <Button type="submit" radius="none" className="w-full  bg-black text-white">Next</Button>
+                            <Button type="submit" radius="none" className="w-full text-lg hover:bg-white border border-black font-bold py-6 hover:text-black bg-black text-white">Next</Button>
                         </div>
                     </div>
 
@@ -142,6 +142,12 @@ const Index = () => {
                             
                         } />
                         
+                    </div>
+                    <div className="flex flex-col lg:hidden text-lg gap-y-1 mb-10">
+                        {
+                            err && <p className="text-error">{err}</p>
+                        }
+                        <Button type="submit" radius="none" className="w-full text-lg hover:bg-white border border-black font-bold py-6 hover:text-black bg-black text-white">Next</Button>
                     </div>
                 </form>
                 
