@@ -8,27 +8,29 @@ const Index = ({page}) => {
     return (
         <SharedLayout>
             <Title title={page.pageName} />
-            {
-                page.description.map((pd, i) => <div key={i}>
-                    {
-                        pd.key === 'text' &&
-                                            <div dangerouslySetInnerHTML={{__html: pd.text}} className='quill-css mt-5'></div>
-                    }
-                    {
-                        pd.key === 'img' &&
+            <div className="mt-14">
+                {
+                    page.description.map((pd, i) => <div key={i}>
+                        {
+                            pd.key === 'text' &&
+                        <div dangerouslySetInnerHTML={{__html: pd.text}} className='quill-css mt-5'></div>
+                        }
+                        {
+                            pd.key === 'img' &&
                                             <img src={pd.img}
                                                 alt={`${page.pageName}-${i}`} className='w-full h-fit mt-5'/>
-
-                    }
-                    {
-                        pd.key === 'url' &&
-                                            <>
-                                                <YouTube videoId={pd.url.toString().split('=')[1]}
-                                                    className='aspect-video youtube-video w-full h-full object-cover my-5 lg:mb-0'/>
-                                            </>
-                    }
-                </div>)
-            }
+                                            
+                        }
+                        {
+                            pd.key === 'url' &&
+                        <>
+                            <YouTube videoId={pd.url.toString().split('=')[1]}
+                                className='aspect-video youtube-video w-full h-full object-cover my-5 lg:mb-0'/>
+                        </>
+                        }
+                    </div>)
+                }
+            </div>
         </SharedLayout>
     );
 }

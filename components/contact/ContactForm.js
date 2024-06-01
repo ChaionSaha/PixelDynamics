@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from "@/assets/CustomIcons/CustomIcon";
 import Title from "@/components/Shared/title";
 import { Button, Input, Select, SelectItem, Spinner, Textarea } from "@nextui-org/react";
 import axios from "axios";
@@ -101,16 +102,16 @@ const ContactForm = ({ services, calendlyLink }) => {
                                 radius={'none'}
                                 value={[value]}
                                 onChange={onChange}
+                                selectorIcon={<ChevronDownIcon className='w-10 h-10'/>}
                                 classNames={{
-
                                     trigger: 'border-base-200 offset-0 border',
-                                    value: 'text-black'
-
+                                    value: 'text-black',
+                                    selectorIcon: 'w-5 h-4',
+                                    popoverContent: 'rounded-none'
                                 }}
                             >
-
                                 {services.map((s, i) => (
-                                    <SelectItem key={s.title} value={s.value}>
+                                    <SelectItem key={s.title} value={s.value} className="hover:rounded-none">
                                         {s.title}
                                     </SelectItem>
                                 ))}
@@ -142,7 +143,7 @@ const ContactForm = ({ services, calendlyLink }) => {
                             err &&
                             <p className="text-error mb-2">{err}</p>
                         }
-                        <Button disabled={loading || success} radius={'none'} variant='bordered' className={`w-full ${success ? 'bg-white font-bold' : 'bg-black'} hover:bg-black py-7 border ${success ? 'text-success':'text-white'} text-xl`} 
+                        <Button disabled={loading || success} radius={'none'} variant='bordered' className={`w-full ${success ? 'bg-white font-bold' : 'bg-black'} hover:bg-white hover:border-black hover:text-black py-7 border ${success ? 'text-success':'text-white'} text-xl`} 
                             type='submit'>
                             {loading ? <Spinner color='white'/> : success ? 'Sent!' :  'Send'}
                         </Button>

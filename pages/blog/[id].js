@@ -1,3 +1,4 @@
+import { ChevronLeftIcon } from "@/assets/CustomIcons/CustomIcon";
 import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
 import { getDatabase } from "@/db/mongoConnection";
@@ -12,10 +13,12 @@ const Index = ({ blog }) => {
         <SharedLayout>
             <Title title={`${blog.name} - Blog`}/>
             <div>
-                <div className="flex lg:text-3xl text-2xl items-start gap-x-5 lg:ps-10 ps-16 lg:px-10 px-2 py-7 font-bold">
+                <div className="flex lg:text-3xl text-2xl items-center gap-x-5 lg:ps-10 ps-16 lg:px-10 px-2 py-7 font-bold">
                     <button onClick={() => {
                         router.push('/blog');
-                    }}><i className='bi bi-chevron-left text-2xl'></i></button>
+                    }}>
+                        <ChevronLeftIcon className='w-5 h-5'/>
+                    </button>
                     <p>{blog.name}</p>
                 </div>
                 <div className="flex flex-col gap-x-20 lg:flex-row lg:ps-10 lg:px-10 px-5 py-7 relative">
@@ -49,7 +52,7 @@ const Index = ({ blog }) => {
                         </div>
                     </div>
                     <div className="xl:w-[20%] lg:w-[30%] md:w-[50%] mx-auto">
-                        <div className="bg-[#e5e5e5] flex flex-col p-5 lg:sticky lg:top-[5%] lg:right-0">
+                        <div className="bg-[#e5e5e5] flex flex-col p-5 pt-10 lg:sticky lg:top-[5%] lg:right-0">
                             <div className="relative w-[65%] h-[20vh] self-center">
                                 <Image src={blog.author.img} alt={blog.author.name} fill className="object-cover"/>
                             </div>

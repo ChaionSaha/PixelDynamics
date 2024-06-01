@@ -18,7 +18,7 @@ const BlogCard = ({ blog, blogCategories }) => {
     },[blogCategories, blog.category])
 
     return (
-        <div className="border border-secondary hover:border-black duration-300 flex flex-col group">
+        <div className="border border-[rgba(0,0,0,0.2)] hover:border-black duration-300 flex flex-col group">
             <div className="relative h-[25vh] overflow-hidden">
                 <Image src={blog.img} fill alt={blog.name} className="object-cover group-hover:scale-110 duration-500"/>
             </div>

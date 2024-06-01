@@ -204,8 +204,36 @@ export function CheckedCircleIcon({ className }) {
 
 export function ChevronDownIcon({ className }) {
     return (
-        <svg className={className} viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0.5 1L5 5L9.5 1" stroke="#CCCCCC"/>
+        <svg className={className} viewBox="0 0 23 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.1062 1L11.5073 10L21.9085 1" stroke="black" stroke-width="2"/>
         </svg>
+
+    )
+}
+
+export function ChevronLeftIcon({ className }) {
+    return (
+        <svg className={className} viewBox="0 0 15 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 22L3 12L13 2" stroke="black" stroke-width="3"/>
+        </svg>
+
+
+    )
+}
+
+export function ChevronRightIcon({ className }) {
+    return (
+        <svg className={className} viewBox="0 0 15 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 2L12 12L2 22" stroke="black" stroke-width="3"/>
+        </svg>
+
+    )
+}
+
+export function SearchIcon({ className }) {
+    return (<svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" fill="#FCFCFC"/>
+        <path d="M21.3001 22C21.1201 22 20.9401 21.93 20.8101 21.8L18.9501 19.94C18.6801 19.67 18.6801 19.23 18.9501 18.95C19.2201 18.68 19.6601 18.68 19.9401 18.95L21.8001 20.81C22.0701 21.08 22.0701 21.52 21.8001 21.8C21.6601 21.93 21.4801 22 21.3001 22Z" fill="#FCFCFC"/>
+    </svg>
     )
 }

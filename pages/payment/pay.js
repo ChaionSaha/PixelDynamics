@@ -89,12 +89,12 @@ const Index = () => {
         <SharedLayout>
             <Title title='Card Information' />
             <div className="md:pt-10 pt-5 lg:px-16 md:px-10 px-5">
-                <p className="text-4xl font-bold">Let's Make Payment</p>
-                <p className="text-base-300 text-2xl w-[50%] mt-3">
+                <p className="lg:text-4xl text-2xl px-12 lg:px-0 font-bold">Let's Make Payment</p>
+                <p className="text-base-300 text-lg lg:text-2xl lg:w-[50%] mt-3">
                     To start your subscription, input your card details to make payment. 
                     You will be redirected to Home Page. 
                 </p>
-                <form className="grid grid-cols-2 mt-20 gap-x-40" onSubmit={handleSubmit(handleInfoSubmit)}>
+                <form className="grid lg:grid-cols-2 lg:mt-20 mt-10 gap-x-40 gap-y-10" onSubmit={handleSubmit(handleInfoSubmit)}>
                     <div className="flex flex-col gap-5 gap-y-7 ">
                         <div>
                             <ControlledClientInput control={control} name={"cardHolderName"} label={"Cardholder's Name"} labelPlacement={"outside"} />
@@ -102,16 +102,16 @@ const Index = () => {
                         <div>
                             <ControlledClientInput control={control} name={"cardNumber"} label={"Card Number"} labelPlacement={"outside"} />
                         </div>
-                        <div className="grid grid-cols-3 gap-7">
+                        <div className="grid lg:grid-cols-3 gap-7">
                             <ControlledClientInput control={control} name={"expMonth"} label={"Expiry Month"} labelPlacement={"outside"} />
                             <ControlledClientInput control={control} name={"expYear"} label={"Expiry Year"} labelPlacement={"outside"} />
                             <ControlledClientInput control={control} name={"cvc"} label={"CVC"} labelPlacement={"outside"} />
                         </div>
-                        <div className="flex flex-col mt-14 text-lg gap-y-1">
+                        <div className="lg:flex hidden flex-col mt-14 text-lg gap-y-1">
                             {
                                 err && <p className="text-error">{err}</p>
                             }
-                            <Button disabled={loading} type="submit" radius="none" className="w-full  bg-black text-white">
+                            <Button disabled={loading} type="submit" radius="none" className="w-full text-lg hover:bg-white border border-black font-bold py-6 hover:text-black bg-black text-white">
                                 {
                                     loading ? <Spinner color='white' /> : "Pay"
                                 }
@@ -119,7 +119,7 @@ const Index = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col bg-[#ebebeb] h-fit p-10 py-16 w-[70%]">
+                    <div className="flex flex-col bg-[#ebebeb] h-fit p-10 py-16 lg:w-[70%]">
                         <p>You're Paying</p>
                         <p className="text-5xl font-bold">${selectedPack ? selectedPack.cost : plan.discount ? +plan.price - +plan.discountAmount : +plan.price}</p>
 
@@ -174,6 +174,16 @@ const Index = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="flex lg:hidden flex-col text-lg gap-y-1 mb-10">
+                        {
+                            err && <p className="text-error">{err}</p>
+                        }
+                        <Button disabled={loading} type="submit" radius="none" className="w-full hover:bg-white border text-lg border-black font-bold py-6 hover:text-black bg-black text-white">
+                            {
+                                loading ? <Spinner color='white' /> : "Pay"
+                            }
+                        </Button>
                     </div>
                 </form>
                 <SuccessModal isOpen={isOpen} onClose={onClose} seconds={seconds} />
