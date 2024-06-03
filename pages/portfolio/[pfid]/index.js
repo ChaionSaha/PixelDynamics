@@ -25,7 +25,7 @@ const Index = ({portfolio}) => {
                         {
                             pd.key === 'img' &&
                             <img src={pd.img}
-                                alt={`${portfolio.name}-${i}`} className='w-full h-fit'/>
+                                alt={`${portfolio.name}-${i}`} className='w-full'/>
 
                         }
                         {
