@@ -13,7 +13,7 @@ const Sidebar = ({active, setActive}) => {
 
 
     useEffect(() => {
-        const selectedPath = pages.find((p) => p.link === router.asPath);
+        const selectedPath = pages.find((p) => router.asPath.includes(p.link));
         if (selectedPath) setSidebarBg(selectedPath.bg);
         else setSidebarBg('');
     }, [router.asPath]);
@@ -21,10 +21,25 @@ const Sidebar = ({active, setActive}) => {
     return (
         <div
             className={`relative flex flex-col justify-between w-full h-full py-10 text-base-200 ${router.pathname.includes('/admin') ? 'bg-admin-secondary' : 'bg-theme-black'} `}
-            style={{backgroundImage: `url(${sidebarBg})`, backgroundSize:'cover'}}
         >
-            <div className=''>
-
+            <div className="absolute w-full h-full top-0 left-0 overflow-hidden pointer-events-none z-[1]">
+                <video
+                    className=' w-[100vw] h-[100vh] '
+                    style={{
+                        objectFit: 'cover',
+                        overflowClipMargin: 'content-box',
+                        overflow: 'clip',
+                    }}
+                    src={sidebarBg}
+                    type='video/mp4'
+                    loop
+                    autoPlay
+                    muted
+                    playsInline
+                    preload='none'
+                />
+            </div>
+            <div className=' z-[10]'>
                 <Link
                     scroll={false}
                     href={!router.pathname.includes('/admin') ? '/' : '/admin'}
@@ -51,7 +66,7 @@ const Sidebar = ({active, setActive}) => {
                 }
             </div>
 
-            <ul className='flex flex-col gap-y-2'>
+            <ul className='flex flex-col gap-y-2 z-[10]'>
                 
                 {!router.pathname.includes('/admin') && <ClientSidebarLinks/>}
                 {router.pathname.includes('/admin') && adminPagesLinks.map((p, i) => {
@@ -75,7 +90,7 @@ const Sidebar = ({active, setActive}) => {
             </ul>
 
             {!router.pathname.includes('/admin') &&
-                <div className="flex flex-col">
+                <div className="flex flex-col z-[10]">
                     <Link
                         href={'/terms'}
                         className={`flex items-center gap-x-4 w-full text-lg px-3 xl:px-10 py-2 mb-2 hover:bg-base-200 hover:text-theme-black duration-150 group ${
@@ -115,7 +130,7 @@ const Sidebar = ({active, setActive}) => {
             }
 
             {router.pathname.includes('/admin') &&
-                <div className='flex flex-col gap-y-3'>
+                <div className='flex flex-col gap-y-3 z-[10]'>
                     <Link
                         href='/'
                         className={`flex gap-x-4  w-full text-lg px-3 xl:px-10 py-2 hover:bg-[#0077E4] hover:text-white duration-150`}
