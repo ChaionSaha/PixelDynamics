@@ -7,7 +7,7 @@ export default function Home() {
         <SharedLayout>
             <div>
                 <Title title='Home' />
-                <div className='overflow-hidden '>
+                <div className='overflow-hidden pointer-events-none'>
                     <video
                         className=' w-[100vw] h-[100vh] '
                         style={{
@@ -16,10 +16,12 @@ export default function Home() {
                             overflow: 'clip',
                         }}
                         src={videoLoop}
-                        autoPlay
                         type='video/mp4'
                         loop
+                        autoPlay
                         muted
+                        playsInline
+                        preload='none'
                     />
                 </div>
             </div>

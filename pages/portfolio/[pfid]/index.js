@@ -1,3 +1,4 @@
+import { ChevronLeftIcon } from "@/assets/CustomIcons/CustomIcon";
 import SharedLayout from "@/components/Shared/SharedLayout";
 import Title from "@/components/Shared/title";
 import { getDatabase } from "@/db/mongoConnection";
@@ -10,10 +11,10 @@ const Index = ({portfolio}) => {
         <SharedLayout>
             <Title title={portfolio.name}/>
             <div>
-                <div className="flex lg:text-3xl text-2xl items-start gap-x-5 lg:ps-10 ps-16 lg:px-10 px-2 py-7 font-bold">
+                <div className="flex lg:text-3xl text-2xl items-center gap-x-5 lg:ps-10 ps-16 lg:px-10 px-2 py-7 font-bold">
                     <button onClick={() => {
                         router.push('/portfolio');
-                    }}><i className='bi bi-chevron-left text-2xl'></i></button>
+                    }}><ChevronLeftIcon className='w-5 h-5'/></button>
                     <p>{portfolio.name}</p>
                 </div>
                 {

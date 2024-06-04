@@ -1,4 +1,4 @@
-import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from "@/assets/CustomIcons/CustomIcon";
+import { ArtStationIcon, BehanceIcon, FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from "@/assets/CustomIcons/CustomIcon";
 
 export const pages = [
     {
@@ -30,19 +30,19 @@ export const pages = [
 export const contactLinks = [
     {
         link: 'https://www.linkedin.com/company/pixel-dynamics-studio/about/',
-        icon: <LinkedinIcon className='w-5 h-5'/>,
+        icon: <LinkedinIcon className='w-5 h-5 fill-[#d9d9d9]'/>,
     },
     {
         link: 'https://www.facebook.com/profile.php?id=61550213669968',
-        icon: <FacebookIcon className='w-5 h-5'/>,
+        icon: <FacebookIcon className='w-5 h-5 fill-[#d9d9d9]'/>,
     },
     {
         link: 'https://www.instagram.com/pixeldynamics.studio/',
-        icon: <InstagramIcon className='w-5 h-5'/>,
+        icon: <InstagramIcon className='w-5 h-5 fill-[#d9d9d9]'/>,
     },
     {
         link: 'https://twitter.com/Pixel_Dynamics',
-        icon: <TwitterIcon className='w-5 h-5'/>,
+        icon: <TwitterIcon className='w-5 h-5 fill-[#d9d9d9]'/>,
     },
 ];
 
@@ -50,24 +50,29 @@ export const contactLinks = [
 export const contactPageExtraLinks = [
     {
         link: 'https://www.linkedin.com/company/pixel-dynamics-studio/about/',
-        icon: 'bi bi-linkedin',
+        icon: <LinkedinIcon className='w-5 h-5 fill-[#333]'/>,
     },
     {
         link: 'https://www.facebook.com/profile.php?id=61550213669968',
-        icon: 'bi bi-facebook',
+        icon: <FacebookIcon className='w-5 h-5 fill-[#333]'/>,
     },
     {
         link: 'https://www.instagram.com/pixeldynamics.studio/',
-        icon: 'bi bi-instagram',
+        icon: <InstagramIcon className='w-5 h-5 fill-[#333]'/>,
     },
     {
         link: 'https://twitter.com/Pixel_Dynamics',
-        icon: 'bi bi-twitter-x',
+        icon: <TwitterIcon className='w-5 h-5 fill-[#333]'/>,
     },
     {
         link: 'https://www.behance.net/PixelDynamicsStudio',
-        icon: 'bi bi-behance',
+        icon: <BehanceIcon className='w-5 h-5 fill-[#333]'/>
     },
+    {
+        link: 'https://www.artstation.com/pixeldynamics_studio',
+        icon: <ArtStationIcon className='w-5 h-5 fill-[#333]'/>
+    
+    }
 
 ];
 

@@ -22,7 +22,7 @@ const CategoryHeader = ({ categories, blogs, setBlogs }) => {
 
     return (
         <div className="bg-[#ebebeb] flex flex-col lg:flex-row">
-            <div className="lg:px-10 flex flex-col md:flex-row gap-x-3 text-xl p-4 lg:w-[80%]">
+            <div className="lg:px-7 flex flex-col md:flex-row gap-x-3 text-xl p-4 lg:w-[80%]">
                 <p>Category:</p>
                 <RadioGroup
                     value={selected}

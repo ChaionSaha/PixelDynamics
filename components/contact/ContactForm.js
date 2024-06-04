@@ -111,7 +111,9 @@ const ContactForm = ({ services, calendlyLink }) => {
                                 }}
                             >
                                 {services.map((s, i) => (
-                                    <SelectItem key={s.title} value={s.value} className="hover:rounded-none">
+                                    <SelectItem key={s.title} value={s.value} className="hover:rounded-none" classNames={{
+                                        base: 'data-[selected=true]:rounded-none rounded-none data-[hover=true]:bg-[#ebebeb]'
+                                    }}>
                                         {s.title}
                                     </SelectItem>
                                 ))}
