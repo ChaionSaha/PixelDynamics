@@ -37,7 +37,7 @@ const Portfolio = ({ portfolios = [], categories = [], subCategories = [] }) => 
                         value={selectedMainCat}
                         className="select select-sm w-[50%] focus:outline-0 rounded-none bg-[#858991] border-[#858991] focus:border-[#858991] text-white"
                     >
-                        <option className="rounded-none bg-white" value="" >
+                        <option className="rounded-none" value="" >
                             All
                         </option>
                         {categories.map((c, i) => (
