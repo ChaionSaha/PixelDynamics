@@ -37,7 +37,7 @@ const Index = ({ blog }) => {
                                     {
                                         pd.key === 'img' &&
                                             <img src={pd.img}
-                                                alt={`${blog.name}-${i}`} className='w-full h-fit mt-5'/>
+                                                alt={`${blog.name}-${i}`} className='w-full  mt-5'/>
 
                                     }
                                     {

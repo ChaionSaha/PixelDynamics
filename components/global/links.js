@@ -5,25 +5,39 @@ export const pages = [
         name: 'Portfolio',
         link: '/portfolio',
         icon: 'bi bi-distribute-vertical',
-        bg: '/portfolio-bg.png',
+        bg: '/portfolio.mp4',
     },
     {
         name: 'Services',
         link: '/services',
         icon: 'bi bi-grid-fill',
-        bg: '/services-bg.png',
+        bg: '/services.mp4',
     },
     {
         name: 'Team',
         link: '/team',
         icon: 'bi bi-people-fill',
-        bg: '/team-bg.png',
+        bg: '/team.mp4',
     },
     {
         name: 'Contact',
         link: '/contact',
         icon: 'bi bi-envelope-fill',
-        bg: '/contact-bg.png',
+        bg: '/contact.mp4',
+    },
+    
+    {
+        name: 'Terms & Policy',
+        link: '/terms',
+        icon: 'bi bi-envelope-fill',
+        bg: '/services.mp4',
+    },
+
+    {
+        name: 'Blog',
+        link: '/blog',
+        icon: 'bi bi-envelope-fill',
+        bg: '/portfolio.mp4',
     },
 ];
 

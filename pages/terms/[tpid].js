@@ -18,7 +18,7 @@ const Index = ({page}) => {
                         {
                             pd.key === 'img' &&
                                             <img src={pd.img}
-                                                alt={`${page.pageName}-${i}`} className='w-full h-fit mt-5'/>
+                                                alt={`${page.pageName}-${i}`} className='w-full mt-5'/>
                                             
                         }
                         {
