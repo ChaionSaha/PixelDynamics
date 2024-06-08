@@ -20,10 +20,10 @@ const TeamCarousel = ({team}) => {
         <div>
             <div className="flex gap-x-3 mt-5 px-5 lg:ps-16 lg:pe-0">
                 <button className='text-lg p-0' onClick={() => sliderRef.current.slickPrev()}>
-                    <ChevronLeftIcon className='w-6 h-6'/>
+                    <ChevronLeftIcon className='size-6 laptop:size-5'/>
                 </button>
                 <button className='text-lg p-0' onClick={() => sliderRef.current.slickNext()}>
-                    <ChevronRightIcon className='w-6 h-6'/>
+                    <ChevronRightIcon className='size-6 laptop:size-5'/>
                 </button>
             </div>
 

@@ -6,8 +6,8 @@ const TeamMarquee = () => {
     return (
         <div>
             <div className='px-10 pb-5 pt-5 lg:ps-16 lg:pe-0'>
-                <p className='text-xl lg:text-3xl font-bold'>Combined Industry Experience</p>
-                <p className='text-base lg:text-xl'>A Preferred Choice for Leading Brands. Combined Expertise That Sets
+                <p className='text-xl laptop:text-2xl lg:text-3xl font-bold'>Combined Industry Experience</p>
+                <p className='text-base laptop:text-lg lg:text-xl'>A Preferred Choice for Leading Brands. Combined Expertise That Sets
                     Industry
                     Standards.</p>
             </div>

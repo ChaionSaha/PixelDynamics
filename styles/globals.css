@@ -103,3 +103,48 @@
   border: 1px solid black !important;
   box-shadow: none !important;
 }
+
+.team-member {
+  .team-member-experience {
+    transform: translateY(100%);
+    transition: 500ms;
+  }
+}
+
+.team-member:hover {
+  .team-member-experience {
+    transform: translateY(0%);
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1024px) {
+  .quill-css {
+    & > h1 {
+      @apply text-2xl;
+    }
+
+    & > h2 {
+      @apply text-xl;
+    }
+
+    & > h3 {
+      @apply text-lg;
+    }
+
+    & > h4 {
+      @apply text-base;
+    }
+
+    & > h5 {
+      @apply text-sm;
+    }
+
+    & > h6 {
+      @apply text-xs;
+    }
+
+    & > p {
+      @apply text-sm;
+    }
+  }
+}

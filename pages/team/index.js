@@ -10,9 +10,9 @@ const Team = ({ team = [], }) => {
         <SharedLayout>
             <div>
                 <Title title='Team' />
-                <p className="text-xl font-bold md:text-2xl md:pt-7 pt-5 ps-16 lg:text-3xl">Meet Our Highly Talented
-                    Team
-                    Members</p>
+                <p className="text-xl md:text-2xl lg:text-3xl laptop:text-2xl font-bold md:pt-7 pt-5 ps-16 ">
+                    Meet Our Highly Talented Team Members
+                </p>
                 <div className=''>
                     <TeamCarousel team={team} />
                 </div>

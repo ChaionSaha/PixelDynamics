@@ -11,10 +11,10 @@ const Index = ({portfolio}) => {
         <SharedLayout>
             <Title title={portfolio.name}/>
             <div>
-                <div className="flex lg:text-3xl text-2xl items-center gap-x-5 lg:ps-10 ps-16 lg:px-10 px-2 py-7 font-bold">
+                <div className="flex lg:text-3xl laptop:text-2xl text-2xl items-center gap-x-5 lg:ps-10 ps-16 lg:px-10 px-2 py-7 font-bold">
                     <button onClick={() => {
                         router.push('/portfolio');
-                    }}><ChevronLeftIcon className='w-5 h-5'/></button>
+                    }}><ChevronLeftIcon className='size-5 laptop:size-4'/></button>
                     <p>{portfolio.name}</p>
                 </div>
                 {

@@ -88,9 +88,9 @@ const Index = () => {
     return (
         <SharedLayout>
             <Title title='Card Information' />
-            <div className="md:pt-10 pt-5 lg:px-16 md:px-10 px-5">
-                <p className="lg:text-4xl text-2xl px-12 lg:px-0 font-bold">Let's Make Payment</p>
-                <p className="text-base-300 text-lg lg:text-2xl lg:w-[50%] mt-3">
+            <div className="md:pt-10 pb-10 pt-5 lg:px-16 md:px-10 px-5">
+                <p className="lg:text-4xl laptop:text-3xl text-2xl px-12 lg:px-0 font-bold">Let's Make Payment</p>
+                <p className="text-base-300 text-lg laptop:text-xl lg:text-2xl lg:w-[50%] mt-3">
                     To start your subscription, input your card details to make payment. 
                     You will be redirected to Home Page. 
                 </p>
@@ -111,7 +111,7 @@ const Index = () => {
                             {
                                 err && <p className="text-error">{err}</p>
                             }
-                            <Button disabled={loading} type="submit" radius="none" className="w-full text-lg hover:bg-white border border-black font-bold py-6 hover:text-black bg-black text-white">
+                            <Button disabled={loading} type="submit" radius="none" className="w-full text-lg laptop:text-base hover:bg-white border border-black font-bold py-6 laptop:py-4 hover:text-black bg-black text-white">
                                 {
                                     loading ? <Spinner color='white' /> : "Pay"
                                 }
@@ -123,7 +123,7 @@ const Index = () => {
                         <p>You're Paying</p>
                         <p className="text-5xl font-bold">${selectedPack ? selectedPack.cost : plan.discount ? +plan.price - +plan.discountAmount : +plan.price}</p>
 
-                        <div className="mt-16 flex flex-col gap-y-3 text-xl">
+                        <div className="mt-16 laptop:mt-10 flex flex-col gap-y-3 text-xl">
                             <div className="flex w-full">
                                 <div className="w-[80%]">
                                     <p>{plan.name}</p>
@@ -143,23 +143,27 @@ const Index = () => {
                                     </div>
                                 </div>
                             }
-                            {
-                                selectedPack && selectedPack.discounted &&
-                                <div className="flex w-full">
-                                    <div className="w-[80%]">
-                                        <p>Discount</p>
-                                    </div>
-                                    <div className="w-[20%] font-bold flex justify-end">
-                                        <p>
-                                            ${plan.discount ?
-                                                ((+plan.price - +plan.discountAmount) * +selectedPack.offer / 100) * selectedPack.monthCount
-                                                :
-                                                (+plan.price * +selectedPack.offer / 100) * selectedPack.monthCount
-                                            }
-                                        </p>
-                                    </div>
+                            
+                            <div className="flex w-full">
+                                <div className="w-[80%]">
+                                    <p>Discount</p>
                                 </div>
-                            }
+                                <div className="w-[20%] font-bold flex justify-end">
+                                    {
+                                        selectedPack && selectedPack.discounted ?
+                                            <p>
+                                            ${plan.discount ?
+                                                    ((+plan.price - +plan.discountAmount) * +selectedPack.offer / 100) * selectedPack.monthCount
+                                                    :
+                                                    (+plan.price * +selectedPack.offer / 100) * selectedPack.monthCount
+                                                }
+                                            </p> :
+                                            <p>$0</p>
+                                    }
+                                        
+                                </div>
+                            </div>
+                            
                             <div className="mt-5">
                                 <div className="border w-full border-black "></div>
                                 <div className="flex w-full mt-2">

@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { AnimatePresence } from "framer-motion";
 import { SessionProvider } from "next-auth/react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import NextNProgress from 'nextjs-progressbar';
 import { Provider } from "react-redux";
@@ -15,20 +16,26 @@ export default function App({Component, pageProps}) {
     const getLayout = Component.getLayout ?? ((page) => page);
 
     return (
-        <SessionProvider session={pageProps.session}>
-            <Provider store={store}>
-                <NextUIProvider>
-                    <NextNProgress color="#666" options={{showSpinner: false}}/>
-                    <Layout>
-                        <AnimatePresence mode="wait" initial={false}>
-                            {
-                                getLayout(<Component {...pageProps} key={router.asPath}/>)
-                            }
-                        </AnimatePresence>
-                    </Layout>
-                </NextUIProvider>
-            </Provider>
-        </SessionProvider>);
+        <>
+            <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+            </Head>
+            <SessionProvider session={pageProps.session}>
+                <Provider store={store}>
+                    <NextUIProvider>
+                        <NextNProgress color="#666" options={{showSpinner: false}}/>
+                        <Layout>
+                            <AnimatePresence mode="wait" initial={false}>
+                                {
+                                    getLayout(<Component {...pageProps} key={router.asPath}/>)
+                                }
+                            </AnimatePresence>
+                        </Layout>
+                    </NextUIProvider>
+                </Provider>
+            </SessionProvider>
+        </>
+    );
 
 }
 

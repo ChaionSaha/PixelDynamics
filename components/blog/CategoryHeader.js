@@ -22,7 +22,7 @@ const CategoryHeader = ({ categories, blogs, setBlogs }) => {
 
     return (
         <div className="bg-[#ebebeb] flex flex-col lg:flex-row">
-            <div className="lg:px-7 flex flex-col md:flex-row gap-x-3 text-xl p-4 lg:w-[80%]">
+            <div className="lg:px-7 flex flex-col md:flex-row gap-x-3 text-xl laptop:text-lg p-4 laptop:py-3 lg:w-[80%]">
                 <p>Category:</p>
                 <RadioGroup
                     value={selected}
@@ -36,7 +36,7 @@ const CategoryHeader = ({ categories, blogs, setBlogs }) => {
                     }}>All</Radio>
                     {
                         categories.map((c, i) => 
-                            <Radio value={c.value} key={i} className="text-xl font-bold lg:px-4" classNames={{
+                            <Radio value={c.value} key={i} className="text-xl laptop:text-lg font-bold lg:px-4" classNames={{
                                 wrapper:'hidden'
                             }}>{c.name }</Radio>
                         )

@@ -43,17 +43,17 @@ const Sidebar = ({active, setActive}) => {
                 <Link
                     scroll={false}
                     href={!router.pathname.includes('/admin') ? '/' : '/admin'}
-                    className='flex flex-wrap items-start px-3 flex-row gap-x-5 xl:px-7'
+                    className='flex flex-wrap items-start px-3 flex-row gap-x-5 laptop:gap-x-3 xl:px-7'
                 >
-                    <div className='w-10 h-10'>
+                    <div className='w-10 h-10 laptop:size-9 '>
                         <img
                             src='https://i.ibb.co/brBd1wT/logo-gif.gif'
                             alt='logo'
                             className='w-full h-full'
                         />
                     </div>
-                    <div className='flex flex-col select-none'>
-                        <p className='text-xl font-bold'>PixelDynamics</p>
+                    <div className='flex flex-col select-none '>
+                        <p className='text-xl laptop:text-lg font-bold'>PixelDynamics</p>
                         {router.pathname.includes('/admin') ?
                             <span className='text-base translate-y-[-10%]'>Admin <i
                                 className='bi bi-shield-check'></i></span> :
@@ -93,26 +93,26 @@ const Sidebar = ({active, setActive}) => {
                 <div className="flex flex-col z-[10]">
                     <Link
                         href={'/terms'}
-                        className={`flex items-center gap-x-4 w-full text-lg px-3 xl:px-10 py-2 mb-2 hover:bg-base-200 hover:text-theme-black duration-150 group ${
+                        className={`flex items-center gap-x-4 w-full text-lg laptop:text-base px-3 xl:px-10 laptop:px-8 py-2 mb-2 hover:bg-base-200 hover:text-theme-black duration-150 group ${
                             router.asPath.includes('/terms') ? 'sidebar-link-active' : ''
                         }`}
                         scroll={false}
                     >
-                        <TermsIcon className={`w-5 h-5 group-hover:fill-black ${router.asPath.includes('/terms') ? 'fill-black' : 'fill-white'}`} />
+                        <TermsIcon className={`size-5 laptop:size-[18px] group-hover:fill-black ${router.asPath.includes('/terms') ? 'fill-black' : 'fill-white'}`} />
                         <p>Terms & Policy</p>
                     </Link>
                     <Link
                         href={'/contact'}
-                        className={`flex items-center gap-x-4 w-full text-lg px-3 xl:px-10 py-2 mb-10 hover:bg-base-200 hover:text-theme-black duration-150 group ${
+                        className={`flex items-center gap-x-4 w-full text-lg laptop:text-base px-3 xl:px-10 laptop:px-8 py-2 mb-10 hover:bg-base-200 hover:text-theme-black duration-150 group ${
                             router.asPath.includes('/contact') ? 'sidebar-link-active' : ''
                         }`}
                         scroll={false}
                     >
-                        <ContactIcon className={`w-5 h-5 group-hover:fill-black ${router.asPath.includes('/contact') ? 'fill-black' : 'fill-white'}`} />
+                        <ContactIcon className={`size-5 laptop:size-[18px] group-hover:fill-black ${router.asPath.includes('/contact') ? 'fill-black' : 'fill-white'}`} />
                         <p>Contact</p>
                     </Link>
             
-                    <ul className='flex justify-between px-3 xl:px-10'>
+                    <ul className='flex justify-between px-3 xl:px-10 laptop:px-8'>
                         {contactLinks.map((cl, i) => {
                             return (
                                 <li key={i}>

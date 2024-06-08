@@ -13,11 +13,11 @@ const Index = ({ blog }) => {
         <SharedLayout>
             <Title title={`${blog.name} - Blog`}/>
             <div>
-                <div className="flex lg:text-3xl text-2xl items-center gap-x-5 lg:ps-10 ps-16 lg:px-10 px-2 py-7 font-bold">
+                <div className="flex lg:text-3xl laptop:text-2xl text-2xl items-center gap-x-5 lg:ps-10 ps-16 lg:px-10 px-2 py-7 font-bold">
                     <button onClick={() => {
                         router.push('/blog');
                     }}>
-                        <ChevronLeftIcon className='w-5 h-5'/>
+                        <ChevronLeftIcon className='size-5 laptop:size-4'/>
                     </button>
                     <p>{blog.name}</p>
                 </div>
@@ -56,8 +56,8 @@ const Index = ({ blog }) => {
                             <div className="relative w-[65%] h-[20vh] self-center">
                                 <Image src={blog.author.img} alt={blog.author.name} fill className="object-cover"/>
                             </div>
-                            <p className="text-center mt-5 text-2xl font-bold">{blog.author.name}</p>
-                            <p className=" text-base-300 text-center font-bold">{blog.author.expertise}</p>
+                            <p className="text-center mt-5 text-2xl laptop:text-xl font-bold">{blog.author.name}</p>
+                            <p className=" text-base-300 text-center font-bold laptop:text-sm">{blog.author.expertise}</p>
                             <div dangerouslySetInnerHTML={{__html: blog.author.description}} className="quill-css mt-5"/>
                         </div>
                     </div>

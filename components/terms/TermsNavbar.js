@@ -14,11 +14,11 @@ const TermsNavbar = ({children}) => {
 
     return (
         <div className="px-10 pb-10 lg:ps-16 pt-7">
-            <ul className="bg-[#e5e5e5] p-5 flex flex-wrap gap-x-10 gap-y-5">
+            <ul className="bg-[#e5e5e5] p-5 laptop:py-3 flex flex-wrap gap-x-10 gap-y-5">
                 {
                     termsPages.map((p, i) =>
                         <li key={i}
-                            className={`hover:text-black duration-300 text-xl font-bold ${router.asPath === `/terms/${p.pageLink}` ? 'text-black' : 'text-[rgba(0,0,0,0.4)]'}  cursor-pointer`}
+                            className={`hover:text-black duration-300 text-xl laptop:text-lg font-bold ${router.asPath === `/terms/${p.pageLink}` ? 'text-black' : 'text-[rgba(0,0,0,0.4)]'}  cursor-pointer`}
                             onClick={() => router.push(`/terms/${p.pageLink}`)}>
                             {p.pageName}
                         </li>
