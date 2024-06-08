@@ -37,14 +37,17 @@ const ContactForm = ({ services, calendlyLink }) => {
         <div className="flex-grow">
             <Title title='Contact'/>
             <div>
-                <p className="md:text-6xl text-4xl  font-bold text-center mt-20">Contact</p>
-                <p className='text-center md:text-lg lg:text-xl font-semibold mt-3 px-7 md:px-0 md:w-[40%] mx-auto'>Contact
+                <p className="md:text-6xl text-4xl laptop:text-5xl font-bold text-center mt-20">
+                    Contact
+                </p>
+                <p className='text-center md:text-lg lg:text-xl laptop:text-lg font-semibold mt-3 px-7 md:px-0 md:w-[40%] mx-auto'>Contact
                     us
                     for Inquires
                     and We
                     are there for
                     any help
-                    regarding design.</p>
+                    regarding design.
+                </p>
 
 
                 <form className='mx-auto  flex flex-col mt-20 gap-y-5 px-7 md:px-0 md:w-[60%]' onSubmit={handleSubmit(submitData)}>

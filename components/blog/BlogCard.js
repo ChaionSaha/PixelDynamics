@@ -22,15 +22,15 @@ const BlogCard = ({ blog, blogCategories }) => {
             <div className="relative h-[25vh] overflow-hidden">
                 <Image src={blog.img} fill alt={blog.name} className="object-cover group-hover:scale-110 duration-500"/>
             </div>
-            <div className="p-5 flex-grow">
-                <p className="text-4xl font-bold" >{blog.name}</p>
-                <div className="mt-2" dangerouslySetInnerHTML={{__html: blog.description}}/>
+            <div className="p-5 h-[18vh]">
+                <p className="text-4xl laptop:text-2xl font-bold" >{blog.name}</p>
+                <div className="mt-2 overflow-y-auto" dangerouslySetInnerHTML={{__html: blog.description}}/>
             </div>
             <div className="flex mt-5 p-5 gap-x-3">
-                <p className="bg-[#d9d9d9] px-5 py-2">
+                <p className="bg-[#d9d9d9] px-5 laptop:px-4 laptop:text-sm laptop:py-1 laptop:h-fit py-2">
                     {date}
                 </p>
-                <p className="border border-[#333] px-5 py-2">
+                <p className="border border-[#333] px-5 py-2 laptop:px-4 laptop:text-sm laptop:py-1 laptop:h-fit">
                     {category}
                 </p>
             </div>

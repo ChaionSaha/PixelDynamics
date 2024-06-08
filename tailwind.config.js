@@ -10,6 +10,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            screens: {
+                'laptop': {'raw': '(-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1024px)'},
+            },
             colors:
                 {
                     'base-100': '#fff',
@@ -27,7 +30,21 @@ module.exports = {
             decimal: 'decimal',
             square: 'square',
             roman: 'upper-roman',
-        }
+        },
+        fontSize: {
+            'xs': '.75rem',
+            'sm': '.875rem',
+            'tiny': '.875rem',
+            'base': '1rem',
+            'lg': '1.125rem',
+            'xl': '1.25rem',
+            '2xl': '1.5rem',
+            '3xl': '1.875rem',
+            '4xl': '2.25rem',
+            '5xl': '3rem',
+            '6xl': '4rem',
+            '7xl': '5rem',
+        },
     },
 
     darkMode: "class",

@@ -61,8 +61,8 @@ const Index = () => {
             <Title title='Personal Information' />
             
             <div className="md:pt-10 pt-5 lg:px-16 md:px-10 px-5">
-                <p className="lg:text-4xl text-2xl font-bold px-12 lg:px-0">Information</p>
-                <p className="text-base-300 lg:text-2xl text-lg lg:w-[50%] mt-3">
+                <p className="lg:text-4xl laptop:text-3xl text-2xl font-bold px-12 lg:px-0">Information</p>
+                <p className="text-base-300 lg:text-2xl laptop:text-xl text-lg lg:w-[50%] mt-3">
                     To start your subscription, input your personal information & select your subscription type to make payment.
                 </p>
 
@@ -81,16 +81,16 @@ const Index = () => {
                         <div className="col-span-2">
                             <ControlledPhoneInput control={control} name={"whatsAppNumber"} label={"WhatApp Number"} rightSideLabel={"Optional"}/>
                         </div>
-                        <div className="hidden lg:flex flex-col mt-14 text-lg gap-y-1">
+                        <div className="hidden lg:flex flex-col mt-14 mb-10 text-lg gap-y-1">
                             {
                                 err && <p className="text-error">{err}</p>
                             }
-                            <Button type="submit" radius="none" className="w-full text-lg hover:bg-white border border-black font-bold py-6 hover:text-black bg-black text-white">Next</Button>
+                            <Button type="submit" radius="none" className="w-full text-lg laptop:text-base hover:bg-white border border-black font-bold py-6 laptop:py-4 hover:text-black bg-black text-white">Next</Button>
                         </div>
                     </div>
 
                     <div className="flex flex-col">
-                        <p className="font-medium text-2xl">Subscription Type</p>
+                        <p className="font-medium text-2xl laptop:text-xl">Subscription Type</p>
                         <Controller name="selectedPlan" control={control} render={({ field: { value, onChange } }) =>
                             <RadioGroup
                                 value={value}
@@ -108,8 +108,8 @@ const Index = () => {
                                         }
                                         
                                         <div className="flex flex-col">
-                                            <p className="text-xl font-bold">Monthly</p>
-                                            <p className="text-base-300">${plan.discount ? +plan.price - plan.discountAmount : +plan.price} / per month</p>
+                                            <p className="text-xl laptop:text-lg font-bold">Monthly</p>
+                                            <p className="text-base-300 laptop:text-sm">${plan.discount ? +plan.price - plan.discountAmount : +plan.price} / per month</p>
                                         </div>
                                     </div>
                                 </CustomRadio>
@@ -122,13 +122,13 @@ const Index = () => {
                                                         value === p.apiId ? <CheckedIcon className='w-5 h-5'/> : <UnCheckedIcon className='w-5 h-5'/>
                                                     }
                                                     <div className="flex flex-col">
-                                                        <p className="text-xl font-bold">{p.name}</p>
-                                                        <p className="text-base-300">$
+                                                        <p className="text-xl laptop:text-lg font-bold">{p.name}</p>
+                                                        <p className="text-base-300 laptop:text-sm">$
                                                             {p.cost} / per {p.monthCount} months
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <div className="self-center font-bold">
+                                                <div className="self-center font-bold laptop:text-sm">
                                                     {
                                                         p.discounted &&
                                                         <p>Save {p.offer}%</p>
