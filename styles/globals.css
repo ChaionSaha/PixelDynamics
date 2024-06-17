@@ -15,6 +15,20 @@
 *::after {
   font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #000 #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: pink !important;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 10px !important;
 }
 
 .sidebar-link-active {
@@ -25,15 +39,17 @@
   @apply bg-[#0077E4] text-white;
 }
 
-::-webkit-scrollbar {
-  @apply lg:w-[7px] w-[5px];
+*::-webkit-scrollbar {
+  width: 4px;
 }
 
-::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
+  width: 4px;
   background: #fff;
 }
 
-::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
+  width: 4px;
   @apply lg:bg-[#0d0b0d]  bg-base-200;
 }
 
@@ -147,4 +163,10 @@
       @apply text-sm;
     }
   }
+}
+
+.portfolio-select option {
+  background-color: rgba(217, 217, 217, 0.2);
+  color: black;
+  border-color: transparent;
 }

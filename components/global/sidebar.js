@@ -13,7 +13,11 @@ const Sidebar = ({active, setActive}) => {
 
 
     useEffect(() => {
-        const selectedPath = pages.find((p) => router.asPath.includes(p.link));
+        const selectedPath = pages.find((p) => {
+            if(!router.asPath.includes('/admin'))
+                return  router.asPath.includes(p.link)
+        }
+        );
         if (selectedPath) setSidebarBg(selectedPath.bg);
         else setSidebarBg('');
     }, [router.asPath]);
@@ -60,7 +64,7 @@ const Sidebar = ({active, setActive}) => {
                             <p className='text-xs translate-y-[-30%]'>.studio</p>}
                     </div>
                 </Link>
-                {!router.pathname.includes('/admin') && <p className='px-3 text-sm xl:px-7 mt-7'>
+                {!router.pathname.includes('/admin') && <p className='px-3 text-sm xl:px-7 mt-7 laptop:mt-3'>
                     A studio powered by industry leading professionals.
                 </p>
                 }

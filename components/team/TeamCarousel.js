@@ -27,7 +27,7 @@ const TeamCarousel = ({team}) => {
                 </button>
             </div>
 
-            <div className="lg:mt-5">
+            <div className="lg:mt-5 laptop:mt-0">
                 <Slider {...settings} ref={slider => {
                     sliderRef.current = slider;
                 }}>

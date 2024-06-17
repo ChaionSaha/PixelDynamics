@@ -58,14 +58,13 @@ const ContactForm = ({ services, calendlyLink }) => {
                             <Input type="text"
                                 radius={'none'}
                                 variant={'bordered'}
-                                label="Name"
+                                placeholder="Name"
                                 size={'lg'}
                                 value={value}
                                 onChange={onChange}
                                 classNames={{
                                     input: "border-black text-lg",
                                     inputWrapper: "border-base-200 focus:border-black border",
-
                                 }}
                             />}
                     />
@@ -80,7 +79,8 @@ const ContactForm = ({ services, calendlyLink }) => {
                             <Input type="email"
                                 radius={'none'}
                                 variant={'bordered'}
-                                label="Email"
+                                // label="Email"
+                                placeholder="Email"
                                 size={'lg'}
                                 value={value}
                                 onChange={onChange}
@@ -99,7 +99,8 @@ const ContactForm = ({ services, calendlyLink }) => {
                         control={control}
                         render={({ field: { onChange, value } }) =>
                             <Select
-                                label="Select a service"
+                                // label="Select a service"
+                                placeholder="Select a service"
                                 variant={'bordered'}
                                 size={'lg'}
                                 radius={'none'}
@@ -130,7 +131,8 @@ const ContactForm = ({ services, calendlyLink }) => {
                         name="message"
                         render={({ field: { onChange, value } }) =>
                             <Textarea
-                                label="Message"
+                                // label="Message"
+                                placeholder="Message"
                                 variant={'bordered'}
                                 size={'lg'}
                                 radius={'none'}

@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     if (req.method === 'POST')
     {   
         const { isEdit, ...member } = req.body;
-        if (member.name.trim() === '' || member.expertise.trim() === '' || member.img === '' || member.experienceDetails.length === 0)
+        if (member.name.trim() === '' || member.expertise.trim() === '' || member.img === '' || member.experienceDetails.length === 0 || isNaN(member.position) || member.position < 1)
             return res.status(400).send({ message: 'Invalid Input!' });
         const { tid } = member;
     
