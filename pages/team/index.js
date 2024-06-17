@@ -31,8 +31,8 @@ export default Team;
 export async function getServerSideProps(context) {
     const db = await getDatabase();
     const teamMembers = await db.collection('teamMembers').find().project({ _id: 0 }).toArray();
+    teamMembers.sort((a, b) => parseInt(a.position) - parseInt(b.position));
 
-    
     return {
         props: {
             team: teamMembers,

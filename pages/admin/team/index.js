@@ -20,9 +20,13 @@ const columns = [
         value:"expertise"
     },
     {
+        name: "Team Member Position",
+        value: "position"
+    },
+    {
         name: "Featured",
         value:"featured"
-    }
+    },
 ]
 
 const AdminTeam = ({teamMembers=[]}) => {
@@ -95,6 +99,7 @@ export default AdminTeam;
 export async function getServerSideProps() {
     const db = await getDatabase();
     const teamMembers = await db.collection('teamMembers').find().project({ _id: 0 }).toArray();
+    teamMembers.sort((a, b) => parseInt(a.position) - parseInt(b.position));
     return {
         props: {
             teamMembers

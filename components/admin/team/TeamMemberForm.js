@@ -7,11 +7,12 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 
-export default function TeamMemberForm({ member = {}, isEdit = false }) {
+export default function TeamMemberForm({ member = {}, isEdit = false, teamMemberPositions = []}) {
     const { control, handleSubmit, watch, setValue, reset } = useForm({
         defaultValues: {
             name: "",
             expertise: "",
+            position: "",
             img: "",
             featured: false,
             title: "",
@@ -24,13 +25,22 @@ export default function TeamMemberForm({ member = {}, isEdit = false }) {
     const [err, setErr] = useState('');
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+    const [allPositions, setAllPositions] = useState(teamMemberPositions);
 
     useEffect(() => {
         if (isEdit)
+        {
             reset({ ...member });
-    }, [isEdit, member, reset]);
+            let temp = teamMemberPositions.filter(pos => pos !== member.position);
+            console.log(temp);
+            setAllPositions(temp);
+        }
+    }, [isEdit, member, reset, teamMemberPositions]);
     
     const handleSubmitForm = async (formData) => {
+        if (allPositions.includes(watch('position')))
+            return ;
+
         setErr('');
         setLoading(true);
 
@@ -45,6 +55,14 @@ export default function TeamMemberForm({ member = {}, isEdit = false }) {
             <div className="grid md:grid-cols-2 gap-5">
                 <ControlledInput control={control} name={"name"} label="Name" />
                 <ControlledInput control={control} name={"expertise"} label="Area of Expertise" />
+                <div className="flex flex-col">
+                    <ControlledInput control={control} name={"position"} label="Serial Number" />
+                    {
+                        allPositions && allPositions.includes(watch('position')) &&
+                        <p className='text-error mt-2'>Position already exists</p>
+                    }
+                </div>
+                
             </div>
 
             <div className="mt-10 ">

@@ -3,14 +3,14 @@ import AdminPageTitle from "@/components/Shared/AdminPageTitle";
 import Title from "@/components/Shared/title";
 import { getDatabase } from "@/db/mongoConnection";
 
-export default function EditAddTeam({ teamMember, isEdit }) {
+export default function EditAddTeam({ teamMember, isEdit, teamMemberPositions }) {
     
     return (
         <div>
             <Title title={isEdit ? 'Edit Team Member' : 'Add Team Member'} />
             <AdminPageTitle title={isEdit ? 'Edit Team Member' : 'Add Team Member'} />
             <div className="md:px-10 px-5 py-10">
-                <TeamMemberForm member={teamMember} isEdit={isEdit}/>
+                <TeamMemberForm member={teamMember} isEdit={isEdit} teamMemberPositions={teamMemberPositions}/>
             </div>
         </div>
     )
@@ -48,6 +48,12 @@ export async function getServerSideProps(context) {
     const tid = id[1];
     const db = await getDatabase();
     teamMember = await db.collection('teamMembers').findOne({ tid }, { projection: { _id: 0 } });
+    let teamMemberPositions = await db.collection('teamMembers').find({}, { projection: { _id: 0, position: 1 } }).toArray();
+    let tempArray = [];
+    teamMemberPositions.forEach(pos => {
+        if(pos.position)
+            tempArray.push(pos.position)
+    });
 
     if (!teamMember)
         return {
@@ -60,7 +66,7 @@ export async function getServerSideProps(context) {
         
     return {
         props: {
-            teamMember, isEdit:true
+            teamMember, isEdit:true, teamMemberPositions:tempArray
         }
     }
 
