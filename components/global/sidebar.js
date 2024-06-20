@@ -1,4 +1,5 @@
 import { ContactIcon, TermsIcon } from '@/assets/CustomIcons/CustomIcon';
+import logoGif from '@/assets/logo-gif.gif';
 import { adminPagesLinks, contactLinks, pages } from '@/components/global/links';
 import { signOut } from "next-auth/react";
 import Link from 'next/link';
@@ -51,7 +52,7 @@ const Sidebar = ({active, setActive}) => {
                 >
                     <div className='w-10 h-10 laptop:size-9 '>
                         <img
-                            src='https://i.ibb.co/brBd1wT/logo-gif.gif'
+                            src={logoGif.src}
                             alt='logo'
                             className='w-full h-full'
                         />
