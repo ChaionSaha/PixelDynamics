@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import ControlledPasswordInput from '@/components/Shared/ControlledPasswordInput';
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Spinner } from "@nextui-org/react";
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
-const PasswordChangeModal = ({ isOpen, onOpenChange, onClose }) => {
+const PasswordChangeModal = ({ isOpen, onOpenChange, onClose, currentUser }) => {
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState('');
     const { control, handleSubmit, reset } = useForm({
@@ -15,6 +15,10 @@ const PasswordChangeModal = ({ isOpen, onOpenChange, onClose }) => {
             confirmPassword: ''
         }
     })
+
+    useEffect(() => { 
+        console.log(currentUser);
+    }, [currentUser])
 
     const handleFormSubmit = (formData) => {
         const { oldPassword, newPassword, confirmPassword } = formData;
@@ -48,7 +52,7 @@ const PasswordChangeModal = ({ isOpen, onOpenChange, onClose }) => {
             <ModalContent>
                 <>
                     <ModalHeader className="flex flex-col gap-1">
-                            Change Password
+                            Change Password for {currentUser?.name}
                     </ModalHeader>
                     <form onSubmit={handleSubmit(handleFormSubmit)}>
                         <ModalBody>

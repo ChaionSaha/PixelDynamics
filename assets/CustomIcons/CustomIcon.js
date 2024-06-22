@@ -239,7 +239,7 @@ export function CheckedCircleIcon({ className }) {
 export function ChevronDownIcon({ className }) {
     return (
         <svg className={className} viewBox="0 0 23 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.1062 1L11.5073 10L21.9085 1" stroke="black" stroke-width="2"/>
+            <path d="M1.1062 1L11.5073 10L21.9085 1" stroke="black" strokeWidth="2"/>
         </svg>
 
     )

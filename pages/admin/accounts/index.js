@@ -75,6 +75,7 @@ const Index = ({ users, currentUser }) => {
                     isOpen={isPasswordChangeOpen}
                     onOpenChange={onPasswordChangeOpenChange}
                     onClose={onPasswordChangeClose}
+                    currentUser={users.find(u => u.email === loggedUser.email)}
                 />
             </div>
         </SharedLayout>
@@ -85,7 +86,7 @@ export default Index;
 
 export async function getServerSideProps({req, res}) {
     const db = await getDatabase();
-    const users = await db.collection('users').find().project({ _id: 0 }).toArray();
+    const users = await db.collection('users').find().project({ _id: 0, password: 0 }).toArray();
     const session = await getServerSession(req, res, authOptions);
 
     if (!session)
