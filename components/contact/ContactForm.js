@@ -59,6 +59,7 @@ const ContactForm = ({ services, calendlyLink }) => {
                                 radius={'none'}
                                 variant={'bordered'}
                                 placeholder="Name"
+                                aria-label="Name"
                                 size={'lg'}
                                 value={value}
                                 onChange={onChange}
@@ -80,6 +81,7 @@ const ContactForm = ({ services, calendlyLink }) => {
                                 radius={'none'}
                                 variant={'bordered'}
                                 // label="Email"
+                                aria-label="Email"
                                 placeholder="Email"
                                 size={'lg'}
                                 value={value}
@@ -100,6 +102,7 @@ const ContactForm = ({ services, calendlyLink }) => {
                         render={({ field: { onChange, value } }) =>
                             <Select
                                 // label="Select a service"
+                                aria-label="Select a service"
                                 placeholder="Select a service"
                                 variant={'bordered'}
                                 size={'lg'}
@@ -132,6 +135,7 @@ const ContactForm = ({ services, calendlyLink }) => {
                         render={({ field: { onChange, value } }) =>
                             <Textarea
                                 // label="Message"
+                                aria-label="Message"
                                 placeholder="Message"
                                 variant={'bordered'}
                                 size={'lg'}
