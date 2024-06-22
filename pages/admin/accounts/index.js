@@ -1,3 +1,4 @@
+import PasswordChangeModal from '@/components/admin/accounts/PasswordChangeModal';
 import DeleteCategoryModal from '@/components/admin/portfolio/DeleteCategoryModal';
 import AdminPageTitle from '@/components/Shared/AdminPageTitle';
 import SharedLayout from "@/components/Shared/SharedLayout";
@@ -13,6 +14,7 @@ const Index = ({ users, currentUser }) => {
     const [loggedUser, setLoggedUser] = useState(JSON.parse(currentUser));
     const [targetUser, setTargetUser] = useState({});
     const { onOpen, onOpenChange, isOpen } = useDisclosure();
+    const { onOpen: onPasswordChangeOpen, onOpenChange: onPasswordChangeOpenChange, isOpen: isPasswordChangeOpen, onClose: onPasswordChangeClose } = useDisclosure();
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState('');
     const [tableData, setTableData]=useState(users);
@@ -38,6 +40,19 @@ const Index = ({ users, currentUser }) => {
             <div>
                 <Title title='Admin Accounts'/>
                 <AdminPageTitle title={'Admin Accounts'} />
+                <div className="w-full flex lg:justify-end px-10 mt-10">
+                    <Button
+                        color='secondary'
+                        variant='bordered'
+                        size='lg'
+                        radius='none'
+                        className='border'
+                        onPress={() => {
+                            onPasswordChangeOpen();
+                        }}>
+                        Change Password
+                    </Button>
+                </div>
                 <div className="px-10 my-10">
                     <Table
                         tableData={tableData}
@@ -55,6 +70,11 @@ const Index = ({ users, currentUser }) => {
                     loading={loading}
                     errorMessage={err}
                     setErrorMessage={setErr}
+                />
+                <PasswordChangeModal
+                    isOpen={isPasswordChangeOpen}
+                    onOpenChange={onPasswordChangeOpenChange}
+                    onClose={onPasswordChangeClose}
                 />
             </div>
         </SharedLayout>
