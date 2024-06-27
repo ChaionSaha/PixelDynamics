@@ -24,10 +24,7 @@ const TermsDetailsForm = ({page, editState}) => {
 
     useEffect(() => {
         if (editState)
-            reset({
-                pageName: page.pageName,
-                description: page.description
-            })
+            reset(page);
     }, [reset, page, editState]);
 
     
