@@ -41,7 +41,9 @@ const AddPortfolioForm = () => {
             setAllCat(data.data);
         }).catch(err => console.log(err));
 
-        axios('/api/admin/get-all-portfolio-numbers').then(data => setPortfolioNumbers(data.data)).catch(err => console.log(err));
+        axios('/api/admin/get-all-portfolio-numbers')
+            .then(data => setPortfolioNumbers(data.data))
+            .catch(err => console.log(err));
     }, []);
 
     const handlePortfolioSubmit = (formData) => {

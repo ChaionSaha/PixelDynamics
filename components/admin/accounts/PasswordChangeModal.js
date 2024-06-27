@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import ControlledPasswordInput from '@/components/Shared/ControlledPasswordInput';
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Spinner } from "@nextui-org/react";
@@ -15,10 +15,6 @@ const PasswordChangeModal = ({ isOpen, onOpenChange, onClose, currentUser }) => 
             confirmPassword: ''
         }
     })
-
-    useEffect(() => { 
-        console.log(currentUser);
-    }, [currentUser])
 
     const handleFormSubmit = (formData) => {
         const { oldPassword, newPassword, confirmPassword } = formData;
