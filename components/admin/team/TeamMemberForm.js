@@ -32,7 +32,6 @@ export default function TeamMemberForm({ member = {}, isEdit = false, teamMember
         {
             reset({ ...member });
             let temp = teamMemberPositions.filter(pos => pos !== member.position);
-            console.log(temp);
             setAllPositions(temp);
         }
     }, [isEdit, member, reset, teamMemberPositions]);
