@@ -16,7 +16,7 @@ const TeamMember = ({ img, experienceDetails, name, expertise }) => {
                     <p className='text-2xl laptop:text-xl'>{name}</p>
                     <p className='text-lg laptop:text-base text-base-200 font-semibold'>{expertise}</p>
                 </div>
-                <div className="w-[60%] h-1 bg-base-100 my-8"></div>
+                <div className="w-[60%] h-1 bg-base-100 mb-8 mt-7"></div>
                 <ul className='flex flex-col gap-y-3 '>
                     {
                         experienceDetails.map((ed, i) => <li key={i} className='flex list-[square] gap-x-3'>

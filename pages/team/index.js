@@ -10,7 +10,7 @@ const Team = ({ team = [], }) => {
         <SharedLayout>
             <div>
                 <Title title='Team' />
-                <p className="text-xl md:text-2xl lg:text-3xl laptop:text-2xl font-bold md:pt-7 pt-5 ps-16 ">
+                <p className="text-xl md:text-2xl lg:text-3xl laptop:text-2xl font-bold md:pt-7 pt-5 ps-16 mb-5">
                     Meet Our Highly Talented Team Members
                 </p>
                 <div className=''>

@@ -4,8 +4,8 @@ const Slide = ({name, img, title, experience, expertise, description}) => {
 
     return (
         <div
-            className='flex lg:flex-row pb-5 flex-col h-max gap-y-5 overflow-y-visible mt-5 lg:mt-0 px-5 lg:ps-16 lg:pe-0'>
-            <div className="lg:w-[65%] w-[100%] order-last lg:order-fast mt-5">
+            className='flex lg:flex-row  flex-col h-full gap-y-5 overflow-y-visible mt-11 lg:mt-0 px-5 lg:ps-16 lg:pe-0'>
+            <div className="lg:w-[65%] w-[100%] order-last lg:order-fast lg:mt-16 mt-5">
                 <p className="lg:text-5xl laptop:text-3xl text-3xl font-bold">{name}</p>
                 <p className='lg:text-3xl laptop:text-xl text-xl mt-2 laptop:mt-0 lg:w-[80%] w-[100%]'>{title}</p>
                 <div className="flex  lg:flex-row gap-y-5 flex-col my-8 lg:my-16 laptop:my-8 gap-x-10 max-w-[90%] ms-1">
@@ -22,9 +22,9 @@ const Slide = ({name, img, title, experience, expertise, description}) => {
                     dangerouslySetInnerHTML={{__html: description}}></div>
             </div>
             <div
-                className="lg:w-[35%] w-[100%] md:w-[50%] lg:h-[60vh] laptop:h-[50vh] laptop:w-[30%] h-[40vh] flex mx-auto justify-end relative order-fast lg:order-last laptop:mt-5">
-                <Image src={img} className='object-cover ' alt={name} fill
-                    loading={'eager'} quality={100}/>
+                className="lg:w-[35%] w-[100%] md:w-[50%] lg:min-h-[69vh] m-0 laptop:min-h-[50vh] laptop:w-[30%] min-h-[40vh] h-full flex mx-auto justify-end relative order-fast lg:order-last ">
+                <Image src={img} className='object-cover m-0' alt={name} fill
+                    loading={'eager'} quality={100} priority/>
             </div>
         </div>
     );

@@ -10,15 +10,16 @@ const TeamCarousel = ({team}) => {
         dots: false,
         infinite: true,
         speed: 1000,
-        autoplay: true,
+        // autoplay: true,
         autoplaySpeed: 10000,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
+        adaptiveHeight: false,
     };
     return (
         <div>
-            <div className="flex gap-x-3 mt-5 px-5 lg:ps-16 lg:pe-0">
+            <div className="flex gap-x-3 px-5 lg:ps-16 lg:pe-0 absolute z-[2]">
                 <button className='text-lg p-0' onClick={() => sliderRef.current.slickPrev()}>
                     <ChevronLeftIcon className='size-6 laptop:size-5'/>
                 </button>
@@ -27,7 +28,7 @@ const TeamCarousel = ({team}) => {
                 </button>
             </div>
 
-            <div className="lg:mt-5 laptop:mt-0">
+            <div className="lg:mt-5 laptop:mt-0 z-[1]">
                 <Slider {...settings} ref={slider => {
                     sliderRef.current = slider;
                 }}>
