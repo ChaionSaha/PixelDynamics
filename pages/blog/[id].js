@@ -11,13 +11,13 @@ const Index = ({ blog }) => {
 
     return (
         <SharedLayout>
-            <Title title={`${blog.name} - Blog`}/>
+            <Title title={`${blog.name} - Blog`} />
             <div>
                 <div className="flex lg:text-3xl laptop:text-2xl text-2xl items-center gap-x-5 lg:ps-10 ps-16 lg:px-10 px-2 py-7 font-bold">
                     <button onClick={() => {
                         router.push('/blog');
                     }}>
-                        <ChevronLeftIcon className='size-5 laptop:size-4'/>
+                        <ChevronLeftIcon className='size-5 laptop:size-4' />
                     </button>
                     <p>{blog.name}</p>
                 </div>
@@ -32,33 +32,33 @@ const Index = ({ blog }) => {
                                 blog.details.map((pd, i) => <div key={i}>
                                     {
                                         pd.key === 'text' &&
-                                            <div dangerouslySetInnerHTML={{__html: pd.text}} className='quill-css mt-5'></div>
+                                        <div dangerouslySetInnerHTML={{ __html: pd.text }} className='quill-css mt-5'></div>
                                     }
                                     {
                                         pd.key === 'img' &&
-                                            <img src={pd.img}
-                                                alt={`${blog.name}-${i}`} className='w-full  mt-5'/>
+                                        <img src={pd.img}
+                                            alt={`${blog.name}-${i}`} className='w-full  mt-5' />
 
                                     }
                                     {
                                         pd.key === 'url' &&
-                                            <>
-                                                <YouTube videoId={pd.url.toString().split('=')[1]}
-                                                    className='aspect-video youtube-video w-full h-full object-cover my-5 lg:mb-0'/>
-                                            </>
+                                        <>
+                                            <YouTube videoId={pd.url.toString().split('=')[1]}
+                                                className='aspect-video youtube-video w-full h-full object-cover my-5 lg:mb-0' />
+                                        </>
                                     }
                                 </div>)
                             }
                         </div>
                     </div>
                     <div className="xl:w-[20%] lg:w-[30%] md:w-[50%] mx-auto">
-                        <div className="bg-[#e5e5e5] flex flex-col p-5 pt-10 lg:sticky lg:top-[5%] lg:right-0">
-                            <div className="relative w-[65%] h-[20vh] self-center">
-                                <Image src={blog.author.img} alt={blog.author.name} fill className="object-cover"/>
+                        <div className="bg-[#e5e5e5] flex flex-col p-10 lg:sticky lg:top-[5%] lg:right-0">
+                            <div className="relative w-full h-[28vh] self-center">
+                                <Image src={blog.author.img} alt={blog.author.name} fill className="object-cover" />
                             </div>
                             <p className="text-center mt-5 text-2xl laptop:text-xl font-bold">{blog.author.name}</p>
                             <p className=" text-base-300 text-center font-bold laptop:text-sm">{blog.author.expertise}</p>
-                            <div dangerouslySetInnerHTML={{__html: blog.author.description}} className="quill-css mt-5"/>
+                            <div dangerouslySetInnerHTML={{ __html: blog.author.description }} className="quill-css mt-5" />
                         </div>
                     </div>
                 </div>
@@ -73,10 +73,10 @@ export const getServerSideProps = async (ctx) => {
     const { query } = ctx;
     let bgid = query.id;
     const db = await getDatabase();
-    const blog = await db.collection('blogs').findOne({bgid}, {projection:{_id:0}});
+    const blog = await db.collection('blogs').findOne({ bgid }, { projection: { _id: 0 } });
 
     return {
-        props:{
+        props: {
             blog
         }
     }
