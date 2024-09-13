@@ -1,9 +1,22 @@
 import ControlledInput from "@/components/Shared/ControlledInput";
+import ControlledSelect from "@/components/Shared/ControlledSelect";
 import { Button, Checkbox, Spinner, Switch } from "@nextui-org/react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
+
+const packageTypes = [
+    {
+        value: 'package',
+        name: 'Package'
+    },
+    {
+        value: 'subscription',
+        name: 'Subscription'
+    }
+]
+
 
 export default function SubscriptionPlanForm({ plan, isEdit }) {
     const { control, handleSubmit, watch, reset } = useForm({
@@ -14,7 +27,9 @@ export default function SubscriptionPlanForm({ plan, isEdit }) {
             offers: [],
             discount: false,
             discountAmount: '',
-            packages:[],
+            packages: [],
+            type: '',
+            slotLeft: 0
         }
     });
     const { fields: descriptionFields, append: appendDescription, remove: removeDescription } = useFieldArray({ control, name: 'description' });
@@ -25,8 +40,8 @@ export default function SubscriptionPlanForm({ plan, isEdit }) {
     const router = useRouter();
 
     useEffect(() => {
-        reset({...plan})
-    },[plan, reset])
+        reset({ ...plan })
+    }, [plan, reset])
 
     const handleSubmitForm = async (formData) => {
         setErr('');
@@ -42,73 +57,91 @@ export default function SubscriptionPlanForm({ plan, isEdit }) {
             <div className="grid md:grid-cols-2 gap-5">
                 <ControlledInput control={control} name="name" label="Plan Name" />
                 <ControlledInput control={control} name="stripeApiId" label="Stripe API ID" />
-                <ControlledInput control={control} name={'price'} label={'Regular Price (Per month in USD)'} />
-                <div className=""></div>
+                <ControlledSelect control={control} name={"type"} label="Package Type"
+                    array={packageTypes}
+                    editState={true} />
+                {
+                    watch('type') &&
+                    <ControlledInput control={control} name={'price'} label={watch('type') === "subscription" ? 'Regular Price (Per month in USD)' : 'Package Price'} />
+                }
+                {
+                    watch("type") === "package" &&
+                    <ControlledInput control={control} name="slotLeft" label="Slot Remaining" type={"number"} />
+                }
                 <div className="flex flex-col">
-                    <Controller control={control}
-                        name='discount'
-                        render={({ field: { value, onChange } }) =>
-                            <Switch
-                                isSelected={value}
-                                onValueChange={onChange}
-                                className='mt-10 mb-5'
-                                classNames={{
-                                    wrapper: "bg-base-300"
-                                }}
-                            >
-                                <p className='text-white text-xl'>Discount</p>
-                            </Switch>}
-                    />
+                    {
+                        watch('type') == "subscription" &&
+                        <Controller control={control}
+                            name='discount'
+                            render={({ field: { value, onChange } }) =>
+                                <Switch
+                                    isSelected={value}
+                                    onValueChange={onChange}
+                                    className='mt-10 mb-5'
+                                    classNames={{
+                                        wrapper: "bg-base-300"
+                                    }}
+                                >
+                                    <p className='text-white text-xl'>Discount</p>
+                                </Switch>}
+                        />
+                    }
                     {
                         watch('discount') &&
                         <ControlledInput control={control} name="discountAmount" label="Discount Amount" />
                     }
                 </div>
+
             </div>
 
             {/* Package list add */}
-            <div className=" mb-5 mt-10 gap-y-5 flex flex-col">
-                <p className="text-xl font-semibold">Package List</p>
-                {
-                    packageFields.map((field, index) => (
-                        <div key={field.id} className="flex flex-col gap-y-5 border p-5">
-                            <div className="flex justify-between">
-                                <p className='text-xl font-semibold'>Package {index + 1}</p>
-                                <button onClick={(e) => {
-                                    e.preventDefault();
-                                    packageRemove(index);
-                                }} className='btn btn-sm rounded-none h-full btn-outline btn-error'>
-                                    <i className='bi bi-trash'></i>
-                                </button>
-                            </div>
-                            <div  className='grid grid-cols-2 items-end gap-5 w-full'>
-                                <ControlledInput control={control} name={`packages.${index}.name`} label={`Package Name`} />
-                                <ControlledInput control={control} name={`packages.${index}.apiId`} label={`Stripe API ID`} />
-                                <ControlledInput control={control} name={`packages.${index}.monthCount`} label={`Package Duration (in months)`} />
 
-                                <div className="flex flex-col gap-2">
-                                    <Controller name={`packages.${index}.discounted`} control={control} render={({ field: { value, onChange } }) => 
-                                        <Checkbox isSelected={value} onValueChange={onChange}  classNames={{
-                                            label:'text-white',
-                                        }}>
-                                        Discount?
-                                        </Checkbox>
-                                    } />
-                                    {
-                                        watch(`packages.${index}.discounted`) &&
-                                    <ControlledInput control={control} name={`packages.${index}.offer`} label={`Package offer (in percentage)`} type='number'/>
-                                    }
-                                
+            {
+                watch('type') == "subscription" &&
+                <div className=" mb-5 mt-10 gap-y-5 flex flex-col">
+                    <p className="text-xl font-semibold">Package List</p>
+                    {
+                        packageFields.map((field, index) => (
+                            <div key={field.id} className="flex flex-col gap-y-5 border p-5">
+                                <div className="flex justify-between">
+                                    <p className='text-xl font-semibold'>Package {index + 1}</p>
+                                    <button onClick={(e) => {
+                                        e.preventDefault();
+                                        packageRemove(index);
+                                    }} className='btn btn-sm rounded-none h-full btn-outline btn-error'>
+                                        <i className='bi bi-trash'></i>
+                                    </button>
+                                </div>
+                                <div className='grid grid-cols-2 items-end gap-5 w-full'>
+                                    <ControlledInput control={control} name={`packages.${index}.name`} label={`Package Name`} />
+                                    <ControlledInput control={control} name={`packages.${index}.apiId`} label={`Stripe API ID`} />
+                                    <ControlledInput control={control} name={`packages.${index}.monthCount`} label={`Package Duration (in months)`} />
+
+                                    <div className="flex flex-col gap-2">
+                                        <Controller name={`packages.${index}.discounted`} control={control} render={({ field: { value, onChange } }) =>
+                                            <Checkbox isSelected={value} onValueChange={onChange} classNames={{
+                                                label: 'text-white',
+                                            }}>
+                                                Discount?
+                                            </Checkbox>
+                                        } />
+                                        {
+                                            watch(`packages.${index}.discounted`) &&
+                                            <ControlledInput control={control} name={`packages.${index}.offer`} label={`Package offer (in percentage)`} type='number' />
+                                        }
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))
-                }
-                <Button color="primary" radius={'none'} className='w-fit '
-                    onClick={() => packageAppend(1)}>
+                        ))
+                    }
+                    <Button color="primary" radius={'none'} className='w-fit '
+                        onClick={() => packageAppend(1)}>
                         Add Package
-                </Button>
-            </div>
+                    </Button>
+                </div>
+            }
+
 
             {/* Plan description */}
             <div className="lg:w-[50%] mb-5 mt-10 gap-y-5 flex flex-col">
@@ -128,7 +161,7 @@ export default function SubscriptionPlanForm({ plan, isEdit }) {
                 }
                 <Button color="primary" radius={'none'} className='w-fit '
                     onClick={() => appendDescription(1)}>
-                        Add Description
+                    Add Description
                 </Button>
             </div>
 
@@ -150,7 +183,7 @@ export default function SubscriptionPlanForm({ plan, isEdit }) {
                 }
                 <Button color="primary" radius={'none'} className='w-fit '
                     onClick={() => appendOffer(1)}>
-                        Add Details
+                    Add Details
                 </Button>
             </div>
 
@@ -158,7 +191,7 @@ export default function SubscriptionPlanForm({ plan, isEdit }) {
                 err && <p className='text-error mt-5'>{err}</p>
             }
             <Button disabled={loading} radius={'none'} variant='bordered' className='w-fit border text-white my-5' type='submit'>
-                {loading ?  <Spinner color='white'/> : isEdit ? 'Update' : 'Add Service'}
+                {loading ? <Spinner color='white' /> : isEdit ? 'Update Plan' : 'Add Plan'}
             </Button>
         </form>
     )

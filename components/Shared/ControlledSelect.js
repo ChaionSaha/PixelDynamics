@@ -1,10 +1,10 @@
 import { Select, SelectItem } from "@nextui-org/react";
 import { Controller } from "react-hook-form";
 
-const ControlledSelect = ({control, name, array, label, editState}) => {
+const ControlledSelect = ({ control, name, array, label, editState }) => {
     return (
         <Controller name={name} control={control}
-            render={({field: {onChange, value}}) => <Select
+            render={({ field: { onChange, value } }) => <Select
                 isRequired
                 label={label}
                 variant='bordered'
@@ -19,6 +19,7 @@ const ControlledSelect = ({control, name, array, label, editState}) => {
                     value: 'text-white'
                 }}
                 onChange={onChange}
+                disabledKeys={[""]}
             >
                 <SelectItem key={""} value={""}>
                     {label}
@@ -28,7 +29,7 @@ const ControlledSelect = ({control, name, array, label, editState}) => {
                         {mc.name}
                     </SelectItem>
                 ))}
-            </Select>}/>
+            </Select>} />
     );
 };
 

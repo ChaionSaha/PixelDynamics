@@ -32,22 +32,22 @@ const Index = () => {
 
     useEffect(() => {
         if (client.selectedPlan)
-            reset({...client});
+            reset({ ...client });
         else
             reset({
                 selectedPlan: plan.stripeApiId
             })
     }, [plan, reset, client]);
 
-    const handleInfoSubmit = (formData) => { 
+    const handleInfoSubmit = (formData) => {
         setErr("");
 
-        if(!formData.selectedPlan) {
+        if (plan.type === "subscription" && !formData.selectedPlan) {
             setErr("Please select a subscription plan");
             return;
         }
 
-        if(formData.firstName.trim()==='' || formData.lastName.trim()==='' || formData.email.trim()==='' || formData.phone.trim()==='') {
+        if (formData.firstName.trim() === '' || formData.lastName.trim() === '' || formData.email.trim() === '' || formData.phone.trim() === '') {
             setErr("Please fill all fields");
             return;
         }
@@ -55,11 +55,11 @@ const Index = () => {
         dispatch(setClient(formData));
         router.push('/payment/pay');
     }
-    
+
     return (
         <SharedLayout>
             <Title title='Personal Information' />
-            
+
             <div className="md:pt-10 pt-5 lg:px-16 md:px-10 px-5">
                 <p className="lg:text-4xl laptop:text-3xl text-2xl font-bold px-12 lg:px-0">Information</p>
                 <p className="text-base-300 lg:text-2xl laptop:text-xl text-lg lg:w-[50%] mt-3">
@@ -69,17 +69,17 @@ const Index = () => {
                 <form className="grid lg:grid-cols-2 lg:mt-20 mt-5 gap-x-40 gap-y-10" onSubmit={handleSubmit(handleInfoSubmit)}>
                     <div className="flex flex-col gap-5 gap-y-7 mt-10">
                         <div className="grid lg:grid-cols-2 gap-5">
-                            <ControlledClientInput control={control} name={"firstName"} label={"First Name"} labelPlacement={"outside"}/>
-                            <ControlledClientInput control={control} name={"lastName"} label={"Last Name"} labelPlacement={"outside"}/>
+                            <ControlledClientInput control={control} name={"firstName"} label={"First Name"} labelPlacement={"outside"} />
+                            <ControlledClientInput control={control} name={"lastName"} label={"Last Name"} labelPlacement={"outside"} />
                         </div>
                         <div className="col-span-2">
-                            <ControlledClientInput control={control} name={"email"} label={"Email"} labelPlacement={"outside"}/>
+                            <ControlledClientInput control={control} name={"email"} label={"Email"} labelPlacement={"outside"} />
                         </div>
                         <div className="col-span-2">
-                            <ControlledPhoneInput control={control} name={"phone"} label={"Phone Number"}/>
+                            <ControlledPhoneInput control={control} name={"phone"} label={"Phone Number"} />
                         </div>
                         <div className="col-span-2">
-                            <ControlledPhoneInput control={control} name={"whatsAppNumber"} label={"WhatApp Number"} rightSideLabel={"Optional"}/>
+                            <ControlledPhoneInput control={control} name={"whatsAppNumber"} label={"WhatApp Number"} rightSideLabel={"Optional"} />
                         </div>
                         <div className="hidden lg:flex flex-col mt-14 mb-10 text-lg gap-y-1">
                             {
@@ -88,61 +88,63 @@ const Index = () => {
                             <Button type="submit" radius="none" className="w-full text-lg laptop:text-base hover:bg-white border border-black font-bold py-6 laptop:py-4 hover:text-black bg-black text-white">Next</Button>
                         </div>
                     </div>
+                    {
+                        plan.type === "subscription" &&
+                        <div className="flex flex-col">
+                            <p className="font-medium text-2xl laptop:text-xl">Subscription Type</p>
+                            <Controller name="selectedPlan" control={control} render={({ field: { value, onChange } }) =>
+                                <RadioGroup
+                                    value={value}
+                                    onValueChange={onChange}
+                                    className="mt-5"
+                                    classNames={{
+                                        wrapper: "flex flex-col gap-y-5",
+                                    }}
 
-                    <div className="flex flex-col">
-                        <p className="font-medium text-2xl laptop:text-xl">Subscription Type</p>
-                        <Controller name="selectedPlan" control={control} render={({ field: { value, onChange } }) =>
-                            <RadioGroup
-                                value={value}
-                                onValueChange={onChange}
-                                className="mt-5"
-                                classNames={{
-                                    wrapper: "flex flex-col gap-y-5",
-                                }}
-                                
-                            >
-                                <CustomRadio value={plan.stripeApiId}>
-                                    <div className="flex items-center gap-x-5">
-                                        {
-                                            value === plan.stripeApiId ? <CheckedIcon className='w-5 h-5'/> : <UnCheckedIcon className='w-5 h-5'/>
-                                        }
-                                        
-                                        <div className="flex flex-col">
-                                            <p className="text-xl laptop:text-lg font-bold">Monthly</p>
-                                            <p className="text-base-300 laptop:text-sm">${plan.discount ? +plan.price - plan.discountAmount : +plan.price} / per month</p>
+                                >
+                                    <CustomRadio value={plan.stripeApiId}>
+                                        <div className="flex items-center gap-x-5">
+                                            {
+                                                value === plan.stripeApiId ? <CheckedIcon className='w-5 h-5' /> : <UnCheckedIcon className='w-5 h-5' />
+                                            }
+
+                                            <div className="flex flex-col">
+                                                <p className="text-xl laptop:text-lg font-bold">Monthly</p>
+                                                <p className="text-base-300 laptop:text-sm">${plan.discount ? +plan.price - plan.discountAmount : +plan.price} / per month</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </CustomRadio>
-                                {
-                                    plan.packages &&  plan.packages.map((p, i) => (
-                                        <CustomRadio key={p.apiId} value={p.apiId}>
-                                            <div className="flex justify-between">
-                                                <div className="flex items-center gap-x-5">
-                                                    {
-                                                        value === p.apiId ? <CheckedIcon className='w-5 h-5'/> : <UnCheckedIcon className='w-5 h-5'/>
-                                                    }
-                                                    <div className="flex flex-col">
-                                                        <p className="text-xl laptop:text-lg font-bold">{p.name}</p>
-                                                        <p className="text-base-300 laptop:text-sm">$
-                                                            {p.cost} / per {p.monthCount} months
-                                                        </p>
+                                    </CustomRadio>
+                                    {
+                                        plan.packages && plan.packages.map((p, i) => (
+                                            <CustomRadio key={p.apiId} value={p.apiId}>
+                                                <div className="flex justify-between">
+                                                    <div className="flex items-center gap-x-5">
+                                                        {
+                                                            value === p.apiId ? <CheckedIcon className='w-5 h-5' /> : <UnCheckedIcon className='w-5 h-5' />
+                                                        }
+                                                        <div className="flex flex-col">
+                                                            <p className="text-xl laptop:text-lg font-bold">{p.name}</p>
+                                                            <p className="text-base-300 laptop:text-sm">$
+                                                                {p.cost} / per {p.monthCount} months
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="self-center font-bold laptop:text-sm">
+                                                        {
+                                                            p.discounted &&
+                                                            <p>Save {p.offer}%</p>
+                                                        }
                                                     </div>
                                                 </div>
-                                                <div className="self-center font-bold laptop:text-sm">
-                                                    {
-                                                        p.discounted &&
-                                                        <p>Save {p.offer}%</p>
-                                                    }
-                                                </div>
-                                            </div>
-                                        </CustomRadio>
-                                    ))
-                                }
-                            </RadioGroup>
-                            
-                        } />
-                        
-                    </div>
+                                            </CustomRadio>
+                                        ))
+                                    }
+                                </RadioGroup>
+
+                            } />
+
+                        </div>
+                    }
                     <div className="flex flex-col lg:hidden text-lg gap-y-1 mb-10">
                         {
                             err && <p className="text-error">{err}</p>
@@ -150,7 +152,7 @@ const Index = () => {
                         <Button type="submit" radius="none" className="w-full text-lg hover:bg-white border border-black font-bold py-6 hover:text-black bg-black text-white">Next</Button>
                     </div>
                 </form>
-                
+
             </div>
         </SharedLayout>
     );
@@ -159,7 +161,7 @@ const Index = () => {
 export default Index;
 
 export const CustomRadio = (props) => {
-    const {children, ...otherProps} = props;
+    const { children, ...otherProps } = props;
 
     return (
         <Radio

@@ -36,7 +36,8 @@ const Index = () => {
         expiryTimestamp: time, onExpire: () => {
             onClose();
             router.push('/');
-        } , autoStart: false });
+        }, autoStart: false
+    });
 
     useEffect(() => {
         if (plan && plan.packages) {
@@ -45,11 +46,12 @@ const Index = () => {
         } else {
             setSelectedPack(undefined);
         }
+        console.log(plan);
     }, [plan, client]);
 
     useEffect(() => {
         dispatch(setPaidFalse());
-    },[])
+    }, [])
 
     const handleInfoSubmit = async (formData) => {
         setLoading(true);
@@ -91,8 +93,8 @@ const Index = () => {
             <div className="md:pt-10 pb-10 pt-5 lg:px-16 md:px-10 px-5">
                 <p className="lg:text-4xl laptop:text-3xl text-2xl px-12 lg:px-0 font-bold">Let's Make Payment</p>
                 <p className="text-base-300 text-lg laptop:text-xl lg:text-2xl lg:w-[50%] mt-3">
-                    To start your subscription, input your card details to make payment. 
-                    You will be redirected to Home Page. 
+                    To start your subscription, input your card details to make payment.
+                    You will be redirected to Home Page.
                 </p>
                 <form className="grid lg:grid-cols-2 lg:mt-20 mt-10 gap-x-40 gap-y-10" onSubmit={handleSubmit(handleInfoSubmit)}>
                     <div className="flex flex-col gap-5 gap-y-7 ">
@@ -143,7 +145,7 @@ const Index = () => {
                                     </div>
                                 </div>
                             }
-                            
+
                             <div className="flex w-full">
                                 <div className="w-[80%]">
                                     <p>Discount</p>
@@ -152,7 +154,7 @@ const Index = () => {
                                     {
                                         selectedPack && selectedPack.discounted ?
                                             <p>
-                                            ${plan.discount ?
+                                                ${plan.discount ?
                                                     ((+plan.price - +plan.discountAmount) * +selectedPack.offer / 100) * selectedPack.monthCount
                                                     :
                                                     (+plan.price * +selectedPack.offer / 100) * selectedPack.monthCount
@@ -160,10 +162,10 @@ const Index = () => {
                                             </p> :
                                             <p>$0</p>
                                     }
-                                        
+
                                 </div>
                             </div>
-                            
+
                             <div className="mt-5">
                                 <div className="border w-full border-black "></div>
                                 <div className="flex w-full mt-2">

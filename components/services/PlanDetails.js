@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import BuyNowButton from "./BuyNowButton";
 
-const PlanDetails = ({ name, description, offers, price, discount, discountAmount, stripeApiId, packages, spid }) => {
+const PlanDetails = ({ name, description, offers, price, discount, discountAmount, stripeApiId, packages, spid, type }) => {
     const dispatch = useDispatch();
     const router = useRouter();
 
     const handleBuyNowButtonClick = () => {
-        dispatch(setPlan({ name, price, discount, discountAmount, stripeApiId, packages, spid }));
+        dispatch(setPlan({ name, price, discount, discountAmount, stripeApiId, packages, spid, type }));
         router.push('/payment');
     }
 
@@ -28,7 +28,14 @@ const PlanDetails = ({ name, description, offers, price, discount, discountAmoun
                 <div
                     className="flex gap-x-5 items-center justify-between text-2xl laptop:text-2xl xl:text-3xl font-bold">
                     <p>{name}</p>
-                    <p className="lg:text-xl laptop:text-xl xl:text-2xl text-lg">{discount ? +price-+discountAmount : +price}/MO USD</p>
+                    {
+                        type === "subscription" &&
+                        <p className="lg:text-xl laptop:text-xl xl:text-2xl text-lg">{discount ? +price - +discountAmount : +price}/MO USD</p>
+                    }
+                    {
+                        type === "package" &&
+                        <p className="lg:text-xl laptop:text-xl xl:text-2xl text-lg">{price} USD</p>
+                    }
                 </div>
                 <ul className="mt-3">
                     {
@@ -48,7 +55,7 @@ const PlanDetails = ({ name, description, offers, price, discount, discountAmoun
 
             <div className="flex flex-col mt-16 gap-y-5">
                 <BuyNowButton className="py-3 laptop:py-2 md:px-5 " handleClick={handleBuyNowButtonClick} />
-                <BookACallButton className="py-3 laptop:py-2 md:px-5"/>
+                <BookACallButton className="py-3 laptop:py-2 md:px-5" />
             </div>
         </div>
     );

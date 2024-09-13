@@ -13,16 +13,20 @@ import { useEffect, useState } from "react";
 const columns = [
     {
         name: "Plan Name",
-        value:"name"
+        value: "name"
     },
     {
         name: "Price",
-        value:"price"
+        value: "price"
+    },
+    {
+        name: "Type",
+        value: "type"
     }
 ]
 
 
-const Index = ({plans}) => {
+const Index = ({ plans }) => {
     const [searchInput, setSearchInput] = useState('');
     const router = useRouter();
     const [targetPlan, setTargetPlan] = useState({});
@@ -39,12 +43,12 @@ const Index = ({plans}) => {
             const temp = plans.filter(plan => plan.name.toLowerCase().includes(searchInput.toLowerCase()));
             setTableData(temp);
         }
-    },[searchInput, plans])
+    }, [searchInput, plans])
 
     const handleEditPlan = (plan) => {
         router.push(`/admin/services/subscriptions/edit/${plan.spid}`);
     }
-    
+
     const handleDeletePlan = (plan) => {
         setTargetPlan(plan);
         onOpen();
@@ -70,7 +74,7 @@ const Index = ({plans}) => {
             <AdminPageTitle title="Subscriptions Plans" />
             <AdminSearch setSearchInput={setSearchInput} addBtnName={'Add Plan'} addBtnFnc={() => router.push('/admin/services/subscriptions/add')} />
             <div className="px-10">
-                <CustomTable tableData={tableData} columns={columns} actionOnEdit={handleEditPlan} actionOnDelete={handleDeletePlan}/>
+                <CustomTable tableData={tableData} columns={columns} actionOnEdit={handleEditPlan} actionOnDelete={handleDeletePlan} />
             </div>
             <DeleteCategoryModal
                 isOpen={isOpen}
@@ -82,7 +86,7 @@ const Index = ({plans}) => {
                 loading={loading}
                 closeModal={handleCloseModal}
             />
-            
+
         </SharedLayout>
     );
 };
@@ -92,7 +96,7 @@ export default Index;
 export async function getServerSideProps() {
     const db = await getDatabase();
     const plans = await db.collection('subscriptionPlans').find().project({ _id: 0 }).toArray();
-    
+
     return {
         props: {
             plans
