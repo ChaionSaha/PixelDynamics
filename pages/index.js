@@ -11,12 +11,10 @@ export default function Home() {
             <div
                 onWheel={() => {
                     router.push('/portfolio');
-                    console.log("scrolling");
                 }}
 
                 onTouchMove={() => {
                     router.push('/portfolio');
-                    console.log("scrolling");
                 }}
             >
                 <Title title='Home' />
