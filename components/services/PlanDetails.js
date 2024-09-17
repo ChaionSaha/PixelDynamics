@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import BuyNowButton from "./BuyNowButton";
 
-const PlanDetails = ({ name, description, offers, price, discount, discountAmount, stripeApiId, packages, spid, type }) => {
+const PlanDetails = ({ name, description, offers, price, discount, discountAmount, stripeApiId, packages, spid, type, slotLeft }) => {
     const dispatch = useDispatch();
     const router = useRouter();
 
@@ -22,6 +22,12 @@ const PlanDetails = ({ name, description, offers, price, discount, discountAmoun
                 <div className="absolute right-[-2%] top-0 translate-y-[-50%] flex items-center gap-x-2 bg-black px-5 py-2 text-white">
                     <PriceTagIcon className='size-5 laptop:size-4' />
                     <p className="font-bold text-lg laptop:text-base laptop:font-semibold">Discounted</p>
+                </div>
+            }
+            {
+                slotLeft &&
+                <div className="absolute right-[-2%] top-0 translate-y-[-50%] bg-black px-5 py-2 text-white">
+                    <p className="font-bold text-lg laptop:text-base laptop:font-semibold">{slotLeft} slots left</p>
                 </div>
             }
             <div>

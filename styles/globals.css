@@ -39,19 +39,21 @@
   @apply bg-[#0077E4] text-white;
 }
 
-*::-webkit-scrollbar {
+/*--------- scrollbar codes---------- */
+
+/* *::-webkit-scrollbar {
   width: 4px;
 }
 
 *::-webkit-scrollbar-track {
-  width: 4px;
   background: #fff;
 }
 
 *::-webkit-scrollbar-thumb {
-  width: 4px;
   @apply lg:bg-[#0d0b0d]  bg-base-200;
-}
+} */
+
+/*--------- scrollbar codes---------- */
 
 .calendly > *::-webkit-scrollbar {
   display: none !important;

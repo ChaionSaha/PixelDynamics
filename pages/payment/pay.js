@@ -46,7 +46,6 @@ const Index = () => {
         } else {
             setSelectedPack(undefined);
         }
-        console.log(plan);
     }, [plan, client]);
 
     useEffect(() => {
@@ -146,31 +145,34 @@ const Index = () => {
                                 </div>
                             }
 
-                            <div className="flex w-full">
-                                <div className="w-[80%]">
-                                    <p>Discount</p>
-                                </div>
-                                <div className="w-[20%] font-bold flex justify-end">
-                                    {
-                                        selectedPack && selectedPack.discounted ?
-                                            <p>
-                                                ${plan.discount ?
-                                                    ((+plan.price - +plan.discountAmount) * +selectedPack.offer / 100) * selectedPack.monthCount
-                                                    :
-                                                    (+plan.price * +selectedPack.offer / 100) * selectedPack.monthCount
-                                                }
-                                            </p> :
-                                            <p>$0</p>
-                                    }
+                            {
+                                plan.type === 'subscription' &&
+                                <div className="flex w-full">
+                                    <div className="w-[80%]">
+                                        <p>Discount</p>
+                                    </div>
+                                    <div className="w-[20%] font-bold flex justify-end">
+                                        {
+                                            selectedPack && selectedPack.discounted ?
+                                                <p>
+                                                    ${plan.discount ?
+                                                        ((+plan.price - +plan.discountAmount) * +selectedPack.offer / 100) * selectedPack.monthCount
+                                                        :
+                                                        (+plan.price * +selectedPack.offer / 100) * selectedPack.monthCount
+                                                    }
+                                                </p> :
+                                                <p>$0</p>
+                                        }
 
+                                    </div>
                                 </div>
-                            </div>
+                            }
 
                             <div className="mt-5">
                                 <div className="border w-full border-black "></div>
                                 <div className="flex w-full mt-2">
                                     <div className="w-[80%]">
-                                        <p>Total</p>
+                                        <p className="font-bold">Total</p>
                                     </div>
                                     <div className="w-[20%] font-bold flex justify-end">
                                         <p>

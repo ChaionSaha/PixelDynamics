@@ -14,11 +14,11 @@ const CategoryHeader = ({ categories, blogs, setBlogs }) => {
     }, [selected, blogs, setBlogs]);
 
     useEffect(() => {
-        if(searchInput === '')
+        if (searchInput === '')
             setBlogs(blogs);
         else
             setBlogs(blogs.filter(b => b.name.toLowerCase().includes(searchInput.toLowerCase())));
-    },[searchInput, blogs, setBlogs]);
+    }, [searchInput, blogs, setBlogs]);
 
     return (
         <div className="bg-[#ebebeb] flex flex-col lg:flex-row">
@@ -32,31 +32,32 @@ const CategoryHeader = ({ categories, blogs, setBlogs }) => {
                     size="lg"
                 >
                     <Radio value={"all"} className="text-xl font-bold lg:px-4" classNames={{
-                        wrapper:'hidden'
+                        wrapper: 'hidden'
                     }}>All</Radio>
                     {
-                        categories.map((c, i) => 
+                        categories.map((c, i) =>
                             <Radio value={c.value} key={i} className="text-xl laptop:text-lg font-bold lg:px-4" classNames={{
-                                wrapper:'hidden'
-                            }}>{c.name }</Radio>
+                                wrapper: 'hidden'
+                            }}>{c.name}</Radio>
                         )
                     }
                 </RadioGroup>
-                
+
             </div>
             <div className="lg:w-[20%] w-full bg-black flex">
                 <Input
                     type="text"
                     placeholder="Search"
                     startContent={
-                        <SearchIcon className='w-5 h-5'/>
+                        <SearchIcon className='w-5 h-5' />
                     }
                     variant='bordered'
                     size="lg"
                     className="text-white self-center "
                     classNames={{
                         inputWrapper: 'rounded-none border-0',
-                        base: 'text-white'
+                        base: 'text-white',
+                        input: 'placeholder:text-white placeholder:ps-3 focus:placeholder:text-transparent'
                     }}
                     onValueChange={setSearchInput}
                 />

@@ -77,9 +77,9 @@ const Services = ({ services = [], subscriptions = [] }) => {
                 </div>
 
                 {/*  Subscription Section  */}
-                <div className='flex flex-col mt-20 xl:mt-36 lg:mt-28 lg:pe-10'>
-                    <div className="flex justify-between items-center">
-                        <div className='flex flex-col'>
+                <div className='flex flex-col mt-20 xl:mt-[7.5rem] lg:mt-28 lg:pe-10'>
+                    <div className="flex flex-col justify-center items-center text-center">
+                        <div className='flex flex-col mb-[3.375rem]'>
                             <p className='text-xl font-bold lg:text-3xl capitalize'>{packageTypes[selectedType].title}</p>
                             <p className='text-base lg:text-xl'>
                                 {packageTypes[selectedType].subTitle}
@@ -91,10 +91,10 @@ const Services = ({ services = [], subscriptions = [] }) => {
                             variant={"light"}
                             aria-label="Package variants"
                             classNames={{
-                                tabList: "border border-black rounded-none p-0",
+                                tabList: "border border-black rounded-none p-0 gap-0",
                                 tabContent: 'rounded-none group-data-[selected=true]:text-white text-black text-base',
-                                cursor: "rounded-none bg-black text-white",
-                                tab: "py-6 px-6"
+                                cursor: "rounded-none bg-black py-6 px-[3.37rem] text-white",
+                                tab: "py-6 lg:w-[12rem] md:w-[10rem] w-[8rem]"
                             }}
                         >
                             {
@@ -105,7 +105,7 @@ const Services = ({ services = [], subscriptions = [] }) => {
                         </Tabs>
                     </div>
 
-                    <div className='grid grid-cols-1 gap-10 mt-10 md:grid-cols-2 xl:grid-cols-3'>
+                    <div className='grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3 mt-24'>
                         {plans.length === 0 ? <div>No plans to show</div> : plans.map((s, i) => {
                             return <PlanDetails {...s} key={i} />;
                         })}

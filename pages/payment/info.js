@@ -145,6 +145,39 @@ const Index = () => {
 
                         </div>
                     }
+
+                    {
+                        plan.type === "package" &&
+                        <div className="flex flex-col bg-[#ebebeb] h-fit p-10 py-16 lg:w-[70%] self-center">
+                            <p>You're Paying</p>
+                            <p className="text-5xl font-bold">${plan.price}</p>
+
+                            <div className="mt-16 laptop:mt-10 flex flex-col gap-y-3 text-xl">
+                                <div className="flex w-full">
+                                    <div className="w-[80%]">
+                                        <p>{plan.name}</p>
+                                    </div>
+                                    <div className="w-[20%] font-bold flex justify-end">
+                                        <p>${plan.price}</p>
+                                    </div>
+                                </div>
+
+                                <div className="mt-5">
+                                    <div className="border w-full border-black "></div>
+                                    <div className="flex w-full mt-2">
+                                        <div className="w-[80%]">
+                                            <p className="font-bold">Total</p>
+                                        </div>
+                                        <div className="w-[20%] font-bold flex justify-end">
+                                            <p>
+                                                ${plan.price}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
                     <div className="flex flex-col lg:hidden text-lg gap-y-1 mb-10">
                         {
                             err && <p className="text-error">{err}</p>
