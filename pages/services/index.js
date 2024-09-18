@@ -91,8 +91,8 @@ const Services = ({ services = [], subscriptions = [] }) => {
                             variant={"light"}
                             aria-label="Package variants"
                             classNames={{
-                                tabList: "border border-black rounded-none p-0 gap-0",
-                                tabContent: 'rounded-none group-data-[selected=true]:text-white text-black text-base',
+                                tabList: "border-2 border-black rounded-none p-0 gap-0",
+                                tabContent: 'rounded-none group-data-[selected=true]:text-white text-black text-base font-bold text-lg',
                                 cursor: "rounded-none bg-black py-6 px-[3.37rem] text-white",
                                 tab: "py-6 lg:w-[12rem] md:w-[10rem] w-[8rem]"
                             }}
